@@ -5,6 +5,8 @@ namespace Assets.Script
     public class Player : MonoBehaviour
     {
 
+        public GameObject Bomb;
+
         // Use this for initialization
         private void Start()
         {
@@ -13,10 +15,22 @@ namespace Assets.Script
 
         public float MaxSpeed = 5f; // The fastest the player can travel in the axis.
         public float MoveForce = 365f; // Amount of force added to move the player left and right.
+        public GameObject Level;
 
         // Update is called once per frame
         private void Update()
-        {            
+        {
+            // If the fire button is pressed...
+            if (Input.GetButtonDown("Bomb"))
+            {
+                //Getting proper bomb location
+                var tileSize = Bomb.renderer.bounds.size.x;
+                var playerLocation = gameObject.transform.localPosition;
+                var bombTile = new Vector2(playerLocation.x/tileSize, playerLocation.y/tileSize);
+                var bomb = Instantiate(Bomb, new Vector3(), new Quaternion()) as GameObject;
+                bomb.transform.parent = Level.transform;
+                bomb.transform.localPosition = new Vector3(Mathf.RoundToInt(bombTile.x) * tileSize, Mathf.RoundToInt(bombTile.y) * tileSize);
+            }
         }
 
         private void FixedUpdate()
