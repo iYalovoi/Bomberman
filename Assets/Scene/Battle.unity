@@ -191,7 +191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11909eb5325e6949a0fa387bec67c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BombMaterial: {fileID: 6200000, guid: e30f92fc82d2e7349847e01eaa159514, type: 2}
 --- !u!1001 &804281873
 Prefab:
   m_ObjectHideFlags: 0
