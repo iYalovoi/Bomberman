@@ -19,6 +19,7 @@ namespace Assets.Script
         public float MoveForce = 365f; // Amount of force added to move the player left and right.
         public GameObject Level;
         private bool _bombing;
+        private int _move;
 
         // Update is called once per frame
         private void Update()
@@ -65,26 +66,26 @@ namespace Assets.Script
             var cross = Vector3.Cross(rigidbody2D.velocity, new Vector2(1, 0));
             if (cross.z > 0)
                 angle = 360 - angle;
-
-            _animator.SetBool("Bombing", _bombing);
+            //_animator.SetBool("Bombing", _bombing);
             if (!_bombing)
             {
+                var oldMove = _move;
                 if (Mathf.Abs(rigidbody2D.velocity.magnitude) < 0.1f)
-                    _animator.SetInteger("Move", 0);
+                    _move = 0;
                 else
                 {
                     if (angle > 315 || angle <= 45)
-                        _animator.SetInteger("Move", 2);
+                        _move = 2;
                     if (angle > 45 && angle <= 135)
-                        _animator.SetInteger("Move", 1);
+                        _move = 1;
                     if (angle > 135 && angle <= 225)
-                        _animator.SetInteger("Move", 4);
+                        _move = 4;
                     if (angle > 225 && angle <= 315)
-                        _animator.SetInteger("Move", 3);
+                        _move = 3;
                 }
+                if (oldMove != _move)
+                    _animator.SetInteger("Move", _move);
             }
-
-            Debug.Log(angle);
         }
     }
 }

@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Script
 {
     public class Bomb : MonoBehaviour
     {
+        public int Radius;
 
         void OnTriggerExit2D(Collider2D col)
         {
@@ -16,7 +19,20 @@ namespace Assets.Script
 
         void Start()
         {
-            Destroy(gameObject, 3);
+            StartCoroutine(Wait(3));
+        }
+
+        private IEnumerator Wait(float seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+            var animator = GetComponent<Animator>();
+            animator.SetFloat("Radius", Radius);
+            animator.SetTrigger("Explode");
+        }
+
+        public void Destroy()
+        {
+            Destroy(gameObject);
         }
 
         void Update()
