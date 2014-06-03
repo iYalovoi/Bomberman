@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Script
@@ -18,8 +19,7 @@ namespace Assets.Script
         public float MaxSpeed = 5f; // The fastest the player can travel in the axis.
         public float MoveForce = 365f; // Amount of force added to move the player left and right.
         public GameObject Level;
-        private bool _bombing;
-        private int _move;
+        public bool Bombing;
 
         // Update is called once per frame
         private void Update()
@@ -27,22 +27,28 @@ namespace Assets.Script
             // If the fire button is pressed...
             if (Input.GetButtonDown("Bomb"))
             {
-                _bombing = true;
                 //Getting proper bomb location
                 var tileSize = Bomb.renderer.bounds.size.x;
-                var playerLocation = gameObject.transform.localPosition;
-                var bombTile = new Vector2(playerLocation.x/tileSize, playerLocation.y/tileSize);
-                var bomb = Instantiate(Bomb, new Vector3(), new Quaternion()) as GameObject;
-                bomb.transform.parent = Level.transform;
-                bomb.transform.localPosition = new Vector3(Mathf.RoundToInt(bombTile.x) * tileSize, Mathf.RoundToInt(bombTile.y) * tileSize);
-                StartCoroutine(Bombing());
+                var localPosition = gameObject.transform.localPosition;
+
+                var collidersInArea = Physics2D.OverlapCircleAll(gameObject.transform.position, tileSize / 2);
+                collidersInArea.ToList().ForEach(o => Debug.Log(o.gameObject.name));
+                if (collidersInArea.All(o => o.gameObject.tag != "Bomb"))
+                {
+                    Bombing = true;                
+                    var bombTile = new Vector2(localPosition.x/tileSize, localPosition.y/tileSize);
+                    var bomb = Instantiate(Bomb, new Vector3(), new Quaternion()) as GameObject;
+                    bomb.transform.parent = Level.transform;
+                    bomb.transform.localPosition = new Vector3(Mathf.RoundToInt(bombTile.x) * tileSize, Mathf.RoundToInt(bombTile.y) * tileSize);
+                    
+                }
             }
         }
 
-        IEnumerator Bombing()
+        private void Bombed()
         {
-            yield return new WaitForSeconds(0.5f);
-            _bombing = false;
+            Bombing = false;
+            _animator.SetBool("Bombing", false);
         }
 
         private void FixedUpdate()
@@ -50,41 +56,30 @@ namespace Assets.Script
             var vertical = Input.GetAxis("Vertical");
             var horizontal = Input.GetAxis("Horizontal");
 
-            if (horizontal * rigidbody2D.velocity.x < MaxSpeed)
-                rigidbody2D.AddForce(Vector2.right * horizontal * MoveForce);
+            var isStopped = Mathf.Abs(rigidbody2D.velocity.magnitude) < 0.1f;
+            _animator.speed = isStopped && !Bombing ? 0 : 1;
 
-            if (Mathf.Abs(rigidbody2D.velocity.x) > MaxSpeed)
-                rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * MaxSpeed, rigidbody2D.velocity.y);
-
-            if (vertical * rigidbody2D.velocity.y < MaxSpeed)
-                rigidbody2D.AddForce(Vector2.up * vertical * MoveForce);
-
-            if (Mathf.Abs(rigidbody2D.velocity.y) > MaxSpeed)
-                rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, Mathf.Sign(rigidbody2D.velocity.y) * MaxSpeed);
-
-            var angle = Vector2.Angle(rigidbody2D.velocity, new Vector2(1, 0));
-            var cross = Vector3.Cross(rigidbody2D.velocity, new Vector2(1, 0));
-            if (cross.z > 0)
-                angle = 360 - angle;
-            //_animator.SetBool("Bombing", _bombing);
-            if (!_bombing)
+            if(Bombing)
+                _animator.SetBool("Bombing", true);
+            if (!Bombing)
             {
-                var oldMove = _move;
-                if (Mathf.Abs(rigidbody2D.velocity.magnitude) < 0.1f)
-                    _move = 0;
-                else
+                if (horizontal * rigidbody2D.velocity.x < MaxSpeed)
+                    rigidbody2D.AddForce(Vector2.right * horizontal * MoveForce);
+
+                if (Mathf.Abs(rigidbody2D.velocity.x) > MaxSpeed)
+                    rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * MaxSpeed, rigidbody2D.velocity.y);
+
+                if (vertical * rigidbody2D.velocity.y < MaxSpeed)
+                    rigidbody2D.AddForce(Vector2.up * vertical * MoveForce);
+
+                if (Mathf.Abs(rigidbody2D.velocity.y) > MaxSpeed)
+                    rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, Mathf.Sign(rigidbody2D.velocity.y) * MaxSpeed);
+                
+                if (!isStopped)
                 {
-                    if (angle > 315 || angle <= 45)
-                        _move = 2;
-                    if (angle > 45 && angle <= 135)
-                        _move = 1;
-                    if (angle > 135 && angle <= 225)
-                        _move = 4;
-                    if (angle > 225 && angle <= 315)
-                        _move = 3;
+                    _animator.SetFloat("Vertical", rigidbody2D.velocity.y);
+                    _animator.SetFloat("Horizontal", rigidbody2D.velocity.x);
                 }
-                if (oldMove != _move)
-                    _animator.SetInteger("Move", _move);
             }
         }
     }
