@@ -67,7 +67,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11909eb5325e6949a0fa387bec67c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 1
+  Radius: 4
+  VerticalBlast: {fileID: 100000, guid: 3d40af49f60ab5f4dac50a4912eba2b2, type: 2}
+  HorizontalBlast: {fileID: 100000, guid: e091d21b18ab2724084685c907681232, type: 2}
+  Level: {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

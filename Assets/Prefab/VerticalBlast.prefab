@@ -9,13 +9,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
-  - 114: {fileID: 11400000}
-  - 50: {fileID: 5000000}
-  - 58: {fileID: 5800000}
   - 95: {fileID: 9500000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Player
-  m_TagString: Player
+  m_Name: VerticalBlast
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,38 +24,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.8520432, y: -.343000591, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106829}
+  m_LocalPosition: {x: -24.6327286, y: .321414798, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!50 &5000000
-Rigidbody2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Mass: 1
-  m_LinearDrag: 20
-  m_AngularDrag: 5
-  m_GravityScale: 0
-  m_FixedAngle: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
---- !u!58 &5800000
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: 54ae7fd0f6e4eee4f80ae32920ac4d2b, type: 2}
-  m_IsTrigger: 0
-  m_Radius: .200000003
-  m_Center: {x: 0, y: 0}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3
@@ -67,10 +39,10 @@ Animator:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e6953514cd9ba184eb2459ea7a2b05ca, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6466bd46fe2da9a49b3e2e3457bd8af0, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 1
-  m_ApplyRootMotion: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -80,14 +52,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9429ab0f34dfa24c89378cb8cee0a94, type: 3}
+  m_Script: {fileID: 11500000, guid: a65eb2ff1b97d3a4abcfe6fc833a71a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bomb: {fileID: 100000, guid: 863f49200aae84c4ca3298789cee1436, type: 2}
-  MaxSpeed: 5
-  MoveForce: 100
-  Level: {fileID: 0}
-  Bombing: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -106,9 +73,9 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 2511236001
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300226, guid: 1f17720d2a8df76449b8202dd791a8ee, type: 3}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300008, guid: 5b60f22a9707efe4e9dc058f27f6310f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
