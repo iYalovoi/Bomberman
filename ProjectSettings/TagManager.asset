@@ -5,6 +5,7 @@ TagManager:
   tags:
   - Bomb
   - Player
+  - Wall
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -14,10 +15,10 @@ TagManager:
   Builtin Layer 5: UI
   Builtin Layer 6: 
   Builtin Layer 7: 
-  User Layer 8: 
-  User Layer 9: 
-  User Layer 10: 
-  User Layer 11: 
+  User Layer 8: Player
+  User Layer 9: Wall
+  User Layer 10: Enemy
+  User Layer 11: Bomb
   User Layer 12: 
   User Layer 13: 
   User Layer 14: 
@@ -51,13 +52,17 @@ TagManager:
     userID: 2
     uniqueID: 1535931219
     locked: 0
+  - name: Foreground
+    userID: 3
+    uniqueID: 1024582385
+    locked: 0
   - name: Character
     userID: 4
     uniqueID: 2511236001
     locked: 0
-  - name: Foreground
-    userID: 3
-    uniqueID: 1024582385
+  - name: Effects
+    userID: 6
+    uniqueID: 1098112721
     locked: 0
   - name: UI
     userID: 5

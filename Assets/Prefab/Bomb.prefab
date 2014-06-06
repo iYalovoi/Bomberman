@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 58: {fileID: 5800000}
   - 95: {fileID: 9500000}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bomb
   m_TagString: Bomb
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.2861023, y: .356255144, z: 0}
+  m_LocalPosition: {x: -23.2822208, y: .356255084, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,9 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11909eb5325e6949a0fa387bec67c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 4
-  VerticalBlast: {fileID: 100000, guid: 3d40af49f60ab5f4dac50a4912eba2b2, type: 2}
-  HorizontalBlast: {fileID: 100000, guid: e091d21b18ab2724084685c907681232, type: 2}
+  Radius: 5
+  Blast: {fileID: 100000, guid: e091d21b18ab2724084685c907681232, type: 2}
   Level: {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
@@ -89,7 +88,7 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 2511236001
+  m_SortingLayerID: 1024582385
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5b60f22a9707efe4e9dc058f27f6310f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
