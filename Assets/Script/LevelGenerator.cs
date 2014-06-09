@@ -8,12 +8,17 @@ namespace Assets.Script
         public GameObject HardBlock;
         public GameObject Player;
         public GameObject Camera;
-        public GameObject Floor;
+        public GameObject Soft;
+        public CameraFollow CameraFollow;
+        public GameObject Level;
+        private GameObject _currentPlayer;
 
         void Start()
         {
+            CameraFollow = Camera.GetComponent<CameraFollow>();
+
             var size = HardBlock.renderer.bounds.size;
-            var level = new GameObject("Level");
+            Level = new GameObject("Level");
 
             const int rowCount = 13;
             const int columnCount = 31;
@@ -25,35 +30,41 @@ namespace Assets.Script
                     var isWall = i == 0 || i == 12 || j == 0 || j == 30;
                     if (isWall || ((i % 2) == 0 && (j % 2) == 0))
                     {
-                        var newBlock = Instantiate(isWall ? Wall : HardBlock, new Vector3(j * size.x, i * size.y, 0), new Quaternion()) as GameObject;
-                        newBlock.name = string.Format("{2} {0}:{1}", i, j, isWall ? "Wall" : "HardBlock");
-                        newBlock.transform.parent = level.transform;
+                        var hard = Instantiate(isWall ? Wall : HardBlock, new Vector3(j * size.x, i * size.y, 0), new Quaternion()) as GameObject;
+                        hard.name = string.Format("{2} {0}:{1}", i, j, isWall ? "Wall" : "HardBlock");
+                        hard.transform.parent = Level.transform;
                     }
-                    //else
-                    //{
-                    //    var floor = Instantiate(Floor, new Vector3(j * size.x, i * size.y, 0), new Quaternion()) as GameObject;
-                    //    floor.name = string.Format("Floor {0}:{1}", i, j);
-                    //    floor.transform.parent = level.transform;
-                    //    var colider = floor.GetComponent<CircleCollider2D>();
-                    //    colider.radius = size.x/2 * 0.8f;
-                    //}
-                }
+                    else
+                    {
+                        if(Random.value >= 0.7)
+                        {
+                            var soft = Instantiate(Soft, new Vector3(j * size.x, i * size.y, 0), new Quaternion()) as GameObject;
+                            soft.name = string.Format("Soft {0}:{1}", i, j);
+                            soft.transform.parent = Level.transform;
+                        }
+                    }
+                }            
 
+            Level.transform.position = new Vector3(-size.x * columnCount / 2, -size.y * rowCount / 2);
+            SpawnPlayer();
+        }
+
+        public void SpawnPlayer()
+        {
+            var size = HardBlock.renderer.bounds.size;
             //Create player
-            var player = Instantiate(Player, new Vector3(size.x, size.y, 0), new Quaternion()) as GameObject;
-            player.transform.parent = level.transform;
+            _currentPlayer = Instantiate(Player, new Vector3(), new Quaternion()) as GameObject;
+            _currentPlayer.transform.parent = Level.transform;
+            _currentPlayer.transform.localPosition = new Vector3(size.x, size.y, 0);
 
-            var cameraFollow = Camera.GetComponent<CameraFollow>();
-            cameraFollow.TrackingObject = player.transform;
-
-            level.transform.position = new Vector3(-size.x * columnCount / 2, -size.y * rowCount / 2);
-
-            player.GetComponent<Player>().Level = level;
+            CameraFollow.TrackingObject = _currentPlayer.transform;
+            _currentPlayer.GetComponent<Player>().Level = Level;
         }
 
         void Update()
         {
-
+            if (Input.GetButtonDown("Respawn") && _currentPlayer == null)
+                SpawnPlayer();
         }
     }
 }

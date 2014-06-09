@@ -10,6 +10,7 @@ namespace Assets.Script
         public int Radius;
         public GameObject Blast;
         public GameObject Level;
+        public bool IsExploded;
 
         void OnTriggerExit2D(Collider2D col)
         {
@@ -29,29 +30,37 @@ namespace Assets.Script
         private IEnumerator Explode(float seconds)
         {
             yield return new WaitForSeconds(seconds);
-
-            var tileSize = renderer.bounds.size.x;
-            var localPosition = gameObject.transform.localPosition;
-            var bombTile = new Vector2(localPosition.x / tileSize, localPosition.y / tileSize);
-
-            var position = transform.position;
-
-            //left
-            BlastInDirection(position, tileSize, bombTile, 0);
-
-            //up            
-            BlastInDirection(position, tileSize, bombTile, 1);
-
-            //right
-            BlastInDirection(position, tileSize, bombTile, 2);
-
-            //down
-            BlastInDirection(position, tileSize, bombTile, 3);
-
-            var animator = GetComponent<Animator>();
-            animator.SetTrigger("Explode");
+            ExplodeZero();
         }
 
+        private void ExplodeZero()
+        {
+            if (!IsExploded)
+            {
+                IsExploded = true;
+
+                var tileSize = renderer.bounds.size.x;
+                var localPosition = gameObject.transform.localPosition;
+                var bombTile = new Vector2(localPosition.x / tileSize, localPosition.y / tileSize);
+
+                var position = transform.position;
+
+                //left
+                BlastInDirection(position, tileSize, bombTile, 0);
+
+                //up            
+                BlastInDirection(position, tileSize, bombTile, 1);
+
+                //right
+                BlastInDirection(position, tileSize, bombTile, 2);
+
+                //down
+                BlastInDirection(position, tileSize, bombTile, 3);
+
+                var animator = GetComponent<Animator>();
+                animator.SetTrigger("Explode");
+            }
+        }
 
         /// <summary>
         /// Fucking blast smashing everything on it's own way!
@@ -65,17 +74,17 @@ namespace Assets.Script
             var isVertical = direction == 1 || direction == 3;
             var isLeft = direction == 0;
             var isUp = direction == 1;
-            var halfTile = tileSize/2;
-            var radiusLine = Radius*tileSize;
+            var halfTile = tileSize / 2;
+            var radiusLine = Radius * tileSize;
             var xDelta = !isVertical ? halfTile * (isLeft ? -1 : 1) : 0;
-            var yDelta = isVertical ? halfTile * (!isUp ? - 1: 1) : 0;
+            var yDelta = isVertical ? halfTile * (!isUp ? -1 : 1) : 0;
             var launch = new Vector2(position.x + xDelta, position.y + yDelta);
             var xRadius = !isVertical ? radiusLine * (isLeft ? -1 : 1) : 0;
             var yRadius = isVertical ? radiusLine * (!isUp ? -1 : 1) : 0;
             var hit = new Vector2(position.x + xDelta + xRadius, position.y + yDelta + yRadius);
 
             var hits = Physics2D.LinecastAll(launch, hit);
-            Debug.DrawLine(launch, hit, Color.green, 1, false);
+            //Debug.DrawLine(launch, hit, Color.green, 1, false);
 
             var newRadius = Radius;
 
@@ -85,19 +94,32 @@ namespace Assets.Script
             {
                 var delta = wall.transform.position - position;
                 newRadius = Mathf.Abs(Mathf.RoundToInt((isVertical ? delta.y : delta.x) / tileSize)) - 1;
+                var soft = wall.GetComponent<Soft>();
+                if(soft != null)
+                    soft.Explode();
             }
-            Debug.Log(newRadius);
             var bombTileX = Mathf.RoundToInt(bombTile.x);
             var bombTileY = Mathf.RoundToInt(bombTile.y);
             for (var i = 0; i < newRadius; i++)
             {
                 var xTile = bombTileX + (!isVertical ? (1 + i) * (isLeft ? -1 : 1) : 0);
-                var yTile = bombTileY + (isVertical ? (1 + i) * (!isUp ?  - 1 : 1) : 0);
+                var yTile = bombTileY + (isVertical ? (1 + i) * (!isUp ? -1 : 1) : 0);
                 var blast = Instantiate(Blast, new Vector3(), new Quaternion(0, 0, 0, 0)) as GameObject;
                 blast.transform.parent = Level.transform;
                 blast.transform.localPosition = new Vector3(xTile * tileSize, yTile * tileSize);
-                if(direction == 1 || direction == 3)
+                if (direction == 1 || direction == 3)
                     blast.transform.Rotate(0, 0, 90);
+            }
+            var beforeTheWall = objects.TakeWhile(o => o.tag != "Wall").ToList();
+            if (beforeTheWall.Any())
+            {
+                var playerObject = beforeTheWall.FirstOrDefault(o => o.tag == "Player");
+                if (playerObject != null)
+                {
+                    var player = playerObject.GetComponent<Player>();
+                    player.Die();
+                }
+                beforeTheWall.Where(o => o.tag == "Bomb" && o != gameObject).Select(o => o.GetComponent<Bomb>()).ToList().ForEach(o => o.ExplodeZero());
             }
         }
 

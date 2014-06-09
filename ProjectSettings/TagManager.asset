@@ -7,6 +7,7 @@ TagManager:
   - Player
   - Wall
   - 
+  - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
   Builtin Layer 2: Ignore Raycast
@@ -56,13 +57,13 @@ TagManager:
     userID: 3
     uniqueID: 1024582385
     locked: 0
-  - name: Character
-    userID: 4
-    uniqueID: 2511236001
-    locked: 0
   - name: Effects
     userID: 6
     uniqueID: 1098112721
+    locked: 0
+  - name: Character
+    userID: 4
+    uniqueID: 2511236001
     locked: 0
   - name: UI
     userID: 5
