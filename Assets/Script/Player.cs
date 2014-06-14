@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -17,9 +18,12 @@ namespace Assets.Script
 
         public GameObject Bomb;
         public float MaxSpeed = 5f; // The fastest the player can travel in the axis.
-        public float MoveForce = 365f; // Amount of force added to move the player left and right.
         public GameObject Level;
         public bool Bombing;
+        public int Direction;
+        public AudioSource FootStepsSound;
+        public AudioSource DeathSound;
+        public AudioSource PlaceBombSound;
 
 
         private bool _restrained;
@@ -51,6 +55,7 @@ namespace Assets.Script
                         bomb.transform.parent = Level.transform;
                         bomb.transform.localPosition = new Vector3(bombTile.x * tileSize, bombTile.y * tileSize);
                         bomb.GetComponent<Bomb>().Level = Level;
+                        PlaceBombSound.Play();
                     }
                 }
             }
@@ -69,25 +74,43 @@ namespace Assets.Script
                 var vertical = Input.GetAxis("Vertical");
                 var horizontal = Input.GetAxis("Horizontal");
 
+                if (Math.Abs(vertical) > 0.1)
+                    Direction = vertical > 0 ? 1 : 3;
+                else if (Math.Abs(horizontal) > 0.1)
+                    Direction = horizontal > 0 ? 2 : 0;                
 
                 if (Bombing)
                     _animator.SetBool("Bombing", true);
                 if (!Restrained)
                 {
-                    if (horizontal * rigidbody2D.velocity.x < MaxSpeed)
-                        rigidbody2D.AddForce(Vector2.right * horizontal * MoveForce);
+                    rigidbody2D.velocity = Mathf.Abs(horizontal) > 0 ? new Vector2(Mathf.Sign(horizontal) * MaxSpeed, rigidbody2D.velocity.y) : new Vector2(0, rigidbody2D.velocity.y);
+                    rigidbody2D.velocity = Mathf.Abs(vertical) > 0 ? new Vector2(rigidbody2D.velocity.x, Mathf.Sign(vertical) * MaxSpeed) : new Vector2(rigidbody2D.velocity.x, 0);
 
-                    if (Mathf.Abs(rigidbody2D.velocity.x) > MaxSpeed)
-                        rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * MaxSpeed, rigidbody2D.velocity.y);
+                    _animator.SetFloat("Horizontal", 0);
+                    _animator.SetFloat("Vertical", 0);
 
-                    if (vertical * rigidbody2D.velocity.y < MaxSpeed)
-                        rigidbody2D.AddForce(Vector2.up * vertical * MoveForce);
+                    switch (Direction)
+                    {
+                        case 0:
+                            _animator.SetFloat("Horizontal", Math.Abs(horizontal) > 0.1 ? -1f : -0.1f);
+                            break;
+                        case 1:
+                            _animator.SetFloat("Vertical", Math.Abs(vertical) > 0.1 ? 1f : 0.1f);
+                            break;
+                        case 2:
+                            _animator.SetFloat("Horizontal", Math.Abs(horizontal) > 0.1 ? 1f : 0.1f);
+                            break;
+                        case 3:
+                            _animator.SetFloat("Vertical", Math.Abs(vertical) > 0.1 ? -1f : -0.1f);
+                            break;
+                    }
 
-                    if (Mathf.Abs(rigidbody2D.velocity.y) > MaxSpeed)
-                        rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, Mathf.Sign(rigidbody2D.velocity.y) * MaxSpeed);
-
-                    _animator.SetFloat("Horizontal", rigidbody2D.velocity.x / MaxSpeed * 10);
-                    _animator.SetFloat("Vertical", rigidbody2D.velocity.y / MaxSpeed * 10);
+                    if (Mathf.Abs(vertical) > 0.1 || Mathf.Abs(horizontal) > 0.1)
+                    {
+                        if (!FootStepsSound.isPlaying)
+                            FootStepsSound.Play();
+                    }
+                    else if (FootStepsSound.isPlaying) FootStepsSound.Pause();
                 }
             }
         }
@@ -96,6 +119,7 @@ namespace Assets.Script
         {
             _restrained = true;
             _animator.SetTrigger("Die");
+            DeathSound.Play();
         }
 
         public void Destroy()

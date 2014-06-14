@@ -11,6 +11,7 @@ namespace Assets.Script
         public GameObject Blast;
         public GameObject Level;
         public bool IsExploded;
+        private AudioSource _explosionSound;
 
         void OnTriggerExit2D(Collider2D col)
         {
@@ -23,6 +24,7 @@ namespace Assets.Script
 
         void Start()
         {
+            _explosionSound = gameObject.GetComponent<AudioSource>();            
             if (Level != null)
                 StartCoroutine(Explode(3));
         }
@@ -59,6 +61,7 @@ namespace Assets.Script
 
                 var animator = GetComponent<Animator>();
                 animator.SetTrigger("Explode");
+                _explosionSound.Play();
             }
         }
 
