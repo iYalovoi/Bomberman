@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Linq;
+using Assets.Script.Utility;
 using UnityEngine;
 
 namespace Assets.Script
@@ -8,6 +9,7 @@ namespace Assets.Script
 
         public float MaxSpeed = 3f;
         public float Direction;
+        public Direction Way;
 
         // Use this for initialization
         void Start()
@@ -27,34 +29,18 @@ namespace Assets.Script
             var tileSize = renderer.bounds.size.x;
             var localPosition = gameObject.transform.localPosition;
             var currentTile = new Vector2(Mathf.Round(localPosition.x / tileSize), Mathf.Round(localPosition.y / tileSize));
-
-            if (Mathf.Abs(localPosition.x % tileSize) < 0.1 && Mathf.Abs(localPosition.y % tileSize) < 0.1)
+            const float eps = 0.1f;
+            Debug.Log(localPosition.x % tileSize);
+            Debug.Log(localPosition.y % tileSize);
+            if ((Mathf.Abs(localPosition.x % tileSize) < eps) && (Mathf.Abs(localPosition.y % tileSize) < eps))
             {
-
-                //var hits = Physics2D.LinecastAll(launch, hit);
-
-                //rigidbody2D.velocity = Mathf.Abs(horizontal) > 0 ? new Vector2(Mathf.Sign(horizontal) * MaxSpeed, rigidbody2D.velocity.y) : new Vector2(0, rigidbody2D.velocity.y);
-                //rigidbody2D.velocity = Mathf.Abs(vertical) > 0 ? new Vector2(rigidbody2D.velocity.x, Mathf.Sign(vertical) * MaxSpeed) : new Vector2(rigidbody2D.velocity.x, 0);
-
-                //_animator.SetFloat("Horizontal", 0);
-                //_animator.SetFloat("Vertical", 0);
-
-                //switch (Direction)
-                //{
-                //    case 0:
-                //        _animator.SetFloat("Horizontal", Math.Abs(horizontal) > 0.1 ? -1f : -0.1f);
-                //        break;
-                //    case 1:
-                //        _animator.SetFloat("Vertical", Math.Abs(vertical) > 0.1 ? 1f : 0.1f);
-                //        break;
-                //    case 2:
-                //        _animator.SetFloat("Horizontal", Math.Abs(horizontal) > 0.1 ? 1f : 0.1f);
-                //        break;
-                //    case 3:
-                //        _animator.SetFloat("Vertical", Math.Abs(vertical) > 0.1 ? -1f : -0.1f);
-                //        break;
-                //}   
-            }            
+                var way = (Direction)Mathf.Pow(2, Random.Range(0, 4));
+                var block = MapDiscovery.BlastInDirection(transform.position, tileSize, way, 1);
+                if (block.Select(o => o.transform.gameObject).All(o => o.tag != "Wall"))
+                    Way = way;                    
+            }
+            rigidbody2D.velocity = new Vector2(Utility.Direction.Horizontal.IsFlagSet(Way) ? Way == Utility.Direction.Left ? -MaxSpeed : MaxSpeed : 0,
+                            Utility.Direction.Vertical.IsFlagSet(Way) ? Way == Utility.Direction.Up ? MaxSpeed : -MaxSpeed : 0);
         }
     }
 }

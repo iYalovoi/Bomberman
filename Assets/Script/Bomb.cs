@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Script.Utility;
 using UnityEngine;
 
 namespace Assets.Script
@@ -47,17 +48,10 @@ namespace Assets.Script
 
                 var position = transform.position;
 
-                //left
-                BlastInDirection(position, tileSize, bombTile, 0, Radius);
-
-                //up            
-                BlastInDirection(position, tileSize, bombTile, 1, Radius);
-
-                //right
-                BlastInDirection(position, tileSize, bombTile, 2, Radius);
-
-                //down
-                BlastInDirection(position, tileSize, bombTile, 3, Radius);
+                BlastInDirection(position, tileSize, bombTile, Direction.Left, Radius);
+                BlastInDirection(position, tileSize, bombTile, Direction.Up, Radius);
+                BlastInDirection(position, tileSize, bombTile, Direction.Right, Radius);
+                BlastInDirection(position, tileSize, bombTile, Direction.Down, Radius);
 
                 var animator = GetComponent<Animator>();
                 animator.SetTrigger("Explode");
@@ -73,22 +67,12 @@ namespace Assets.Script
         /// <param name="bombTile"></param>
         /// <param name="direction">0 - left, 1 - up, 2 - right, 3 - down</param>
         /// <param name="radius"></param>
-        public void BlastInDirection(Vector3 position, float tileSize, Vector2 bombTile, int direction, float radius)
+        public void BlastInDirection(Vector3 position, float tileSize, Vector2 bombTile, Direction direction, float radius)
         {
-            var isVertical = direction == 1 || direction == 3;
-            var isLeft = direction == 0;
-            var isUp = direction == 1;
-            var halfTile = tileSize / 2;
-            var radiusLine = radius * tileSize;
-            var xDelta = !isVertical ? halfTile * (isLeft ? -1 : 1) : 0;
-            var yDelta = isVertical ? halfTile * (!isUp ? -1 : 1) : 0;
-            var launch = new Vector2(position.x + xDelta, position.y + yDelta);
-            var xRadius = !isVertical ? radiusLine * (isLeft ? -1 : 1) : 0;
-            var yRadius = isVertical ? radiusLine * (!isUp ? -1 : 1) : 0;
-            var hit = new Vector2(position.x + xDelta + xRadius, position.y + yDelta + yRadius);
-
-            var hits = Physics2D.LinecastAll(launch, hit);
-            //Debug.DrawLine(launch, hit, Color.green, 1, false);
+            var isVertical = Direction.Vertical.IsFlagSet(direction);
+            var isLeft = direction == Direction.Left;
+            var isUp = direction == Direction.Up;
+            var hits = MapDiscovery.BlastInDirection(position, tileSize, direction, radius);
 
             var newRadius = Radius;
 
@@ -111,7 +95,7 @@ namespace Assets.Script
                 var blast = Instantiate(Blast, new Vector3(), new Quaternion(0, 0, 0, 0)) as GameObject;
                 blast.transform.parent = Level.transform;
                 blast.transform.localPosition = new Vector3(xTile * tileSize, yTile * tileSize);
-                if (direction == 1 || direction == 3)
+                if (isVertical)
                     blast.transform.Rotate(0, 0, 90);
             }
             var beforeTheWall = objects.TakeWhile(o => o.tag != "Wall").ToList();
