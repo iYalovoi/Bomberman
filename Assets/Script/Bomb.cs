@@ -48,16 +48,16 @@ namespace Assets.Script
                 var position = transform.position;
 
                 //left
-                BlastInDirection(position, tileSize, bombTile, 0);
+                BlastInDirection(position, tileSize, bombTile, 0, Radius);
 
                 //up            
-                BlastInDirection(position, tileSize, bombTile, 1);
+                BlastInDirection(position, tileSize, bombTile, 1, Radius);
 
                 //right
-                BlastInDirection(position, tileSize, bombTile, 2);
+                BlastInDirection(position, tileSize, bombTile, 2, Radius);
 
                 //down
-                BlastInDirection(position, tileSize, bombTile, 3);
+                BlastInDirection(position, tileSize, bombTile, 3, Radius);
 
                 var animator = GetComponent<Animator>();
                 animator.SetTrigger("Explode");
@@ -72,13 +72,14 @@ namespace Assets.Script
         /// <param name="tileSize"></param>
         /// <param name="bombTile"></param>
         /// <param name="direction">0 - left, 1 - up, 2 - right, 3 - down</param>
-        public void BlastInDirection(Vector3 position, float tileSize, Vector2 bombTile, int direction)
+        /// <param name="radius"></param>
+        public void BlastInDirection(Vector3 position, float tileSize, Vector2 bombTile, int direction, float radius)
         {
             var isVertical = direction == 1 || direction == 3;
             var isLeft = direction == 0;
             var isUp = direction == 1;
             var halfTile = tileSize / 2;
-            var radiusLine = Radius * tileSize;
+            var radiusLine = radius * tileSize;
             var xDelta = !isVertical ? halfTile * (isLeft ? -1 : 1) : 0;
             var yDelta = isVertical ? halfTile * (!isUp ? -1 : 1) : 0;
             var launch = new Vector2(position.x + xDelta, position.y + yDelta);

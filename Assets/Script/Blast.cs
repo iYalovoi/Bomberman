@@ -1,23 +1,25 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class Blast : MonoBehaviour
+namespace Assets.Script
 {
-
-    // Use this for initialization
-    void Start()
+    public class Blast : MonoBehaviour
     {
 
-    }
+        // Use this for initialization
+        void Start()
+        {
 
-    private void Destory()
-    {
-        Destroy(gameObject);
-    }
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        private void Destory()
+        {
+            Destroy(gameObject);
+        }
 
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }

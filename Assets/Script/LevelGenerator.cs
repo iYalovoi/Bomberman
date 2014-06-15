@@ -9,12 +9,15 @@ namespace Assets.Script
         public GameObject Player;
         public GameObject Camera;
         public GameObject Soft;
+        public GameObject Baloon;
         public CameraFollow CameraFollow;
         public GameObject Level;
+        public int BaloonCount = 6;
         private GameObject _currentPlayer;
 
         void Start()
         {
+            var baloonCount = BaloonCount;
             CameraFollow = Camera.GetComponent<CameraFollow>();
 
             var size = HardBlock.renderer.bounds.size;
@@ -36,11 +39,24 @@ namespace Assets.Script
                     }
                     else
                     {
-                        if(Random.value >= 0.7)
+                        if (Random.value >= 0.7 && !(i == 1 && j == 1) && !(i == 2 && j == 1) && !(i == 1 && j == 2))
                         {
-                            var soft = Instantiate(Soft, new Vector3(j * size.x, i * size.y, 0), new Quaternion()) as GameObject;
+                            var soft = Instantiate(Soft, new Vector3(j*size.x, i*size.y, 0), new Quaternion()) as GameObject;
                             soft.name = string.Format("Soft {0}:{1}", i, j);
                             soft.transform.parent = Level.transform;
+                        }
+                        else
+                        {
+                            if (baloonCount > 0)
+                            {
+                                if (Random.value >= 0.95)
+                                {
+                                    var baloon = Instantiate(Baloon, new Vector3(j * size.x, i * size.y, 0), new Quaternion()) as GameObject;
+                                    baloon.name = string.Format("Baloon {0}:{1}", i, j);
+                                    baloon.transform.parent = Level.transform;
+                                    baloonCount--;
+                                }
+                            }
                         }
                     }
                 }            

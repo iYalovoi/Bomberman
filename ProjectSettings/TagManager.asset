@@ -6,7 +6,7 @@ TagManager:
   - Bomb
   - Player
   - Wall
-  - 
+  - Enemy
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -60,6 +60,10 @@ TagManager:
   - name: Effects
     userID: 6
     uniqueID: 1098112721
+    locked: 0
+  - name: Enemy
+    userID: 7
+    uniqueID: 414294729
     locked: 0
   - name: Character
     userID: 4

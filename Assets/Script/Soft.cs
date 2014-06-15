@@ -1,27 +1,29 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class Soft : MonoBehaviour
+namespace Assets.Script
 {
-    private Animator _animator;
-
-    void Start()
+    public class Soft : MonoBehaviour
     {
-        _animator = GetComponent<Animator>();
-    }
+        private Animator _animator;
 
-    void Update()
-    {
+        void Start()
+        {
+            _animator = GetComponent<Animator>();
+        }
 
-    }
+        void Update()
+        {
 
-    public void Explode()
-    {
-        _animator.SetTrigger("Explode");
-    }
+        }
 
-    public void Destroy()
-    {
-        Destroy(gameObject);
+        public void Explode()
+        {
+            _animator.SetTrigger("Explode");
+        }
+
+        public void Destroy()
+        {
+            Destroy(gameObject);
+        }
     }
 }
