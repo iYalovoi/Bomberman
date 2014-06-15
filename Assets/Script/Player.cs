@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Script
@@ -6,7 +8,7 @@ namespace Assets.Script
     public class Player : MonoBehaviour
     {
 
-        private Animator _animator;        
+        private Animator _animator;
 
         // Use this for initialization
         private void Start()
@@ -16,75 +18,113 @@ namespace Assets.Script
 
         public GameObject Bomb;
         public float MaxSpeed = 5f; // The fastest the player can travel in the axis.
-        public float MoveForce = 365f; // Amount of force added to move the player left and right.
         public GameObject Level;
-        private bool _bombing;
+        public bool Bombing;
+        public int Direction;
+        public AudioSource FootStepsSound;
+        public AudioSource DeathSound;
+        public AudioSource PlaceBombSound;
+
+
+        private bool _restrained;
+        public bool Restrained
+        {
+            get { return Bombing || _restrained; }
+            set { _restrained = value; }
+        }
 
         // Update is called once per frame
         private void Update()
         {
-            // If the fire button is pressed...
-            if (Input.GetButtonDown("Bomb"))
+            if (Level != null)
             {
-                _bombing = true;
-                //Getting proper bomb location
-                var tileSize = Bomb.renderer.bounds.size.x;
-                var playerLocation = gameObject.transform.localPosition;
-                var bombTile = new Vector2(playerLocation.x/tileSize, playerLocation.y/tileSize);
-                var bomb = Instantiate(Bomb, new Vector3(), new Quaternion()) as GameObject;
-                bomb.transform.parent = Level.transform;
-                bomb.transform.localPosition = new Vector3(Mathf.RoundToInt(bombTile.x) * tileSize, Mathf.RoundToInt(bombTile.y) * tileSize);
-                StartCoroutine(Bombing());
+                // If the fire button is pressed...
+                if (Input.GetButtonDown("Bomb"))
+                {
+                    //Getting proper bomb location
+                    var tileSize = Bomb.renderer.bounds.size.x;
+                    var localPosition = gameObject.transform.localPosition;
+
+                    var collidersInArea = Physics2D.OverlapCircleAll(gameObject.transform.position, tileSize / 2);
+                    if (collidersInArea.All(o => o.gameObject.tag != "Bomb"))
+                    {
+                        Bombing = true;
+                        var bombTile = new Vector2(Mathf.RoundToInt(localPosition.x / tileSize), Mathf.RoundToInt(localPosition.y / tileSize));
+                        var bomb = Instantiate(Bomb, new Vector3(), new Quaternion()) as GameObject;
+                        bomb.name = string.Format("Bomb {0}:{1}", bombTile.x, bombTile.y);
+                        bomb.transform.parent = Level.transform;
+                        bomb.transform.localPosition = new Vector3(bombTile.x * tileSize, bombTile.y * tileSize);
+                        bomb.GetComponent<Bomb>().Level = Level;
+                        PlaceBombSound.Play();
+                    }
+                }
             }
         }
 
-        IEnumerator Bombing()
+        private void Bombed()
         {
-            yield return new WaitForSeconds(0.5f);
-            _bombing = false;
+            Bombing = false;
+            _animator.SetBool("Bombing", false);
         }
 
         private void FixedUpdate()
         {
-            var vertical = Input.GetAxis("Vertical");
-            var horizontal = Input.GetAxis("Horizontal");
-
-            if (horizontal * rigidbody2D.velocity.x < MaxSpeed)
-                rigidbody2D.AddForce(Vector2.right * horizontal * MoveForce);
-
-            if (Mathf.Abs(rigidbody2D.velocity.x) > MaxSpeed)
-                rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * MaxSpeed, rigidbody2D.velocity.y);
-
-            if (vertical * rigidbody2D.velocity.y < MaxSpeed)
-                rigidbody2D.AddForce(Vector2.up * vertical * MoveForce);
-
-            if (Mathf.Abs(rigidbody2D.velocity.y) > MaxSpeed)
-                rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, Mathf.Sign(rigidbody2D.velocity.y) * MaxSpeed);
-
-            var angle = Vector2.Angle(rigidbody2D.velocity, new Vector2(1, 0));
-            var cross = Vector3.Cross(rigidbody2D.velocity, new Vector2(1, 0));
-            if (cross.z > 0)
-                angle = 360 - angle;
-
-            _animator.SetBool("Bombing", _bombing);
-            if (!_bombing)
+            if (Level != null)
             {
-                if (Mathf.Abs(rigidbody2D.velocity.magnitude) < 0.1f)
-                    _animator.SetInteger("Move", 0);
-                else
+                var vertical = Input.GetAxis("Vertical");
+                var horizontal = Input.GetAxis("Horizontal");
+
+                if (Math.Abs(vertical) > 0.1)
+                    Direction = vertical > 0 ? 1 : 3;
+                else if (Math.Abs(horizontal) > 0.1)
+                    Direction = horizontal > 0 ? 2 : 0;                
+
+                if (Bombing)
+                    _animator.SetBool("Bombing", true);
+                if (!Restrained)
                 {
-                    if (angle > 315 || angle <= 45)
-                        _animator.SetInteger("Move", 2);
-                    if (angle > 45 && angle <= 135)
-                        _animator.SetInteger("Move", 1);
-                    if (angle > 135 && angle <= 225)
-                        _animator.SetInteger("Move", 4);
-                    if (angle > 225 && angle <= 315)
-                        _animator.SetInteger("Move", 3);
+                    rigidbody2D.velocity = Mathf.Abs(horizontal) > 0 ? new Vector2(Mathf.Sign(horizontal) * MaxSpeed, rigidbody2D.velocity.y) : new Vector2(0, rigidbody2D.velocity.y);
+                    rigidbody2D.velocity = Mathf.Abs(vertical) > 0 ? new Vector2(rigidbody2D.velocity.x, Mathf.Sign(vertical) * MaxSpeed) : new Vector2(rigidbody2D.velocity.x, 0);
+
+                    _animator.SetFloat("Horizontal", 0);
+                    _animator.SetFloat("Vertical", 0);
+
+                    switch (Direction)
+                    {
+                        case 0:
+                            _animator.SetFloat("Horizontal", Math.Abs(horizontal) > 0.1 ? -1f : -0.1f);
+                            break;
+                        case 1:
+                            _animator.SetFloat("Vertical", Math.Abs(vertical) > 0.1 ? 1f : 0.1f);
+                            break;
+                        case 2:
+                            _animator.SetFloat("Horizontal", Math.Abs(horizontal) > 0.1 ? 1f : 0.1f);
+                            break;
+                        case 3:
+                            _animator.SetFloat("Vertical", Math.Abs(vertical) > 0.1 ? -1f : -0.1f);
+                            break;
+                    }
+
+                    if (Mathf.Abs(vertical) > 0.1 || Mathf.Abs(horizontal) > 0.1)
+                    {
+                        if (!FootStepsSound.isPlaying)
+                            FootStepsSound.Play();
+                    }
+                    else if (FootStepsSound.isPlaying) FootStepsSound.Pause();
                 }
             }
+        }
 
-            Debug.Log(angle);
+        public void Die()
+        {
+            _restrained = true;
+            _animator.SetTrigger("Die");
+            DeathSound.Play();
+        }
+
+        public void Destroy()
+        {
+            Destroy(gameObject);
         }
     }
 }

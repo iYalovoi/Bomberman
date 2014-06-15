@@ -10,9 +10,9 @@ GameObject:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
   - 60: {fileID: 6000000}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pillar
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24,10 +24,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.0035458, y: .381127715, z: 0}
+  m_LocalPosition: {x: -22.005249, y: .364856988, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!60 &6000000
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -39,14 +40,14 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_Poly:
     m_Paths:
-    - - {x: .191911936, y: .134945035}
-      - {x: .131215215, y: .193401694}
-      - {x: -.126309693, y: .193065524}
-      - {x: -.191024959, y: .140089512}
-      - {x: -.190821767, y: -.131114244}
+    - - {x: .186325073, y: .134945035}
+      - {x: .1328125, y: .187816054}
+      - {x: -.125513077, y: .186681956}
+      - {x: -.187034607, y: .140089482}
+      - {x: -.186832428, y: -.130316302}
       - {x: -.13805747, y: -.188984275}
-      - {x: .133562803, y: -.188784003}
-      - {x: .191484213, y: -.132864237}
+      - {x: .131967545, y: -.189581946}
+      - {x: .186697006, y: -.131268352}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -65,10 +66,9 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 2
-  m_SortingOrder: 0
   m_SortingLayerID: 1535931219
-  m_Sprite: {fileID: 21300000, guid: 08998ca13baba454082e712636f09939, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: dee71ae2cedd49b4c93a8407f64364e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
