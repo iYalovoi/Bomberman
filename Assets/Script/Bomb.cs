@@ -104,7 +104,7 @@ namespace Assets.Script
                 var playerObject = beforeTheWall.FirstOrDefault(o => o.tag == "Player");
                 if (playerObject != null)
                 {
-                    var player = playerObject.GetComponent<Player>();
+                    var player = playerObject.GetComponent<Bomberman>();
                     player.Die();
                 }
                 beforeTheWall.Where(o => o.tag == "Bomb" && o != gameObject).Select(o => o.GetComponent<Bomb>()).ToList().ForEach(o => o.ExplodeZero());

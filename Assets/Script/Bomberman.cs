@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.Script
 {
-    public class Player : MonoBehaviour
+    public class Bomberman : MonoBehaviour
     {
 
         private Animator _animator;

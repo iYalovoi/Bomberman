@@ -74,7 +74,7 @@ namespace Assets.Script
             _currentPlayer.transform.localPosition = new Vector3(size.x, size.y, 0);
 
             CameraFollow.TrackingObject = _currentPlayer.transform;
-            _currentPlayer.GetComponent<Player>().Level = Level;
+            _currentPlayer.GetComponent<Bomberman>().Level = Level;
         }
 
         void Update()

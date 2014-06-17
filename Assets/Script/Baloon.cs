@@ -7,7 +7,7 @@ namespace Assets.Script
     public class Baloon : MonoBehaviour
     {
 
-        public float MaxSpeed = 3f;
+        public float MaxSpeed = 1f;
         public float Direction;
         public Direction Way;
 
@@ -25,14 +25,11 @@ namespace Assets.Script
 
         private void FixedUpdate()
         {
-
             var tileSize = renderer.bounds.size.x;
             var localPosition = gameObject.transform.localPosition;
             var currentTile = new Vector2(Mathf.Round(localPosition.x / tileSize), Mathf.Round(localPosition.y / tileSize));
             const float eps = 0.1f;
-            Debug.Log(localPosition.x % tileSize);
-            Debug.Log(localPosition.y % tileSize);
-            if ((Mathf.Abs(localPosition.x % tileSize) < eps) && (Mathf.Abs(localPosition.y % tileSize) < eps))
+            if ((Mathf.Abs(localPosition.x - currentTile.x * tileSize) < eps) && (Mathf.Abs(localPosition.y - currentTile.y * tileSize) < eps) && Random.value > 0.9)
             {
                 var way = (Direction)Mathf.Pow(2, Random.Range(0, 4));
                 var block = MapDiscovery.BlastInDirection(transform.position, tileSize, way, 1);
