@@ -7,7 +7,6 @@ namespace Assets.Script
 {
     public class Bomberman : MonoBehaviour, ITarget
     {
-
         private Animator _animator;
 
         // Use this for initialization
@@ -25,13 +24,12 @@ namespace Assets.Script
         public AudioSource DeathSound;
         public AudioSource PlaceBombSound;
 
-
-        private bool _restrained;
         public bool Restrained
         {
-            get { return Bombing || _restrained; }
-            set { _restrained = value; }
+            get { return Bombing || Dead; }
         }
+
+        public bool Dead;
 
         // Update is called once per frame
         private void Update()
@@ -117,9 +115,12 @@ namespace Assets.Script
 
         public void Die()
         {
-            _restrained = true;
-            _animator.SetTrigger("Die");
-            DeathSound.Play();
+            if(!Dead)
+            {
+                Dead = true;
+                _animator.SetTrigger("Die");
+                DeathSound.Play();
+            }
         }
 
         public void Destroy()
@@ -130,6 +131,12 @@ namespace Assets.Script
         public void OnHit(GameObject striker)
         {
             Die();
+        }
+
+        void OnCollisionEnter2D(Collision2D coll)
+        {
+            if (coll.gameObject.tag == "Enemy")
+                Die();
         }
     }
 }

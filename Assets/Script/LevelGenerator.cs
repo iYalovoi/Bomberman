@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Script
 {
@@ -18,6 +19,7 @@ namespace Assets.Script
         void Start()
         {
             var baloonCount = BaloonCount;
+            var enemies = new List<GameObject>();
             CameraFollow = Camera.GetComponent<CameraFollow>();
 
             var size = HardBlock.renderer.bounds.size;
@@ -55,12 +57,14 @@ namespace Assets.Script
                                     baloon.name = string.Format("Baloon {0}:{1}", i, j);
                                     baloon.transform.parent = Level.transform;
                                     baloonCount--;
+                                    enemies.Add(baloon);
                                 }
                             }
                         }
                     }
-                }            
+                }
 
+            enemies.ForEach(o => enemies.ForEach(i => Physics2D.IgnoreCollision(o.GetComponent<Collider2D>(), i.GetComponent<Collider2D>())));
             Level.transform.position = new Vector3(-size.x * columnCount / 2, -size.y * rowCount / 2);
             SpawnPlayer();
         }
