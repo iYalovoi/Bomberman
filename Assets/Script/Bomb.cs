@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Script
 {
-    public class Bomb : MonoBehaviour
+    public class Bomb : MonoBehaviour, ITarget
     {
         public int Radius;
         public GameObject Blast;
@@ -100,15 +100,7 @@ namespace Assets.Script
             }
             var beforeTheWall = objects.TakeWhile(o => o.tag != "Wall").ToList();
             if (beforeTheWall.Any())
-            {
-                var playerObject = beforeTheWall.FirstOrDefault(o => o.tag == "Player");
-                if (playerObject != null)
-                {
-                    var player = playerObject.GetComponent<Bomberman>();
-                    player.Die();
-                }
-                beforeTheWall.Where(o => o.tag == "Bomb" && o != gameObject).Select(o => o.GetComponent<Bomb>()).ToList().ForEach(o => o.ExplodeZero());
-            }
+                beforeTheWall.Select(o => o.GetInterface<ITarget>()).ToList().ForEach(o => o.OnHit(gameObject));
         }
 
         public void Destroy()
@@ -119,6 +111,12 @@ namespace Assets.Script
         void Update()
         {
 
+        }
+
+        public void OnHit(GameObject striker)
+        {
+            if(gameObject != striker)
+                ExplodeZero();
         }
     }
 }

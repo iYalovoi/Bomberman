@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d2495828e5a62d64fab53fd1afccc8ca
+guid: 73e485d1517f48b469fd50ecad75a9cb
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -42,7 +42,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Balloon_0
+    - name: Walls_0
       rect:
         serializedVersion: 2
         x: 0
@@ -52,7 +52,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Balloon_1
+    - name: Walls_1
       rect:
         serializedVersion: 2
         x: 16
@@ -62,7 +62,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Balloon_2
+    - name: Walls_2
       rect:
         serializedVersion: 2
         x: 32
@@ -72,7 +72,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Balloon_3
+    - name: Walls_3
       rect:
         serializedVersion: 2
         x: 48
@@ -82,7 +82,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Balloon_4
+    - name: Walls_4
       rect:
         serializedVersion: 2
         x: 64
@@ -92,7 +92,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Balloon_5
+    - name: Walls_5
       rect:
         serializedVersion: 2
         x: 0
@@ -102,7 +102,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Balloon_6
+    - name: Walls_6
       rect:
         serializedVersion: 2
         x: 16
@@ -112,7 +112,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Balloon_7
+    - name: Walls_7
       rect:
         serializedVersion: 2
         x: 32
@@ -122,31 +122,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Balloon_8
+    - name: Walls_8
       rect:
         serializedVersion: 2
         x: 48
         y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Balloon_9
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Balloon_10
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
         width: 16
         height: 16
       alignment: 0

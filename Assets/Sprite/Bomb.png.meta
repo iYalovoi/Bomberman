@@ -36,7 +36,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 40
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings:
@@ -50,119 +50,149 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 80
-        width: 40
-        height: 40
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Bomb_1
       rect:
         serializedVersion: 2
-        x: 40
-        y: 80
-        width: 40
-        height: 40
+        x: 16
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Bomb_2
       rect:
         serializedVersion: 2
-        x: 80
-        y: 80
-        width: 40
-        height: 40
+        x: 32
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Bomb_3
       rect:
         serializedVersion: 2
-        x: 120
-        y: 80
-        width: 40
-        height: 40
+        x: 48
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Bomb_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 40
-        width: 40
-        height: 40
+        x: 64
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Bomb_5
       rect:
         serializedVersion: 2
-        x: 40
-        y: 40
-        width: 40
-        height: 40
+        x: 0
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Bomb_6
       rect:
         serializedVersion: 2
-        x: 80
-        y: 40
-        width: 40
-        height: 40
+        x: 16
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Bomb_7
       rect:
         serializedVersion: 2
-        x: 120
-        y: 40
-        width: 40
-        height: 40
+        x: 32
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Bomb_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 40
-        height: 40
+        x: 48
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Bomb_9
       rect:
         serializedVersion: 2
-        x: 40
-        y: 0
-        width: 40
-        height: 40
+        x: 64
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Bomb_10
       rect:
         serializedVersion: 2
-        x: 80
-        y: 0
-        width: 40
-        height: 40
+        x: 0
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Bomb_11
       rect:
         serializedVersion: 2
-        x: 120
-        y: 0
-        width: 40
-        height: 40
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bomb_12
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bomb_13
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bomb_14
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

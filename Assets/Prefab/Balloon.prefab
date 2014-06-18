@@ -15,7 +15,7 @@ GameObject:
   - 50: {fileID: 5000000}
   m_Layer: 10
   m_Name: Balloon
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,6 +86,7 @@ MonoBehaviour:
   MaxSpeed: 1
   Direction: 0
   Way: 0
+  Dead: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -104,7 +105,7 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
+  m_SortingLayerID: 414294729
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d2495828e5a62d64fab53fd1afccc8ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

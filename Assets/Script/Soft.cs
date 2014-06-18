@@ -2,7 +2,7 @@
 
 namespace Assets.Script
 {
-    public class Soft : MonoBehaviour
+    public class Soft : MonoBehaviour, ITarget
     {
         private Animator _animator;
 
@@ -24,6 +24,11 @@ namespace Assets.Script
         public void Destroy()
         {
             Destroy(gameObject);
+        }
+
+        public void OnHit(GameObject striker)
+        {
+            Explode();
         }
     }
 }

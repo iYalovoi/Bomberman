@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.Script
 {
-    public class Bomberman : MonoBehaviour
+    public class Bomberman : MonoBehaviour, ITarget
     {
 
         private Animator _animator;
@@ -125,6 +125,11 @@ namespace Assets.Script
         public void Destroy()
         {
             Destroy(gameObject);
+        }
+
+        public void OnHit(GameObject striker)
+        {
+            Die();
         }
     }
 }
