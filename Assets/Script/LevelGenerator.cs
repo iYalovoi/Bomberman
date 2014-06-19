@@ -11,14 +11,18 @@ namespace Assets.Script
         public GameObject Camera;
         public GameObject Soft;
         public GameObject Baloon;
+		public GameObject Onil;
         public CameraFollow CameraFollow;
         public GameObject Level;
         public int BaloonCount = 6;
+		public int OnilCount = 6;
+
         private GameObject _currentPlayer;
 
         void Start()
         {
             var baloonCount = BaloonCount;
+			var onilCount = OnilCount;
             var enemies = new List<GameObject>();
             CameraFollow = Camera.GetComponent<CameraFollow>();
 
@@ -60,11 +64,21 @@ namespace Assets.Script
                                     enemies.Add(baloon);
                                 }
                             }
+							if (onilCount > 0)
+							{
+								if (Random.value >= 0.95)
+								{
+									var onil = Instantiate(Onil, new Vector3(j * size.x, i * size.y, 0), new Quaternion()) as GameObject;
+									onil.name = string.Format("Onil {0}:{1}", i, j);
+									onil.transform.parent = Level.transform;
+									onilCount--;
+									enemies.Add(onil);
+								}
+							}
                         }
                     }
                 }
 
-            enemies.ForEach(o => enemies.ForEach(i => Physics2D.IgnoreCollision(o.GetComponent<Collider2D>(), i.GetComponent<Collider2D>())));
             Level.transform.position = new Vector3(-size.x * columnCount / 2, -size.y * rowCount / 2);
             SpawnPlayer();
         }
