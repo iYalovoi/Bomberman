@@ -34,7 +34,7 @@ namespace Assets.Script
         // Update is called once per frame
         private void Update()
         {
-            if (Level != null)
+            if (Level != null && !Dead)
             {
                 // If the fire button is pressed...
                 if (Input.GetButtonDown("Bomb"))
@@ -135,7 +135,7 @@ namespace Assets.Script
 
         void OnCollisionEnter2D(Collision2D coll)
         {
-            if (coll.gameObject.tag == "Enemy")
+            if(coll.gameObject.tag == "Enemy")
                 Die();
         }
     }

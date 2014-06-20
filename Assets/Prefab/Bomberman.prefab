@@ -268,6 +268,7 @@ MonoBehaviour:
   FootStepsSound: {fileID: 8200000}
   DeathSound: {fileID: 8200002}
   PlaceBombSound: {fileID: 8200004}
+  Dead: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
