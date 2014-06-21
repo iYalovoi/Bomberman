@@ -4,10 +4,11 @@ namespace Assets.Script
 {
     public class Door : MonoBehaviour, ITarget
     {
+        private Animator _animator;
 
         void Start()
         {
-
+            _animator = GetComponent<Animator>();
         }
 
         void Update()
@@ -16,12 +17,13 @@ namespace Assets.Script
 
         void Opened()
         {
+            Application.LoadLevel("Battle");
         }
 
         void OnTriggerEnter2D(Collider2D col)
         {
             if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
-                Application.LoadLevel("Battle");
+                _animator.SetTrigger("Open");                
         }
 
         public void OnHit(GameObject striker)
