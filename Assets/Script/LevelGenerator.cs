@@ -7,11 +7,13 @@ namespace Assets.Script
     {
         public GameObject Wall;
         public GameObject HardBlock;
-        public GameObject Player;
-        public GameObject Camera;
+        public GameObject Player;        
         public GameObject Soft;
         public GameObject Baloon;
 		public GameObject Onil;
+        public GameObject Door;
+
+        public GameObject Camera;
         public CameraFollow CameraFollow;
         public GameObject Level;
         public int BaloonCount = 6;
@@ -24,6 +26,7 @@ namespace Assets.Script
             var baloonCount = BaloonCount;
 			var onilCount = OnilCount;
             var enemies = new List<GameObject>();
+            var softBlocks = new List<GameObject>();
             CameraFollow = Camera.GetComponent<CameraFollow>();
 
             var size = HardBlock.renderer.bounds.size;
@@ -50,6 +53,7 @@ namespace Assets.Script
                             var soft = Instantiate(Soft, new Vector3(j*size.x, i*size.y, 0), new Quaternion()) as GameObject;
                             soft.name = string.Format("Soft {0}:{1}", i, j);
                             soft.transform.parent = Level.transform;
+                            softBlocks.Add(soft);
                         }
                         else
                         {
@@ -78,6 +82,10 @@ namespace Assets.Script
                         }
                     }
                 }
+
+            //Add door
+            var door = Instantiate(Door, softBlocks[Random.Range(0, softBlocks.Count)].transform.position, new Quaternion()) as GameObject;
+            door.transform.parent = Level.transform;
 
             Level.transform.position = new Vector3(-size.x * columnCount / 2, -size.y * rowCount / 2);
             SpawnPlayer();
