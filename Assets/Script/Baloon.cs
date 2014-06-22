@@ -4,25 +4,14 @@ using UnityEngine;
 
 namespace Assets.Script
 {
-    public class Baloon : MonoBehaviour, ITarget
+    public class Baloon : Enemy
     {
-        public float MaxSpeed = 1f;
         public float Direction;
         public Direction Way;
-        public bool Dead;
 
-        private Animator _animator;
-
-        // Use this for initialization
-        void Start()
+        public Baloon()
         {
-            _animator = GetComponent<Animator>();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            MaxSpeed = 1f;
         }
 
         private void FixedUpdate()
@@ -42,25 +31,9 @@ namespace Assets.Script
                 }
                 rigidbody2D.velocity = new Vector2(Utility.Direction.Horizontal.IsFlagSet(Way) ? Way == Utility.Direction.Left ? -MaxSpeed : MaxSpeed : 0,
                                                    Utility.Direction.Vertical.IsFlagSet(Way) ? Way == Utility.Direction.Up ? MaxSpeed : -MaxSpeed : 0);
-                                                   
             }
             else rigidbody2D.velocity = new Vector2();
         }
 
-        public void Die()
-        {
-            Dead = true;
-            _animator.SetTrigger("Die");
-        }
-
-        public void OnHit(GameObject striker)
-        {
-            Die();
-        }
-
-        public void Destroy()
-        {
-            Destroy(gameObject);
-        }
     }
 }
