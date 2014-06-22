@@ -23,6 +23,7 @@ namespace Assets.Script
         public AudioSource FootStepsSound;
         public AudioSource DeathSound;
         public AudioSource PlaceBombSound;
+        public CircleCollider2D Solid;
 
         public bool Restrained
         {
@@ -52,7 +53,9 @@ namespace Assets.Script
                         bomb.name = string.Format("Bomb {0}:{1}", bombTile.x, bombTile.y);
                         bomb.transform.parent = Level.transform;
                         bomb.transform.localPosition = new Vector3(bombTile.x * tileSize, bombTile.y * tileSize);
-                        bomb.GetComponent<Bomb>().Level = Level;
+                        var bombScript = bomb.GetComponent<Bomb>();
+                        bombScript.Level = Level;
+                        bombScript.Bomberman = Solid;
                         PlaceBombSound.Play();
                     }
                 }

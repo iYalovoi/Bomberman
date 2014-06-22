@@ -12,19 +12,23 @@ namespace Assets.Script
         public GameObject Blast;
         public GameObject Level;
         public bool IsExploded;
-        private AudioSource _explosionSound;
+        public CircleCollider2D Bomberman;
+        public CircleCollider2D Trigger;
+        public CircleCollider2D Solid;
+        private AudioSource _explosionSound;        
 
         void OnTriggerExit2D(Collider2D col)
         {
             if (col.gameObject.tag == "Player")
             {
                 var colider = gameObject.GetComponent<CircleCollider2D>();
-                colider.isTrigger = false;
-            }
+                Physics2D.IgnoreCollision(Bomberman, Solid, false);
+            }            
         }
 
         void Start()
         {
+            Physics2D.IgnoreCollision(Bomberman, Solid, true);
             _explosionSound = gameObject.GetComponent<AudioSource>();            
             if (Level != null)
                 StartCoroutine(Explode(3));
