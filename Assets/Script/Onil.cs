@@ -11,6 +11,8 @@ namespace Assets.Script
             MaxSpeed = 1f;
         }
 
+		private Direction way;
+
         private void FixedUpdate()
         {
 			if(!Dead)
@@ -22,7 +24,7 @@ namespace Assets.Script
 				//
 				var currentTilePosition = new Vector2(tileSize * Mathf.Round(localPosition.x / tileSize), tileSize * Mathf.Round(localPosition.y / tileSize));
 				const float eps = 0.1f;
-				Direction way = Direction.Undefined;
+				Direction newWay = Direction.Undefined;
 				//current position is close to the bottom left corner of the tile?
 				if ((Mathf.Abs(localPosition.x - currentTilePosition.x) < eps) && (Mathf.Abs(localPosition.y - currentTilePosition.y) < eps) )
 				{
@@ -34,13 +36,12 @@ namespace Assets.Script
 						//do we check against bomb here as well?
 						//If the way is blocked we might sit here for a while until proper direction is randomed?
 						if (block.Select(o => o.transform.gameObject).All(o => (o.tag != "Wall")))
-							way = randomWay;   
+							newWay = randomWay;   
 					}                 
 				}
 				//Only if we change direction
-				if(way != Direction.Undefined)
+				if(newWay != Direction.Undefined && newWay != way)
 				{
-					rigidbody2D.velocity = MaxSpeed * way.ToVector2();
 					if(way == Direction.Left)
 					{
 						animator.SetFloat("Direction", 1);
@@ -49,9 +50,12 @@ namespace Assets.Script
 					{
 						animator.SetFloat("Direction", -1);
 					}
+					way = newWay;
 				}
+				//Velocity needs to be updated each frame, Who changes it?
+				rigidbody2D.velocity = MaxSpeed * way.ToVector2();
 			}
-			else rigidbody2D.velocity = new Vector2();;
+			else rigidbody2D.velocity = new Vector2();
         }
 
     }
