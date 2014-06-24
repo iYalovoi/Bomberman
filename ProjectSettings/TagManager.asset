@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Enemy
   - Door
+  - PowerUp
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -53,10 +54,6 @@ TagManager:
   - name: Background
     userID: 2
     uniqueID: 1535931219
-    locked: 0
-  - name: Foreground
-    userID: 3
-    uniqueID: 1024582385
     locked: 0
   - name: Effects
     userID: 6

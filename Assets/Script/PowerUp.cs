@@ -34,5 +34,15 @@ namespace Assets.Script
         {
             _animator.SetFloat("Power", (float)Power);
         }
+
+        void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.gameObject.tag == "Player")
+            {
+                var player = col.gameObject.GetComponent<Bomberman>();
+                player.Powers |= Power;
+                Debug.Log("Pouserlksdjf");
+            }
+        }
     }
 }

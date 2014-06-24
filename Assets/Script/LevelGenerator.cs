@@ -12,6 +12,7 @@ namespace Assets.Script
         public GameObject Baloon;
 		public GameObject Onil;
         public GameObject Door;
+        public GameObject PowerUp;
 
         public GameObject Camera;
         public CameraFollow CameraFollow;
@@ -86,6 +87,10 @@ namespace Assets.Script
             //Add door
             var door = Instantiate(Door, softBlocks[Random.Range(0, softBlocks.Count)].transform.position, new Quaternion()) as GameObject;
             door.transform.parent = Level.transform;
+
+            //Add powerUp
+            var powerUp = Instantiate(PowerUp, softBlocks[Random.Range(0, softBlocks.Count)].transform.position, new Quaternion()) as GameObject;
+            powerUp.transform.parent = Level.transform;
 
             Level.transform.position = new Vector3(-size.x * columnCount / 2, -size.y * rowCount / 2);
             SpawnPlayer();

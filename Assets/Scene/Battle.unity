@@ -283,6 +283,7 @@ MonoBehaviour:
   Baloon: {fileID: 100000, guid: 7bd4f9f6e2f0e364eaf4eb8a879d1d1d, type: 2}
   Onil: {fileID: 100000, guid: da6e99930cfb0934689305d10588a8be, type: 2}
   Door: {fileID: 100000, guid: 2953ae9e173983f43a0aefdb015c6f1b, type: 2}
+  PowerUp: {fileID: 100000, guid: 6952ce29d18411d43a7207ad47534df0, type: 2}
   Camera: {fileID: 1502190184}
   CameraFollow: {fileID: 0}
   Level: {fileID: 0}

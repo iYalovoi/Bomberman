@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
+using Assets.Script.Utility;
 using UnityEngine;
 
 namespace Assets.Script
@@ -15,11 +16,12 @@ namespace Assets.Script
             _animator = GetComponent<Animator>();
         }
 
-        public GameObject Bomb;
         public float MaxSpeed = 5f; // The fastest the player can travel in the axis.
+        public Powers? Powers;
+        public GameObject Bomb;        
         public GameObject Level;
         public bool Bombing;
-        public int Direction;
+        public Direction Direction;
         public AudioSource FootStepsSound;
         public AudioSource DeathSound;
         public AudioSource PlaceBombSound;
@@ -76,9 +78,9 @@ namespace Assets.Script
                 var horizontal = Input.GetAxis("Horizontal");
 
                 if (Math.Abs(vertical) > 0.1)
-                    Direction = vertical > 0 ? 1 : 3;
+                    Direction = vertical > 0 ? Direction.Up : Direction.Down;
                 else if (Math.Abs(horizontal) > 0.1)
-                    Direction = horizontal > 0 ? 2 : 0;                
+                    Direction = horizontal > 0 ? Direction.Right : Direction.Left;
 
                 if (Bombing)
                     _animator.SetBool("Bombing", true);
@@ -92,16 +94,16 @@ namespace Assets.Script
 
                     switch (Direction)
                     {
-                        case 0:
+                        case Direction.Left:
                             _animator.SetFloat("Horizontal", Math.Abs(horizontal) > 0.1 ? -1f : -0.1f);
                             break;
-                        case 1:
+                        case Direction.Up:
                             _animator.SetFloat("Vertical", Math.Abs(vertical) > 0.1 ? 1f : 0.1f);
                             break;
-                        case 2:
+                        case Direction.Right:
                             _animator.SetFloat("Horizontal", Math.Abs(horizontal) > 0.1 ? 1f : 0.1f);
                             break;
-                        case 3:
+                        case Direction.Down:
                             _animator.SetFloat("Vertical", Math.Abs(vertical) > 0.1 ? -1f : -0.1f);
                             break;
                     }

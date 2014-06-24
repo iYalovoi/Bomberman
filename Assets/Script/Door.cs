@@ -22,7 +22,7 @@ namespace Assets.Script
 
         void OnTriggerEnter2D(Collider2D col)
         {
-            if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+            if (col.gameObject.tag == "Player" && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
                 _animator.SetTrigger("Open");                
         }
 
