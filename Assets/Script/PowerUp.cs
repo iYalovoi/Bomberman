@@ -1,15 +1,38 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
+using UnityEngine;
 
-public class PowerUp : MonoBehaviour {
+namespace Assets.Script
+{
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    [Flags]
+    public enum Powers
+    {
+        BombUp = 0,
+        Fire = 1 << 0,
+        BombPass = 1 << 1,
+        FlamePass = 1 << 2,
+        Mystery = 1 << 3,
+        RemoteControl = 1 << 4,
+        Speed = 1 << 5,
+        WallPass = 1 << 6,
+    }
+
+    public class PowerUp : MonoBehaviour
+    {
+
+        public Powers Power;
+        private Animator _animator;
+        
+        // Use this for initialization
+        void Start()
+        {
+            _animator = GetComponent<Animator>();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            _animator.SetFloat("Power", (float)Power);
+        }
+    }
 }

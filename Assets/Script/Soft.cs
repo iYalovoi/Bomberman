@@ -13,7 +13,6 @@ namespace Assets.Script
 
         void Update()
         {
-
         }
 
         public void Explode()
