@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Assets.Script
 {
@@ -17,16 +18,20 @@ namespace Assets.Script
         WallPass = 1 << 6,
     }
 
-    public class PowerUp : MonoBehaviour
+    public class PowerUp : MonoBehaviour, ITarget
     {
 
         public Powers Power;
+        public bool IsConsumed;
         private Animator _animator;
-        
+
         // Use this for initialization
         void Start()
         {
             _animator = GetComponent<Animator>();
+            var rnd = Random.Range(0, 8);
+            Power = (Powers)(rnd == 0 ? 0 : 1 << (rnd - 1));
+            Debug.Log(Power);
         }
 
         // Update is called once per frame
@@ -37,12 +42,24 @@ namespace Assets.Script
 
         void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.gameObject.tag == "Player")
+            if (col.gameObject.tag == "Player" && !IsConsumed)
             {
                 var player = col.gameObject.GetComponent<Bomberman>();
-                player.Powers |= Power;
-                Debug.Log("Pouserlksdjf");
+                player.AcceptPower(Power);
+                _animator.SetTrigger("Consume");
+                IsConsumed = true;
             }
+        }
+
+        void Consumed()
+        {
+            Destroy(gameObject);
+        }
+
+        public void OnHit(GameObject striker)
+        {
+            IsConsumed = true;
+            _animator.SetTrigger("Consume");
         }
     }
 }

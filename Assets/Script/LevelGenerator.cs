@@ -88,9 +88,12 @@ namespace Assets.Script
             var door = Instantiate(Door, softBlocks[Random.Range(0, softBlocks.Count)].transform.position, new Quaternion()) as GameObject;
             door.transform.parent = Level.transform;
 
-            //Add powerUp
-            var powerUp = Instantiate(PowerUp, softBlocks[Random.Range(0, softBlocks.Count)].transform.position, new Quaternion()) as GameObject;
-            powerUp.transform.parent = Level.transform;
+            for(var i = 0; i < 10; i++)
+            {
+                //Add powerUp
+                var powerUp = Instantiate(PowerUp, softBlocks[Random.Range(0, softBlocks.Count)].transform.position, new Quaternion()) as GameObject;
+                powerUp.transform.parent = Level.transform;
+            }
 
             Level.transform.position = new Vector3(-size.x * columnCount / 2, -size.y * rowCount / 2);
             SpawnPlayer();
