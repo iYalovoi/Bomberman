@@ -73,6 +73,9 @@ namespace Assets.Script
         public void SpawnPlayer()
         {
 			_currentPlayer = Create (Player, 1, 1);
+			//TODO - Player position should be properly set depending on the current transform
+			_currentPlayer.transform.parent = Level.transform;
+			_currentPlayer.transform.localPosition = new Vector3(tileSize.x, tileSize.y, 0);
 
             CameraFollow.TrackingObject = _currentPlayer.transform;
             _currentPlayer.GetComponent<Bomberman>().Level = Level;
