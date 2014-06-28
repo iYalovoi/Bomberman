@@ -23,7 +23,11 @@ namespace Assets.Script
         void OnTriggerEnter2D(Collider2D col)
         {
             if (col.gameObject.tag == "Player" && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
-                _animator.SetTrigger("Open");                
+            {
+                _animator.SetTrigger("Open");
+                var bomberman = col.gameObject.GetComponent<Bomberman>();
+                bomberman.Restrained = true;
+            }                
         }
 
         public void OnHit(GameObject striker)

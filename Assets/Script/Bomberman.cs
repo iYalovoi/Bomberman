@@ -18,21 +18,24 @@ namespace Assets.Script
 
         public float MaxSpeed = 5f; // The fastest the player can travel in the axis.
         public Powers? Powers;
-        public GameObject Bomb;        
+        public GameObject Bomb;
+        public int BombCount = 1;
         public GameObject Level;
         public bool Bombing;
+        public bool Dead;
         public Direction Direction;
         public AudioSource FootStepsSound;
         public AudioSource DeathSound;
         public AudioSource PlaceBombSound;
         public CircleCollider2D Solid;
 
+
+        private bool _restrained;
         public bool Restrained
         {
-            get { return Bombing || Dead; }
-        }
-
-        public bool Dead;
+            get { return Bombing || Dead || _restrained; }
+            set { _restrained = value; }
+        }        
 
         // Update is called once per frame
         private void Update()
@@ -142,6 +145,10 @@ namespace Assets.Script
         {
             if(coll.gameObject.tag == "Enemy")
                 Die();
+        }
+
+        public void AcceptPower(Powers power)
+        {
         }
     }
 }

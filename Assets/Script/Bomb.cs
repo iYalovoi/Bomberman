@@ -20,10 +20,7 @@ namespace Assets.Script
         void OnTriggerExit2D(Collider2D col)
         {
             if (col.gameObject.tag == "Player")
-            {
-                var colider = gameObject.GetComponent<CircleCollider2D>();
                 Physics2D.IgnoreCollision(Bomberman, Solid, false);
-            }            
         }
 
         void Start()
