@@ -2,6 +2,7 @@
 using System.Collections;
 using Assets.Script;
 using System.Collections.Generic;
+using EnemyCounts = System.Collections.Generic.Dictionary<Assets.Script.Level.EnemyTypes, uint>;
 
 namespace Assets.Script.Level
 {
@@ -69,25 +70,16 @@ namespace Assets.Script.Level
 			}
 			//Powerup
 			if(PowerUp.HasValue)
-			{
-				PopRandom(softBlocks).PowerUp = PowerUp;
-			}
+                for(var i=0; i < 30; i++)
+				    PopRandom(softBlocks).PowerUp = PowerUp;
 			//Door
 			PopRandom(softBlocks).Door = true;
 			//Enemies
 			foreach(var enemyCount in EnemyCounts)
-			{
 				for(var i = 0;i < enemyCount.Value;i++)
-				{
 					PopRandom(freePositions).Enemy = enemyCount.Key;
-				}
-			}
 			return map;
 		}
-	}
-
-	public class EnemyCounts:Dictionary<EnemyTypes, uint> 
-	{
 	}
 	
 	public class LevelPosition

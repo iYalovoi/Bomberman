@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Linq;
 using Assets.Script.Utility;
 using UnityEngine;
@@ -14,12 +13,11 @@ namespace Assets.Script
         private void Start()
         {
             _animator = GetComponent<Animator>();
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Bomb"), LayerMask.NameToLayer("Player"), false);
         }
 
         public float MaxSpeed = 5f; // The fastest the player can travel in the axis.
-        public Powers? Powers;
-        public GameObject Bomb;
-        public int BombCount = 1;
+        public GameObject Bomb;        
         public GameObject Level;
         public bool Bombing;
         public bool Dead;
@@ -29,6 +27,10 @@ namespace Assets.Script
         public AudioSource PlaceBombSound;
         public CircleCollider2D Solid;
 
+        //Power ups
+        public int BombCount = 1;
+        public int Radius = 1;
+        public bool FlamePass;
 
         private bool _restrained;
         public bool Restrained
@@ -42,8 +44,7 @@ namespace Assets.Script
         {
             if (Level != null && !Dead)
             {
-                // If the fire button is pressed...
-                if (Input.GetButtonDown("Bomb"))
+                if (Input.GetButtonDown("Bomb") && FindObjectsOfType<Bomb>().Count() < BombCount)
                 {
                     //Getting proper bomb location
                     var tileSize = Bomb.renderer.bounds.size.x;
@@ -61,6 +62,7 @@ namespace Assets.Script
                         var bombScript = bomb.GetComponent<Bomb>();
                         bombScript.Level = Level;
                         bombScript.Bomberman = Solid;
+                        bombScript.Radius = Radius;
                         PlaceBombSound.Play();
                     }
                 }
@@ -142,7 +144,8 @@ namespace Assets.Script
 
         public void OnHit(GameObject striker)
         {
-            Die();
+            if (!FlamePass)
+                Die();
         }
 
         void OnCollisionEnter2D(Collision2D coll)
@@ -153,6 +156,24 @@ namespace Assets.Script
 
         public void AcceptPower(Powers power)
         {
-        }
+            Debug.Log(power);
+            switch (power)
+            {
+                case Script.Powers.BombUp:
+                    ++BombCount;
+                    break;
+                case Script.Powers.Fire:
+                    ++Radius;
+                    break;
+                case Script.Powers.BombPass:
+                    Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Bomb"), LayerMask.NameToLayer("Player"), true);
+                    break;
+                case Script.Powers.FlamePass:
+                    FlamePass = true;
+                    break;
+                default:
+                    break;
+            }
+        }        
     }
 }

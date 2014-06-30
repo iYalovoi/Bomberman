@@ -29,7 +29,8 @@ namespace Assets.Script
         // Use this for initialization
         void Start()
         {
-            _animator = GetComponent<Animator>();            
+            _animator = GetComponent<Animator>();
+            GetComponent<SpriteRenderer>().sprite = Sprite;
         }
 
         // Update is called once per frame

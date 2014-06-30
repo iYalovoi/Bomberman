@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Assets.Script.Level;
+using EnemyCounts = System.Collections.Generic.Dictionary<Assets.Script.Level.EnemyTypes, uint>;
 
 namespace Assets.Script
 {
@@ -56,7 +57,6 @@ namespace Assets.Script
 					if(levelPosition.PowerUp.HasValue)
 					{
 						//Powerup switch? Alexey
-                        //Maybe. Igor.
 						Place(powerUpFactory.Produce(), i, j);
 					}
 				}
