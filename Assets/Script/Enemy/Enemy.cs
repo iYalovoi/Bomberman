@@ -8,7 +8,7 @@ namespace Assets.Script
 {
     public class Enemy : MonoBehaviour, ITarget
     {
-        public float MaxSpeed = 1f;
+        public float MaxSpeed = Constants.SlowSpeed;
         public bool Dead = false;
 
         protected Animator Animator;

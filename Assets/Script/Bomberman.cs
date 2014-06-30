@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 using Assets.Script.Utility;
 using UnityEngine;
@@ -14,10 +15,12 @@ namespace Assets.Script
         {
             _animator = GetComponent<Animator>();
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Bomb"), LayerMask.NameToLayer("Player"), false);
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Soft"), LayerMask.NameToLayer("Player"), false);
+            Speed = Constants.BasePlayerSpeed;
         }
 
-        public float MaxSpeed = 5f; // The fastest the player can travel in the axis.
-        public GameObject Bomb;        
+        public float Speed;
+        public GameObject Bomb;
         public GameObject Level;
         public bool Bombing;
         public bool Dead;
@@ -31,6 +34,7 @@ namespace Assets.Script
         public int BombCount = 1;
         public int Radius = 1;
         public bool FlamePass;
+        public bool Invincible;
 
         private bool _restrained;
         public bool Restrained
@@ -96,8 +100,8 @@ namespace Assets.Script
                     vertical = 0;
                 }
 
-                rigidbody2D.velocity = Mathf.Abs(horizontal) > 0 ? new Vector2(Mathf.Sign(horizontal) * MaxSpeed, rigidbody2D.velocity.y) : new Vector2(0, rigidbody2D.velocity.y);
-                rigidbody2D.velocity = Mathf.Abs(vertical) > 0 ? new Vector2(rigidbody2D.velocity.x, Mathf.Sign(vertical) * MaxSpeed) : new Vector2(rigidbody2D.velocity.x, 0);
+                rigidbody2D.velocity = Mathf.Abs(horizontal) > 0 ? new Vector2(Mathf.Sign(horizontal) * Speed, rigidbody2D.velocity.y) : new Vector2(0, rigidbody2D.velocity.y);
+                rigidbody2D.velocity = Mathf.Abs(vertical) > 0 ? new Vector2(rigidbody2D.velocity.x, Mathf.Sign(vertical) * Speed) : new Vector2(rigidbody2D.velocity.x, 0);
 
                 _animator.SetFloat("Horizontal", 0);
                 _animator.SetFloat("Vertical", 0);
@@ -129,7 +133,7 @@ namespace Assets.Script
 
         public void Die()
         {
-            if (!Dead)
+            if (!Dead && !Invincible)
             {
                 Dead = true;
                 _animator.SetTrigger("Die");
@@ -171,9 +175,26 @@ namespace Assets.Script
                 case Script.Powers.FlamePass:
                     FlamePass = true;
                     break;
+                case Powers.Mystery:
+                    Invincible = true;
+                    StartCoroutine(InvincibleSpree());
+                    break;
+                case Powers.WallPass:
+                    Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Soft"), LayerMask.NameToLayer("Player"), true);
+                    break;
+                case Powers.Speed:
+                    Speed += Constants.SpeedPowerUp;
+                    break;
                 default:
                     break;
             }
-        }        
+        }
+
+        private IEnumerator InvincibleSpree()
+        {
+            yield return new WaitForSeconds(30);
+            Invincible = false;
+        }
+
     }
 }

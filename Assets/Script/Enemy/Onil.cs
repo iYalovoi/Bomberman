@@ -8,7 +8,7 @@ namespace Assets.Script
     {
         public Onil()
         {
-            MaxSpeed = 1f;
+            MaxSpeed = Constants.MidSpeed;
         }
 
 		private Direction _way;

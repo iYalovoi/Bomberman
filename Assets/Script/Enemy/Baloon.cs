@@ -11,7 +11,7 @@ namespace Assets.Script
 
         public Baloon()
         {
-            MaxSpeed = 1f;
+            MaxSpeed = Constants.SlowSpeed;
         }
 
         private void FixedUpdate()
