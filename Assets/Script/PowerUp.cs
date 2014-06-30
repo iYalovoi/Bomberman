@@ -24,6 +24,7 @@ namespace Assets.Script
         public Powers Power;
         public bool IsConsumed;
         private Animator _animator;
+        public Sprite Sprite;
 
         // Use this for initialization
         void Start()
@@ -31,7 +32,6 @@ namespace Assets.Script
             _animator = GetComponent<Animator>();
             var rnd = Random.Range(0, 8);
             Power = (Powers)(rnd == 0 ? 0 : 1 << (rnd - 1));
-            Debug.Log(Power);
         }
 
         // Update is called once per frame

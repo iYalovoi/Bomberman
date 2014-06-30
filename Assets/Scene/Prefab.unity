@@ -557,6 +557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Power: 32
+  IsConsumed: 0
 --- !u!58 &577656874
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1471,12 +1472,12 @@ MonoBehaviour:
   BombCount: 1
   Level: {fileID: 0}
   Bombing: 0
+  Dead: 0
   Direction: 0
   FootStepsSound: {fileID: 1640967073}
   DeathSound: {fileID: 1640967072}
   PlaceBombSound: {fileID: 1640967071}
   Solid: {fileID: 1640967075}
-  Dead: 0
 --- !u!212 &1640967078
 SpriteRenderer:
   m_ObjectHideFlags: 0
