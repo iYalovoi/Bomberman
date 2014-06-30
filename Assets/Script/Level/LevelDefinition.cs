@@ -6,13 +6,14 @@ using System.Collections.Generic;
 namespace Assets.Script.Level
 {
 
-	//ToDo - Add validation of data(ie softblock count < map size etc)
+	//ToDo - Add validation of data(ie softblock count < map size etc): Alexey
+    //Not necessary for this project 
 	public class LevelDefinition 
 	{
 		public LevelDefinition(Powers? powerup, EnemyCounts enemyCounts)
 		{
-			this.powerUp = powerup;
-			this.enemyCounts = enemyCounts;
+			PowerUp = powerup;
+			EnemyCounts = enemyCounts;
 		}
 
 		public int Height = 13;
@@ -20,13 +21,13 @@ namespace Assets.Script.Level
 
 		public int SoftBlocksCount = 70;
 
-		public EnemyCounts enemyCounts;
-		public Powers? powerUp;
+		public EnemyCounts EnemyCounts;
+		public Powers? PowerUp;
 
-		private T PopRandom<T>(List<T> source)
+		private static T PopRandom<T>(List<T> source)
 		{
 			var index = Random.Range (0, source.Count);
-			T result = source[index];
+			var result = source[index];
 			source.RemoveAt(index);
 			return result;
 		}
@@ -67,14 +68,14 @@ namespace Assets.Script.Level
 				softBlocks.Add(levelPosition);
 			}
 			//Powerup
-			if(powerUp.HasValue)
+			if(PowerUp.HasValue)
 			{
-				PopRandom(softBlocks).PowerUp = powerUp;
+				PopRandom(softBlocks).PowerUp = PowerUp;
 			}
 			//Door
 			PopRandom(softBlocks).Door = true;
 			//Enemies
-			foreach(var enemyCount in enemyCounts)
+			foreach(var enemyCount in EnemyCounts)
 			{
 				for(var i = 0;i < enemyCount.Value;i++)
 				{
@@ -87,9 +88,8 @@ namespace Assets.Script.Level
 
 	public class EnemyCounts:Dictionary<EnemyTypes, uint> 
 	{
-
 	}
-		
+	
 	public class LevelPosition
 	{
 		public LevelPosition()

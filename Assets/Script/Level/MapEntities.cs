@@ -1,5 +1,4 @@
-using System;
-namespace AssemblyCSharp
+namespace Assets.Script.Level
 {
 		public enum MapEntities
 		{
@@ -7,7 +6,6 @@ namespace AssemblyCSharp
 			Reserved,
 			HardBlock,
 			SoftBlock,
-			
 		}
 }
 

@@ -20,7 +20,7 @@ namespace Assets.Script
         public GameObject Level;
 
         private GameObject _currentPlayer;
-		private Vector2 tileSize;
+		private Vector2 _tileSize;
 
         void Start()
         {
@@ -28,7 +28,7 @@ namespace Assets.Script
             var softBlocks = new List<GameObject>();
             CameraFollow = Camera.GetComponent<CameraFollow>();
 
-			tileSize = HardBlock.renderer.bounds.size;
+			_tileSize = HardBlock.renderer.bounds.size;
             Level = new GameObject("Level");
 
 			var levelDefinition = new LevelDefinition(Powers.BombUp, new EnemyCounts(){{EnemyTypes.Balloon, 6}, {EnemyTypes.Onil, 6}});
@@ -59,12 +59,12 @@ namespace Assets.Script
 			}
 
 			SpawnPlayer();
-			Level.transform.position = new Vector3(-tileSize.x * levelDefinition.Width / 2, -tileSize.y * levelDefinition.Height / 2);			
+			Level.transform.position = new Vector3(-_tileSize.x * levelDefinition.Width / 2, -_tileSize.y * levelDefinition.Height / 2);			
 		}
 
 		private GameObject Create(GameObject prototype, int x, int y)
 		{
-			var result = Instantiate(prototype, new Vector3(x * tileSize.x, y * tileSize.y, 0), new Quaternion()) as GameObject;
+			var result = Instantiate(prototype, new Vector3(x * _tileSize.x, y * _tileSize.y, 0), new Quaternion()) as GameObject;
 			result.name = string.Format("{2} {0}:{1}", x, y, prototype.transform.name);
 			result.transform.parent = Level.transform;
 			return result;
@@ -75,7 +75,7 @@ namespace Assets.Script
 			_currentPlayer = Create (Player, 1, 1);
 			//TODO - Player position should be properly set depending on the current transform
 			_currentPlayer.transform.parent = Level.transform;
-			_currentPlayer.transform.localPosition = new Vector3(tileSize.x, tileSize.y, 0);
+			_currentPlayer.transform.localPosition = new Vector3(_tileSize.x, _tileSize.y, 0);
 
             CameraFollow.TrackingObject = _currentPlayer.transform;
             _currentPlayer.GetComponent<Bomberman>().Level = Level;
