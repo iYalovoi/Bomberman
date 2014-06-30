@@ -29,15 +29,12 @@ namespace Assets.Script
         // Use this for initialization
         void Start()
         {
-            _animator = GetComponent<Animator>();
-            var rnd = Random.Range(0, 8);
-            Power = (Powers)(rnd == 0 ? 0 : 1 << (rnd - 1));
+            _animator = GetComponent<Animator>();            
         }
 
         // Update is called once per frame
         void Update()
         {
-            _animator.SetFloat("Power", (float)Power);
         }
 
         void OnTriggerEnter2D(Collider2D col)

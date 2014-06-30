@@ -74,6 +74,54 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
+--- !u!1 &951497790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 951497791}
+  - 114: {fileID: 951497792}
+  m_Layer: 0
+  m_Name: PowerUpFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &951497791
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 951497790}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.94501472, y: -.403892219, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+--- !u!114 &951497792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 951497790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f5f2fe678d926345b8f28c1e92722a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BombUp: {fileID: 21300002, guid: a06c1373d9c422140bac1b1cd507a9cc, type: 3}
+  Fire: {fileID: 21300000, guid: a06c1373d9c422140bac1b1cd507a9cc, type: 3}
+  BombPass: {fileID: 21300008, guid: a06c1373d9c422140bac1b1cd507a9cc, type: 3}
+  FlamePass: {fileID: 21300012, guid: a06c1373d9c422140bac1b1cd507a9cc, type: 3}
+  Mystery: {fileID: 21300014, guid: a06c1373d9c422140bac1b1cd507a9cc, type: 3}
+  RemoteControl: {fileID: 21300006, guid: a06c1373d9c422140bac1b1cd507a9cc, type: 3}
+  Speed: {fileID: 21300004, guid: a06c1373d9c422140bac1b1cd507a9cc, type: 3}
+  WallPass: {fileID: 21300010, guid: a06c1373d9c422140bac1b1cd507a9cc, type: 3}
+  Prefab: {fileID: 100000, guid: 6952ce29d18411d43a7207ad47534df0, type: 2}
 --- !u!1 &1502190184
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +245,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1502190184}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 6303541d311c15448907ce5dde8304c2, type: 3}
   m_PlayOnAwake: 1
@@ -259,7 +307,7 @@ GameObject:
   - 4: {fileID: 1719301897}
   - 114: {fileID: 1719301896}
   m_Layer: 0
-  m_Name: Level Generator
+  m_Name: LevelFactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,7 +321,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1719301895}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 866492a1c5422b245bcc4520add60436, type: 3}
+  m_Script: {fileID: 11500000, guid: 822315ea6167d4e40885259fe1e7d4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Wall: {fileID: 100000, guid: 9eaffc826d56c3740bdef522564c66c3, type: 2}
@@ -287,8 +335,6 @@ MonoBehaviour:
   Camera: {fileID: 1502190184}
   CameraFollow: {fileID: 0}
   Level: {fileID: 0}
-  BaloonCount: 6
-  OnilCount: 6
 --- !u!4 &1719301897
 Transform:
   m_ObjectHideFlags: 0

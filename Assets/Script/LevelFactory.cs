@@ -4,7 +4,7 @@ using Assets.Script.Level;
 
 namespace Assets.Script
 {
-    public class LevelGenerator : MonoBehaviour
+    public class LevelFactory : MonoBehaviour
     {
         public GameObject Wall;
         public GameObject HardBlock;
@@ -24,6 +24,9 @@ namespace Assets.Script
 
         void Start()
         {
+            //DI Unity way; Shitty way; Igor.
+            var powerUpFactory = FindObjectOfType<PowerUpFactory>();
+
             var enemies = new List<GameObject>();
             var softBlocks = new List<GameObject>();
             CameraFollow = Camera.GetComponent<CameraFollow>();
@@ -52,8 +55,9 @@ namespace Assets.Script
 					}
 					if(levelPosition.PowerUp.HasValue)
 					{
-						//Powerup switch?
-						Create(PowerUp, i, j);
+						//Powerup switch? Alexey
+                        //Maybe. Igor.
+						Place(powerUpFactory.Produce(), i, j);
 					}
 				}
 			}
@@ -64,11 +68,17 @@ namespace Assets.Script
 
 		private GameObject Create(GameObject prototype, int x, int y)
 		{
-			var result = Instantiate(prototype, new Vector3(x * _tileSize.x, y * _tileSize.y, 0), new Quaternion()) as GameObject;
-			result.name = string.Format("{2} {0}:{1}", x, y, prototype.transform.name);
-			result.transform.parent = Level.transform;
-			return result;
+			var result = Instantiate(prototype) as GameObject;
+		    return Place(result, x, y);
 		}
+
+        private GameObject Place(GameObject target, int x, int y)
+        {            
+            target.name = string.Format("{2} {0}:{1}", x, y, target.name);
+            target.transform.parent = Level.transform;
+            target.transform.localPosition = new Vector3(x * _tileSize.x, y * _tileSize.y, 0);
+            return target;
+        }
 
         public void SpawnPlayer()
         {

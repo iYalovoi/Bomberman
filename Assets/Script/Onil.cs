@@ -11,20 +11,22 @@ namespace Assets.Script
             MaxSpeed = 1f;
         }
 
-		private Direction way;
+		private Direction _way;
 
         private void FixedUpdate()
         {
 			if(!Dead)
 			{
-				//Kind of weird way to determine tile size?
+				//Kind of weird way to determine tile size? : Alexey
+                //Yes, Indeed : Igor
 				var tileSize = renderer.bounds.size.x;
-				//Local position seems to be bottom left corner?
+				//Local position seems to be bottom left corner? : Alexey
+                //That is true : Igor
 				var localPosition = gameObject.transform.localPosition;
 				//
 				var currentTilePosition = new Vector2(tileSize * Mathf.Round(localPosition.x / tileSize), tileSize * Mathf.Round(localPosition.y / tileSize));
 				const float eps = 0.1f;
-				Direction newWay = Direction.Undefined;
+				var newWay = Direction.Undefined;
 				//current position is close to the bottom left corner of the tile?
 				if ((Mathf.Abs(localPosition.x - currentTilePosition.x) < eps) && (Mathf.Abs(localPosition.y - currentTilePosition.y) < eps) )
 				{
@@ -40,20 +42,17 @@ namespace Assets.Script
 					}                 
 				}
 				//Only if we change direction
-				if(newWay != Direction.Undefined && newWay != way)
+				if(newWay != Direction.Undefined && newWay != _way)
 				{
-					if(way == Direction.Left)
-					{
-						animator.SetFloat("Direction", 1);
-					}
-					if(way == Direction.Right)
-					{
-						animator.SetFloat("Direction", -1);
-					}
-					way = newWay;
+					if(_way == Direction.Left)
+						Animator.SetFloat("Direction", 1);
+					if(_way == Direction.Right)
+						Animator.SetFloat("Direction", -1);
+					_way = newWay;
 				}
-				//Velocity needs to be updated each frame, Who changes it?
-				rigidbody2D.velocity = MaxSpeed * way.ToVector2();
+				//Velocity needs to be updated each frame, Who changes it? : Alexey
+                //Physics is a bitch : Igor
+				rigidbody2D.velocity = MaxSpeed * _way.ToVector2();
 			}
 			else rigidbody2D.velocity = new Vector2();
         }

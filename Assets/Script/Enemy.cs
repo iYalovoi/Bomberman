@@ -11,18 +11,18 @@ namespace Assets.Script
         public float MaxSpeed = 1f;
         public bool Dead = false;
 
-        protected Animator animator;
+        protected Animator Animator;
 
         // Use this for initialization
         void Start()
         {
-            animator = GetComponent<Animator>();
+            Animator = GetComponent<Animator>();
         }
 
         public void Die()
         {
             Dead = true;
-            animator.SetTrigger("Die");
+            Animator.SetTrigger("Die");
         }
 
         public void OnHit(GameObject striker)

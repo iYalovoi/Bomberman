@@ -35,7 +35,7 @@ namespace Assets.Script
         {
             get { return Bombing || Dead || _restrained; }
             set { _restrained = value; }
-        }        
+        }
 
         // Update is called once per frame
         private void Update()
@@ -87,43 +87,47 @@ namespace Assets.Script
 
                 if (Bombing)
                     _animator.SetBool("Bombing", true);
-                if (!Restrained)
+
+                if (Restrained)
                 {
-                    rigidbody2D.velocity = Mathf.Abs(horizontal) > 0 ? new Vector2(Mathf.Sign(horizontal) * MaxSpeed, rigidbody2D.velocity.y) : new Vector2(0, rigidbody2D.velocity.y);
-                    rigidbody2D.velocity = Mathf.Abs(vertical) > 0 ? new Vector2(rigidbody2D.velocity.x, Mathf.Sign(vertical) * MaxSpeed) : new Vector2(rigidbody2D.velocity.x, 0);
-
-                    _animator.SetFloat("Horizontal", 0);
-                    _animator.SetFloat("Vertical", 0);
-
-                    switch (Direction)
-                    {
-                        case Direction.Left:
-                            _animator.SetFloat("Horizontal", Math.Abs(horizontal) > 0.1 ? -1f : -0.1f);
-                            break;
-                        case Direction.Up:
-                            _animator.SetFloat("Vertical", Math.Abs(vertical) > 0.1 ? 1f : 0.1f);
-                            break;
-                        case Direction.Right:
-                            _animator.SetFloat("Horizontal", Math.Abs(horizontal) > 0.1 ? 1f : 0.1f);
-                            break;
-                        case Direction.Down:
-                            _animator.SetFloat("Vertical", Math.Abs(vertical) > 0.1 ? -1f : -0.1f);
-                            break;
-                    }
-
-                    if (Mathf.Abs(vertical) > 0.1 || Mathf.Abs(horizontal) > 0.1)
-                    {
-                        if (!FootStepsSound.isPlaying)
-                            FootStepsSound.Play();
-                    }
-                    else if (FootStepsSound.isPlaying) FootStepsSound.Pause();
+                    horizontal = 0;
+                    vertical = 0;
                 }
+
+                rigidbody2D.velocity = Mathf.Abs(horizontal) > 0 ? new Vector2(Mathf.Sign(horizontal) * MaxSpeed, rigidbody2D.velocity.y) : new Vector2(0, rigidbody2D.velocity.y);
+                rigidbody2D.velocity = Mathf.Abs(vertical) > 0 ? new Vector2(rigidbody2D.velocity.x, Mathf.Sign(vertical) * MaxSpeed) : new Vector2(rigidbody2D.velocity.x, 0);
+
+                _animator.SetFloat("Horizontal", 0);
+                _animator.SetFloat("Vertical", 0);
+
+                switch (Direction)
+                {
+                    case Direction.Left:
+                        _animator.SetFloat("Horizontal", Math.Abs(horizontal) > 0.1 ? -1f : -0.1f);
+                        break;
+                    case Direction.Up:
+                        _animator.SetFloat("Vertical", Math.Abs(vertical) > 0.1 ? 1f : 0.1f);
+                        break;
+                    case Direction.Right:
+                        _animator.SetFloat("Horizontal", Math.Abs(horizontal) > 0.1 ? 1f : 0.1f);
+                        break;
+                    case Direction.Down:
+                        _animator.SetFloat("Vertical", Math.Abs(vertical) > 0.1 ? -1f : -0.1f);
+                        break;
+                }
+
+                if (Mathf.Abs(vertical) > 0.1 || Mathf.Abs(horizontal) > 0.1)
+                {
+                    if (!FootStepsSound.isPlaying)
+                        FootStepsSound.Play();
+                }
+                else if (FootStepsSound.isPlaying) FootStepsSound.Pause();
             }
         }
 
         public void Die()
         {
-            if(!Dead)
+            if (!Dead)
             {
                 Dead = true;
                 _animator.SetTrigger("Die");
@@ -143,7 +147,7 @@ namespace Assets.Script
 
         void OnCollisionEnter2D(Collision2D coll)
         {
-            if(coll.gameObject.tag == "Enemy")
+            if (coll.gameObject.tag == "Enemy" && !coll.gameObject.GetComponent<Enemy>().Dead)
                 Die();
         }
 

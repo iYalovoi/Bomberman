@@ -10,6 +10,7 @@ namespace Assets.Script
     {
         public int Radius;
         public GameObject Blast;
+        public GameObject BlastEnd;
         public GameObject Level;
         public bool IsExploded;
         public CircleCollider2D Bomberman;
@@ -93,11 +94,13 @@ namespace Assets.Script
             {
                 var xTile = bombTileX + (!isVertical ? (1 + i) * (isLeft ? -1 : 1) : 0);
                 var yTile = bombTileY + (isVertical ? (1 + i) * (!isUp ? -1 : 1) : 0);
-                var blast = Instantiate(Blast, new Vector3(), new Quaternion(0, 0, 0, 0)) as GameObject;
+                var blast = Instantiate((i < (newRadius -1)) ? Blast : BlastEnd, new Vector3(), new Quaternion(0, 0, 0, 0)) as GameObject;
                 blast.transform.parent = Level.transform;
                 blast.transform.localPosition = new Vector3(xTile * tileSize, yTile * tileSize);
                 if (isVertical)
-                    blast.transform.Rotate(0, 0, 90);
+                    blast.transform.Rotate(0, 0, !isUp ? -90 : 90);
+                if(!isLeft)
+                    blast.transform.Rotate(0, 0, 180);
             }
             var beforeTheWall = objects.TakeWhile(o => o.tag != "Wall").ToList();
             if (beforeTheWall.Any())

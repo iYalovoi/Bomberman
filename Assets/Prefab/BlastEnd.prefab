@@ -9,10 +9,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
-  - 95: {fileID: 9500000}
   - 114: {fileID: 11400000}
+  - 95: {fileID: 9500000}
   m_Layer: 11
-  m_Name: Blast
+  m_Name: BlastEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.27784538, y: 1.26791847, z: 0}
+  m_LocalPosition: {x: -1.84487987, y: 1.26083052, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -39,7 +39,7 @@ Animator:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6466bd46fe2da9a49b3e2e3457bd8af0, type: 2}
+  m_Controller: {fileID: 9100000, guid: b088089d5cd24fb468831ac30bd22e60, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 1098112721
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300022, guid: 5b60f22a9707efe4e9dc058f27f6310f, type: 3}
+  m_Sprite: {fileID: 21300014, guid: 5b60f22a9707efe4e9dc058f27f6310f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
