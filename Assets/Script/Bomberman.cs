@@ -35,6 +35,7 @@ namespace Assets.Script
         public int Radius = 1;
         public bool FlamePass;
         public bool Invincible;
+        public bool RemoteControl;
 
         private bool _restrained;
         public bool Restrained
@@ -54,8 +55,8 @@ namespace Assets.Script
                     var tileSize = Bomb.renderer.bounds.size.x;
                     var localPosition = gameObject.transform.localPosition;
 
-                    var collidersInArea = Physics2D.OverlapCircleAll(gameObject.transform.position, tileSize / 2);
-                    if (collidersInArea.All(o => o.gameObject.tag != "Bomb"))
+                    var collidersInArea = Physics2D.OverlapPointAll(gameObject.transform.position);
+                    if (collidersInArea.All(o => o.gameObject.tag != "Bomb" && o.gameObject.tag != "Wall"))
                     {
                         Bombing = true;
                         var bombTile = new Vector2(Mathf.RoundToInt(localPosition.x / tileSize), Mathf.RoundToInt(localPosition.y / tileSize));
@@ -160,7 +161,6 @@ namespace Assets.Script
 
         public void AcceptPower(Powers power)
         {
-            Debug.Log(power);
             switch (power)
             {
                 case Script.Powers.BombUp:
@@ -183,12 +183,15 @@ namespace Assets.Script
                     Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Soft"), LayerMask.NameToLayer("Player"), true);
                     break;
                 case Powers.Speed:
-                    Speed += Constants.SpeedPowerUp;
+                    Speed = Constants.BasePlayerSpeed + Constants.SpeedPowerUp;
+                    break;
+                case Powers.RemoteControl:
+                    RemoteControl = true;
                     break;
                 default:
                     break;
             }
-        }
+        }        
 
         private IEnumerator InvincibleSpree()
         {

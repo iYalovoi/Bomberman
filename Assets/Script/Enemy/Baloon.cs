@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿ using System.Linq;
 using Assets.Script.Utility;
 using UnityEngine;
 
@@ -34,6 +34,5 @@ namespace Assets.Script
             }
             else rigidbody2D.velocity = new Vector2();
         }
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -42,10 +43,14 @@ namespace Assets.Script
         {
             if (col.gameObject.tag == "Player" && !IsConsumed)
             {
-                var player = col.gameObject.GetComponent<Bomberman>();
-                player.AcceptPower(Power);
-                _animator.SetTrigger("Consume");
-                IsConsumed = true;
+                var collidersInArea = Physics2D.OverlapPointAll(gameObject.transform.position);
+                if (collidersInArea.All(o => o.gameObject.tag != "Wall"))
+                {
+                    var player = col.gameObject.GetComponent<Bomberman>();
+                    player.AcceptPower(Power);
+                    _animator.SetTrigger("Consume");
+                    IsConsumed = true;
+                }
             }
         }
 
