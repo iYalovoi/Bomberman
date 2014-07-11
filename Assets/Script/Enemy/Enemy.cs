@@ -77,7 +77,8 @@ namespace Assets.Script
 				//Physics is a bitch : Igor
 				rigidbody2D.velocity = MaxSpeed * _way.ToVector2();
 			}
-			else rigidbody2D.velocity = new Vector2();
+			else 
+				rigidbody2D.velocity = new Vector2();
 		}
 
     }
