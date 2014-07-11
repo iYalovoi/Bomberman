@@ -35,6 +35,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 40
   alphaIsTransparency: 1
   textureType: 8
@@ -53,7 +54,8 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Onil_1
       rect:
         serializedVersion: 2
@@ -63,6 +65,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Onil_2
       rect:
         serializedVersion: 2
@@ -72,25 +75,8 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Onil_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-    - name: Onil_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-    - name: Onil_5
       rect:
         serializedVersion: 2
         x: 0
@@ -99,7 +85,8 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
-    - name: Onil_6
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Onil_4
       rect:
         serializedVersion: 2
         x: 16
@@ -108,7 +95,8 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
-    - name: Onil_7
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Onil_5
       rect:
         serializedVersion: 2
         x: 32
@@ -117,25 +105,8 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
-    - name: Onil_8
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-    - name: Onil_9
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-    - name: Onil_10
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Onil_6
       rect:
         serializedVersion: 2
         x: 0
@@ -144,7 +115,8 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
-    - name: Onil_11
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Onil_7
       rect:
         serializedVersion: 2
         x: 16
@@ -153,5 +125,36 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Onil_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Onil_9
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Onil_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

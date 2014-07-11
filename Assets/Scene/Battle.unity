@@ -74,6 +74,46 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
+--- !u!1 &333449669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 333449671}
+  - 114: {fileID: 333449670}
+  m_Layer: 0
+  m_Name: EnemyFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &333449670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 333449669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730f36ae65228b94193f260e9e390c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 100000, guid: 22bf218317b4d0f4c95c4e7c1e5684a0, type: 2}
+--- !u!4 &333449671
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 333449669}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.96822262, y: .361870527, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
 --- !u!1 &951497790
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,8 +368,7 @@ MonoBehaviour:
   HardBlock: {fileID: 100000, guid: 650e97d33694c2342b983818efabd9be, type: 2}
   Player: {fileID: 100000, guid: c26247ec44d0f2c458b8106783ecb789, type: 2}
   Soft: {fileID: 100000, guid: f080ac64135aab7419a7218a50562b69, type: 2}
-  Baloon: {fileID: 100000, guid: 7bd4f9f6e2f0e364eaf4eb8a879d1d1d, type: 2}
-  Onil: {fileID: 100000, guid: da6e99930cfb0934689305d10588a8be, type: 2}
+  Enemy: {fileID: 100000, guid: 22bf218317b4d0f4c95c4e7c1e5684a0, type: 2}
   Door: {fileID: 100000, guid: 2953ae9e173983f43a0aefdb015c6f1b, type: 2}
   PowerUp: {fileID: 100000, guid: 6952ce29d18411d43a7207ad47534df0, type: 2}
   Camera: {fileID: 1502190184}

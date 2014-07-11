@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Assets.Script;
 using Assets.Script.Level;
 using EnemyCounts = System.Collections.Generic.Dictionary<Assets.Script.Level.EnemyTypes, uint>;
 
@@ -11,8 +12,7 @@ namespace Assets.Script
         public GameObject HardBlock;
         public GameObject Player;        
         public GameObject Soft;
-        public GameObject Baloon;
-		public GameObject Onil;
+		public GameObject Enemy;
         public GameObject Door;
         public GameObject PowerUp;
 
@@ -27,18 +27,20 @@ namespace Assets.Script
         {
             //DI Unity way; Shitty way; Igor.
             var powerUpFactory = FindObjectOfType<PowerUpFactory>();
+			var enemyFactory = FindObjectOfType<EnemyFactory>();
 
-            var enemies = new List<GameObject>();
+			var enemies = new List<GameObject>();
             var softBlocks = new List<GameObject>();
             CameraFollow = Camera.GetComponent<CameraFollow>();
 
 			_tileSize = HardBlock.renderer.bounds.size;
             Level = new GameObject("Level");
 
-			var levelDefinition = new LevelDefinition(Powers.BombUp, new EnemyCounts(){{EnemyTypes.Balloon, 6}, {EnemyTypes.Onil, 6}});
+			var levelDefinition = new LevelDefinition(Powers.BombUp, new EnemyCounts(){{EnemyTypes.Balloon, 1},
+							{EnemyTypes.Onil, 1},{EnemyTypes.Dahl, 1},{EnemyTypes.Doria, 1},{EnemyTypes.Minvo, 1},
+							{EnemyTypes.Ovape, 1}, {EnemyTypes.Pass, 1},{EnemyTypes.Pontan, 1}});
 			var map = levelDefinition.GenerateMap();
 			var blockMap = new Dictionary<BlockTypes, GameObject> (){{BlockTypes.Soft, Soft}, {BlockTypes.Hard, HardBlock}, {BlockTypes.Wall, Wall}};
-			var enemyMap = new Dictionary<EnemyTypes, GameObject> (){{EnemyTypes.Balloon, Baloon}, {EnemyTypes.Onil, Onil}};
 			for (var i = 0; i < levelDefinition.Width; i++) 
 			{
 				for (var j = 0; j < levelDefinition.Height; j++) 
@@ -48,7 +50,7 @@ namespace Assets.Script
 						Create(blockMap[levelPosition.BlockType], i, j);
 					if(levelPosition.Enemy.HasValue)
 					{
-						Create(enemyMap[levelPosition.Enemy.Value], i , j);
+						Place(enemyFactory.Produce(levelPosition.Enemy.Value), i , j);
 					}
 					if(levelPosition.Door)
 					{
