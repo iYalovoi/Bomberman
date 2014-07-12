@@ -28,8 +28,6 @@ namespace Assets.Script
             //DI Unity way; Shitty way; Igor.
             var powerUpFactory = FindObjectOfType<PowerUpFactory>();
 			var enemyFactory = FindObjectOfType<EnemyFactory>();
-
-			var enemies = new List<GameObject>();
             var softBlocks = new List<GameObject>();
             CameraFollow = Camera.GetComponent<CameraFollow>();
 

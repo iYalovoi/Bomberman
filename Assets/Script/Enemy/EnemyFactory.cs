@@ -13,14 +13,30 @@ namespace Assets.Script
 	{
 		public GameObject Prefab;
 
+		private EnemiesStats enemiesStats;
+
+		void Awake()
+		{
+			enemiesStats = new EnemiesStats();
+		}
+
 		public GameObject Produce(EnemyTypes enemyType)
 		{           
-			var retObj = Instantiate(Prefab) as GameObject;
-			var animationSkin = retObj.GetComponent<ReSkinAnimation>();
+			var enemyInstance = Instantiate(Prefab) as GameObject;
+
+			var animationSkin = enemyInstance.GetComponent<ReSkinAnimation>();
 			animationSkin.enemyType = enemyType;
-			//Need somehow to set other enemy parameters, like speed and intellingence.
-			//May be add them to level description or something.
-			return retObj;
+
+			var enemyStats = enemiesStats.GetStats(enemyType);
+			var enemyBehaviour = enemyInstance.GetComponent<Enemy>();
+			enemyBehaviour.MaxSpeed = enemyStats.Speed;
+
+			if (enemyStats.isGhost) 
+			{
+				enemyInstance.layer = LayerMask.NameToLayer("Ghost");
+			}
+
+			return enemyInstance;
 		}
 	}
 }

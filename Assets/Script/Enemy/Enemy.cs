@@ -60,7 +60,7 @@ namespace Assets.Script
 						var block = MapDiscovery.BlastInDirection(transform.position, tileSize, randomWay, 1);
 						//do we check against bomb here as well?
 						//If the way is blocked we might sit here for a while until proper direction is randomed?
-						if (block.Select(o => o.transform.gameObject).All(o => (o.tag != "Wall")))
+						//if (block.Select(o => o.transform.gameObject).All(o => (o.tag != "Wall")))
 							newWay = randomWay;   
 					}                 
 				}
