@@ -77,10 +77,11 @@ namespace Assets.Script
                             Bombs.Enqueue(bombScript);
                     }
                 }
+                Bombs = new Queue<Bomb>(Bombs.Where(o => o != null));
                 if (Input.GetButtonDown("Fire") && RemoteControl && Bombs.Any())
                 {
                     var bomb = Bombs.Dequeue();
-                    bomb.ExplodeZero();
+                    StartCoroutine(bomb.ExplodeZero());
                 }
             }
         }

@@ -143,6 +143,8 @@ MonoBehaviour:
   BlastEnd: {fileID: 100000, guid: aa0cf00e1a9118a4f89067e174645736, type: 2}
   Level: {fileID: 0}
   IsExploded: 0
+  IsSpawned: 0
+  RemoteControl: 0
   Bomberman: {fileID: 0}
   Trigger: {fileID: 5800000}
   Solid: {fileID: 5800002}

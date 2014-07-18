@@ -13,6 +13,7 @@ namespace Assets.Script
         public GameObject BlastEnd;
         public GameObject Level;
         public bool IsExploded;
+        public bool IsSpawned;
         public bool RemoteControl;
         public CircleCollider2D Bomberman;
         public CircleCollider2D Trigger;
@@ -36,14 +37,23 @@ namespace Assets.Script
         private IEnumerator Explode(float seconds)
         {
             yield return new WaitForSeconds(seconds);
-            ExplodeZero();
+            StartCoroutine(ExplodeZero());
         }
 
-        public void ExplodeZero()
+        void Spawned()
+        {
+            IsSpawned = true;
+        }
+
+        public IEnumerator ExplodeZero()
         {
             if (!IsExploded)
             {
                 IsExploded = true;
+                while (!IsSpawned)
+                    yield return null;                    
+
+                var animator = GetComponent<Animator>();
 
                 var tileSize = renderer.bounds.size.x;
                 var localPosition = gameObject.transform.localPosition;
@@ -55,8 +65,7 @@ namespace Assets.Script
                 BlastInDirection(position, tileSize, bombTile, Direction.Up, Radius);
                 BlastInDirection(position, tileSize, bombTile, Direction.Right, Radius);
                 BlastInDirection(position, tileSize, bombTile, Direction.Down, Radius);
-
-                var animator = GetComponent<Animator>();
+                
                 animator.SetTrigger("Explode");
                 _explosionSound.Play();
             }
@@ -119,8 +128,8 @@ namespace Assets.Script
 
         public void OnHit(GameObject striker)
         {
-            if(gameObject != striker)
-                ExplodeZero();
+            if (gameObject != striker)
+                StartCoroutine(ExplodeZero());
         }
     }
 }
