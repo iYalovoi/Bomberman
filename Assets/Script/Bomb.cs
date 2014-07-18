@@ -13,6 +13,7 @@ namespace Assets.Script
         public GameObject BlastEnd;
         public GameObject Level;
         public bool IsExploded;
+        public bool RemoteControl;
         public CircleCollider2D Bomberman;
         public CircleCollider2D Trigger;
         public CircleCollider2D Solid;
@@ -27,8 +28,8 @@ namespace Assets.Script
         void Start()
         {
             Physics2D.IgnoreCollision(Bomberman, Solid, true);
-            _explosionSound = gameObject.GetComponent<AudioSource>();            
-            if (Level != null)
+            _explosionSound = gameObject.GetComponent<AudioSource>();
+            if (Level != null && !RemoteControl)
                 StartCoroutine(Explode(3));
         }
 
@@ -38,7 +39,7 @@ namespace Assets.Script
             ExplodeZero();
         }
 
-        private void ExplodeZero()
+        public void ExplodeZero()
         {
             if (!IsExploded)
             {
@@ -114,7 +115,6 @@ namespace Assets.Script
 
         void Update()
         {
-
         }
 
         public void OnHit(GameObject striker)

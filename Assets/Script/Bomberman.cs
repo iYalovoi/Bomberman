@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Script.Utility;
 using UnityEngine;
@@ -29,6 +30,7 @@ namespace Assets.Script
         public AudioSource DeathSound;
         public AudioSource PlaceBombSound;
         public CircleCollider2D Solid;
+        public Queue<Bomb> Bombs = new Queue<Bomb>();
 
         //Power ups
         public int BombCount = 1;
@@ -68,8 +70,17 @@ namespace Assets.Script
                         bombScript.Level = Level;
                         bombScript.Bomberman = Solid;
                         bombScript.Radius = Radius;
+                        bombScript.RemoteControl = RemoteControl;
                         PlaceBombSound.Play();
+
+                        if(RemoteControl)
+                            Bombs.Enqueue(bombScript);
                     }
+                }
+                if (Input.GetButtonDown("Fire") && RemoteControl && Bombs.Any())
+                {
+                    var bomb = Bombs.Dequeue();
+                    bomb.ExplodeZero();
                 }
             }
         }
@@ -163,16 +174,16 @@ namespace Assets.Script
         {
             switch (power)
             {
-                case Script.Powers.BombUp:
+                case Powers.BombUp:
                     ++BombCount;
                     break;
-                case Script.Powers.Fire:
+                case Powers.Fire:
                     ++Radius;
                     break;
-                case Script.Powers.BombPass:
+                case Powers.BombPass:
                     Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Bomb"), LayerMask.NameToLayer("Player"), true);
                     break;
-                case Script.Powers.FlamePass:
+                case Powers.FlamePass:
                     FlamePass = true;
                     break;
                 case Powers.Mystery:

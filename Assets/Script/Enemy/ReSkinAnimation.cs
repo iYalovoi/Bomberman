@@ -11,11 +11,11 @@ namespace Assets.Script
 
 		void LateUpdate() 
 		{
-			var subSprites = Resources.LoadAll<Sprite>("Sprites/" + enemyType.ToString());
-			var renderer = GetComponent<SpriteRenderer>();
-			var spriteName = renderer.sprite.name;
-			int spriteIndex = int.Parse(spriteName.Substring(spriteName.LastIndexOf("_") + 1));
-			renderer.sprite = subSprites[spriteIndex];
+			var subSprites = Resources.LoadAll<Sprite>("Sprites/" + enemyType);
+			var spriteRenderer = GetComponent<SpriteRenderer>();
+			var spriteName = spriteRenderer.sprite.name;
+			var spriteIndex = int.Parse(spriteName.Substring(spriteName.LastIndexOf("_", System.StringComparison.Ordinal) + 1));
+			spriteRenderer.sprite = subSprites[spriteIndex];
 		}
 	}
 }

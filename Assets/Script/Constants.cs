@@ -7,7 +7,7 @@
 
         public static float SlowestSpeed = 0.5f;
         public static float SlowSpeed = 1f;
-        public static float MidSpeed = 2f;
-        public static float FastSpeed = 4f;
+        public static float MidSpeed = 1.5f;
+        public static float FastSpeed = 2f;
     }
 }

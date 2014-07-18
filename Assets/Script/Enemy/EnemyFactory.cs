@@ -13,11 +13,11 @@ namespace Assets.Script
 	{
 		public GameObject Prefab;
 
-		private EnemiesStats enemiesStats;
+		private EnemiesStats _enemiesStats;
 
 		void Awake()
 		{
-			enemiesStats = new EnemiesStats();
+			_enemiesStats = new EnemiesStats();
 		}
 
 		public GameObject Produce(EnemyTypes enemyType)
@@ -27,14 +27,12 @@ namespace Assets.Script
 			var animationSkin = enemyInstance.GetComponent<ReSkinAnimation>();
 			animationSkin.enemyType = enemyType;
 
-			var enemyStats = enemiesStats.GetStats(enemyType);
+			var enemyStats = _enemiesStats.GetStats(enemyType);
 			var enemyBehaviour = enemyInstance.GetComponent<Enemy>();
 			enemyBehaviour.MaxSpeed = enemyStats.Speed;
 
-			if (enemyStats.isGhost) 
-			{
+			if (enemyStats.IsGhost) 
 				enemyInstance.layer = LayerMask.NameToLayer("Ghost");
-			}
 
 			return enemyInstance;
 		}
