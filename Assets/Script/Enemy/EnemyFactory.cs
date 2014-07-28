@@ -23,6 +23,7 @@ namespace Assets.Script
 		public GameObject Produce(EnemyTypes enemyType)
 		{           
 			var enemyInstance = Instantiate(Prefab) as GameObject;
+		    enemyInstance.name = enemyType.ToString();
 
 			var animationSkin = enemyInstance.GetComponent<ReSkinAnimation>();
 			animationSkin.enemyType = enemyType;

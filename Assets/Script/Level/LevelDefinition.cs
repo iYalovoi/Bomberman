@@ -20,6 +20,8 @@ namespace Assets.Script.Level
 		public int Height = 13;
 		public int Width = 31;
 
+	    public int TimeLimit = 10;
+
 		public int SoftBlocksCount = 70;
 
 		public EnemyCounts EnemyCounts;

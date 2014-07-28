@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Assets.Script;
 using Assets.Script.Level;
@@ -23,7 +24,7 @@ namespace Assets.Script
         private GameObject _currentPlayer;
 		private Vector2 _tileSize;
 
-        void Start()
+        IEnumerator Start()
         {
             //DI Unity way; Shitty way; Igor.
             var powerUpFactory = FindObjectOfType<PowerUpFactory>();
@@ -47,23 +48,22 @@ namespace Assets.Script
 					if(levelPosition.BlockType != BlockTypes.None)
 						Create(blockMap[levelPosition.BlockType], i, j);
 					if(levelPosition.Enemy.HasValue)
-					{
 						Place(enemyFactory.Produce(levelPosition.Enemy.Value), i , j);
-					}
 					if(levelPosition.Door)
-					{
 						Create(Door, i, j);
-					}
 					if(levelPosition.PowerUp.HasValue)
-					{
-						//Powerup switch? Alexey
 						Place(powerUpFactory.Produce(), i, j);
-					}
 				}
 			}
 
 			SpawnPlayer();
-			Level.transform.position = new Vector3(-_tileSize.x * levelDefinition.Width / 2, -_tileSize.y * levelDefinition.Height / 2);			
+			Level.transform.position = new Vector3(-_tileSize.x * levelDefinition.Width / 2, -_tileSize.y * levelDefinition.Height / 2);
+
+            yield return new WaitForSeconds(levelDefinition.TimeLimit);
+
+            //Spawn 20 pontans when time hits 0:00
+            for (var i = 0; i < 20; i++)
+                Place(enemyFactory.Produce(EnemyTypes.Pontan), Random.Range(1, levelDefinition.Width - 1), Random.Range(1, levelDefinition.Height - 1));
 		}
 
 		private GameObject Create(GameObject prototype, int x, int y)

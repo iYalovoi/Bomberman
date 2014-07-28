@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using Assets.Script.Utility;
 using UnityEngine;
@@ -18,7 +17,7 @@ namespace Assets.Script
         public CircleCollider2D Bomberman;
         public CircleCollider2D Trigger;
         public CircleCollider2D Solid;
-        private AudioSource _explosionSound;        
+        private AudioSource _explosionSound;
 
         void OnTriggerExit2D(Collider2D col)
         {
