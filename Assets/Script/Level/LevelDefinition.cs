@@ -8,7 +8,8 @@ namespace Assets.Script.Level
 {
 
 	//ToDo - Add validation of data(ie softblock count < map size etc): Alexey
-    //Not necessary for this project 
+    //Not necessary for this project : Igor
+    //Why LevelDefinition contains code for generation? : Igor
 	public class LevelDefinition 
 	{
 		public LevelDefinition(Powers? powerup, EnemyCounts enemyCounts)
@@ -20,7 +21,7 @@ namespace Assets.Script.Level
 		public int Height = 13;
 		public int Width = 31;
 
-	    public int TimeLimit = 10;
+	    public int TimeLimit = 200;
 
 		public int SoftBlocksCount = 70;
 

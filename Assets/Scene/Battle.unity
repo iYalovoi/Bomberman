@@ -114,6 +114,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!1 &855000125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 855000126}
+  - 114: {fileID: 855000127}
+  m_Layer: 0
+  m_Name: UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &855000126
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 855000125}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.835486412, y: -.234267652, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+--- !u!114 &855000127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 855000125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe5cfe4c18dd3634b86a73972abdf041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &951497790
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,7 +412,7 @@ MonoBehaviour:
   PowerUp: {fileID: 100000, guid: 6952ce29d18411d43a7207ad47534df0, type: 2}
   Camera: {fileID: 1502190184}
   CameraFollow: {fileID: 0}
-  Level: {fileID: 0}
+  LevelObject: {fileID: 0}
 --- !u!4 &1719301897
 Transform:
   m_ObjectHideFlags: 0

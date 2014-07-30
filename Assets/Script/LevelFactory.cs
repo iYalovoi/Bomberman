@@ -19,10 +19,11 @@ namespace Assets.Script
 
         public GameObject Camera;
         public CameraFollow CameraFollow;
-        public GameObject Level;
+        public GameObject LevelObject;
+        public LevelDefinition CurrentLevel;
 
         private GameObject _currentPlayer;
-		private Vector2 _tileSize;
+		private Vector2 _tileSize;        
 
         IEnumerator Start()
         {
@@ -33,16 +34,16 @@ namespace Assets.Script
             CameraFollow = Camera.GetComponent<CameraFollow>();
 
 			_tileSize = HardBlock.renderer.bounds.size;
-            Level = new GameObject("Level");
+            LevelObject = new GameObject("Level");
 
-			var levelDefinition = new LevelDefinition(Powers.BombUp, new EnemyCounts(){{EnemyTypes.Balloon, 1},
+			CurrentLevel = new LevelDefinition(Powers.BombUp, new EnemyCounts(){{EnemyTypes.Balloon, 1},
 							{EnemyTypes.Onil, 1},{EnemyTypes.Dahl, 1},{EnemyTypes.Doria, 1},{EnemyTypes.Minvo, 1},
 							{EnemyTypes.Ovape, 1}, {EnemyTypes.Pass, 1},{EnemyTypes.Pontan, 1}});
-			var map = levelDefinition.GenerateMap();
+			var map = CurrentLevel.GenerateMap();
 			var blockMap = new Dictionary<BlockTypes, GameObject> (){{BlockTypes.Soft, Soft}, {BlockTypes.Hard, HardBlock}, {BlockTypes.Wall, Wall}};
-			for (var i = 0; i < levelDefinition.Width; i++) 
+			for (var i = 0; i < CurrentLevel.Width; i++) 
 			{
-				for (var j = 0; j < levelDefinition.Height; j++) 
+				for (var j = 0; j < CurrentLevel.Height; j++) 
 				{
 					var levelPosition = map[i, j];
 					if(levelPosition.BlockType != BlockTypes.None)
@@ -57,13 +58,13 @@ namespace Assets.Script
 			}
 
 			SpawnPlayer();
-			Level.transform.position = new Vector3(-_tileSize.x * levelDefinition.Width / 2, -_tileSize.y * levelDefinition.Height / 2);
+			LevelObject.transform.position = new Vector3(-_tileSize.x * CurrentLevel.Width / 2, -_tileSize.y * CurrentLevel.Height / 2);
 
-            yield return new WaitForSeconds(levelDefinition.TimeLimit);
+            yield return new WaitForSeconds(CurrentLevel.TimeLimit);
 
             //Spawn 20 pontans when time hits 0:00
             for (var i = 0; i < 20; i++)
-                Place(enemyFactory.Produce(EnemyTypes.Pontan), Random.Range(1, levelDefinition.Width - 1), Random.Range(1, levelDefinition.Height - 1));
+                Place(enemyFactory.Produce(EnemyTypes.Pontan), Random.Range(1, CurrentLevel.Width - 1), Random.Range(1, CurrentLevel.Height - 1));
 		}
 
 		private GameObject Create(GameObject prototype, int x, int y)
@@ -75,7 +76,7 @@ namespace Assets.Script
         private GameObject Place(GameObject target, int x, int y)
         {            
             target.name = string.Format("{2} {0}:{1}", x, y, target.name);
-            target.transform.parent = Level.transform;
+            target.transform.parent = LevelObject.transform;
             target.transform.localPosition = new Vector3(x * _tileSize.x, y * _tileSize.y, 0);
             return target;
         }
@@ -84,11 +85,11 @@ namespace Assets.Script
         {
 			_currentPlayer = Create (Player, 1, 1);
 			//TODO - Player position should be properly set depending on the current transform
-			_currentPlayer.transform.parent = Level.transform;
+			_currentPlayer.transform.parent = LevelObject.transform;
 			_currentPlayer.transform.localPosition = new Vector3(_tileSize.x, _tileSize.y, 0);
 
             CameraFollow.TrackingObject = _currentPlayer.transform;
-            _currentPlayer.GetComponent<Bomberman>().Level = Level;
+            _currentPlayer.GetComponent<Bomberman>().Level = LevelObject;
         }
 
         void Update()
