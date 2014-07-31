@@ -7,20 +7,26 @@ using UnityEngine;
 
 namespace Assets.Script
 {
-    public class Bomberman : MonoBehaviour, ITarget
+    public class Bomberman : ContainerBase, ITarget
     {
         private Animator _animator;
 
         // Use this for initialization
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             _animator = GetComponent<Animator>();
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Bomb"), LayerMask.NameToLayer("Player"), false);
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Soft"), LayerMask.NameToLayer("Player"), false);
-            Speed = Constants.BasePlayerSpeed;
         }
 
-        public float Speed;
+        private void OnInjected(BombermanModel model)
+        {
+            _model = model;
+        }
+
+        private BombermanModel _model;
+
         public GameObject Bomb;
         public GameObject Level;
         public bool Bombing;
@@ -33,11 +39,12 @@ namespace Assets.Script
         public Queue<Bomb> Bombs = new Queue<Bomb>();
 
         //Power ups
-        public int BombCount = 1;
-        public int Radius = 1;
-        public bool FlamePass;
-        public bool Invincible;
-        public bool RemoteControl;
+        public int BombCount { get { return _model.BombCount; } set { _model.BombCount = value; } }
+        public int Radius { get { return _model.Radius; } set { _model.Radius = value; } }
+        public bool FlamePass { get { return _model.FlamePass; } set { _model.FlamePass = value; } }
+        public bool Invincible { get { return _model.Invincible; } set { _model.Invincible = value; } }
+        public bool RemoteControl { get { return _model.RemoteControl; } set { _model.RemoteControl = value; } }
+        public float Speed { get { return _model.Speed; } set { _model.Speed = value; } }
 
         private bool _restrained;
         public bool Restrained

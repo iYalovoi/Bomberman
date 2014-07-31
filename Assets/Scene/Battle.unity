@@ -150,7 +150,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 855000125}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe5cfe4c18dd3634b86a73972abdf041, type: 3}
+  m_Script: {fileID: 11500000, guid: 71ee2c046c65fe84f97e233a011d3299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &951497790
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 951497790}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f5f2fe678d926345b8f28c1e92722a6, type: 3}
+  m_Script: {fileID: 11500000, guid: ed99c3c285a815a4eb14dfb1eb3e6799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BombUp: {fileID: 21300002, guid: a06c1373d9c422140bac1b1cd507a9cc, type: 3}
@@ -216,6 +216,8 @@ GameObject:
   - 114: {fileID: 1502190190}
   - 81: {fileID: 1502190185}
   - 82: {fileID: 1502190192}
+  - 114: {fileID: 1502190193}
+  - 114: {fileID: 1502190194}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -299,13 +301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bb95be67f767a345a6930e3af55c797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XMargin: 2
-  YMargin: 3
-  XSmooth: 1
-  YSmooth: 1
-  MaxXAndY: {x: 0, y: 0}
-  MinXAndY: {x: 0, y: 0}
-  TrackingObject: {fileID: 0}
 --- !u!114 &1502190191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,7 +312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f8cbbcd70ea4ce4b9c5c31c1882b1cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PixelsPerUnit: 100
 --- !u!82 &1502190192
 AudioSource:
   m_ObjectHideFlags: 0
@@ -376,6 +370,36 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &1502190193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1502190184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc76aa533be6b7b408fe3370570b3aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XMargin: 1
+  YMargin: 1
+  XSmooth: 8
+  YSmooth: 8
+  MaxXAndY: {x: 0, y: 0}
+  MinXAndY: {x: 0, y: 0}
+  TrackingObject: {fileID: 0}
+--- !u!114 &1502190194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1502190184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5625a85c41803974a9aa2ab5e6f30b3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PixelsPerUnit: 100
 --- !u!1 &1719301895
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,7 +424,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1719301895}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 822315ea6167d4e40885259fe1e7d4d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 07e2eee3eb212144c8d351a9cec4fd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Wall: {fileID: 100000, guid: 9eaffc826d56c3740bdef522564c66c3, type: 2}
@@ -425,3 +449,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &1759863658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1759863660}
+  - 114: {fileID: 1759863659}
+  m_Layer: 0
+  m_Name: Launcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1759863659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1759863658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bead9c22b8695314f8b9d3404a0cd4f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1759863660
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1759863658}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .365462899, y: -.111816444, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5

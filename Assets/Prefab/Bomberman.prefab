@@ -257,13 +257,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9429ab0f34dfa24c89378cb8cee0a94, type: 3}
+  m_Script: {fileID: 11500000, guid: b60b20d956ed9d041a0921347637b8a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpeed: 5
+  Speed: 0
   Bomb: {fileID: 100000, guid: 863f49200aae84c4ca3298789cee1436, type: 2}
-  BombCount: 1
-  Radius: 1
   Level: {fileID: 0}
   Bombing: 0
   Dead: 0

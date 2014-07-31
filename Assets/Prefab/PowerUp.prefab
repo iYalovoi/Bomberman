@@ -64,10 +64,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d5c465689d0047ba921fa7dc1b9e2c9, type: 3}
+  m_Script: {fileID: 11500000, guid: ceb6bf684133919419fc7d56f042dcd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Power: 32
+  Power: 0
   IsConsumed: 0
   Sprite: {fileID: 0}
 --- !u!212 &21200000

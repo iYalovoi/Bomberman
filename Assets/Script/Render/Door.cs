@@ -1,14 +1,27 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using Assets.Script.Utility;
+using UnityEngine;
 
 namespace Assets.Script
 {
-    public class Door : MonoBehaviour, ITarget
+    public class Door : ContainerBase, ITarget
     {
         private Animator _animator;
+        private LevelFactory _levelUpFactory;
+        private Messenger _messenger;
 
-        void Start()
+        protected override void Start()
         {
+            base.Start();
+            //DI Unity way; Shitty way; Igor.
+            _levelUpFactory = FindObjectOfType<LevelFactory>();
             _animator = GetComponent<Animator>();
+        }
+
+        private void OnInjected(Messenger messenger)
+        {
+            Debug.Log(messenger);
+            _messenger = messenger;
         }
 
         void Update()
@@ -17,7 +30,7 @@ namespace Assets.Script
 
         void Opened()
         {
-            Application.LoadLevel("Battle");
+            _messenger.Signal(Signals.DoorOpened);            
         }
 
         void OnTriggerEnter2D(Collider2D col)

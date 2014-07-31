@@ -39,7 +39,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Radius: .00999999978
   m_Center: {x: 0, y: 0}
 --- !u!95 &9500000
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fe809188d4724b41bde105c3ef0ffc4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f9b2fcff959bf446b5d7522f0baf053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21200000

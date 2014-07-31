@@ -135,10 +135,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c11909eb5325e6949a0fa387bec67c16, type: 3}
+  m_Script: {fileID: 11500000, guid: 13ee252ee4e218e4197d0fcf8a614013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 1
+  Radius: 0
   Blast: {fileID: 100000, guid: e091d21b18ab2724084685c907681232, type: 2}
   BlastEnd: {fileID: 100000, guid: aa0cf00e1a9118a4f89067e174645736, type: 2}
   Level: {fileID: 0}

@@ -10,12 +10,16 @@ namespace Assets.Script
         private GUIStyle _textStyle;
         private int _timeLeft;
 
+        void Awake()
+        {
+        }
+
         IEnumerator Start()
         {
             //DI Unity way; Shitty way; Igor.
             _levelFactory = FindObjectOfType<LevelFactory>();
             _textStyle = new GUIStyle { fontSize = 40 };
-            _timeLeft = _levelFactory.CurrentLevel.TimeLimit;
+            _timeLeft = _levelFactory.CurrentLevelDefinition.TimeLimit;
 
             while (true)
             {
