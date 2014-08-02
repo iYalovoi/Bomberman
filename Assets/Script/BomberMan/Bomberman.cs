@@ -155,9 +155,10 @@ namespace Assets.Script
         {
             if (!Dead && !Invincible)
             {
-                Dead = true;
+                Dead = true;                
                 _animator.SetTrigger("Die");
                 DeathSound.Play();
+                _model.Reset();
             }
         }
 

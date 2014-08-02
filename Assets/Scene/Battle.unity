@@ -381,10 +381,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc76aa533be6b7b408fe3370570b3aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XMargin: 1
-  YMargin: 1
-  XSmooth: 8
-  YSmooth: 8
+  XMargin: 4
+  YMargin: 4
+  XSmooth: .300000012
+  YSmooth: .300000012
   MaxXAndY: {x: 0, y: 0}
   MinXAndY: {x: 0, y: 0}
   TrackingObject: {fileID: 0}
