@@ -15,6 +15,7 @@ namespace Assets.Script
 
         void Awake ()
         {
+            ImmortalBook.Add(this);
         }
 
         bool CheckXMargin()

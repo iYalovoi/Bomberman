@@ -23,6 +23,8 @@ namespace Assets.Script
         private void OnInjected(BombermanModel model)
         {
             _model = model;
+            //if(Application.isEditor)
+            //    _model.Godlike();
         }
 
         private BombermanModel _model;

@@ -20,7 +20,6 @@ namespace Assets.Script
 
         private void OnInjected(Messenger messenger)
         {
-            Debug.Log(messenger);
             _messenger = messenger;
         }
 

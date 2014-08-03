@@ -71,8 +71,7 @@ namespace Assets.Script.Level
 			}
 			//Powerup
 			if(PowerUp.HasValue)
-                for(var i=0; i < 30; i++)
-				    PopRandom(softBlocks).PowerUp = PowerUp;
+				PopRandom(softBlocks).PowerUp = PowerUp;
 			//Door
 			PopRandom(softBlocks).Door = true;
 			//Enemies
