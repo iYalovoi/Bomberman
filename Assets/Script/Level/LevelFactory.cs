@@ -44,7 +44,7 @@ namespace Assets.Script
             _enemyFactory = FindObjectOfType<EnemyFactory>();
             CameraFollow = Camera.GetComponent<CameraFollow>();
             _tileSize = HardBlock.renderer.bounds.size;
-            StartCoroutine(ProduceLevel(++_currentLevel));
+            ProduceLevel(++_currentLevel);
         }
 
         private void OnInjected(Messenger messenger)
@@ -59,10 +59,10 @@ namespace Assets.Script
         {
             Application.LoadLevel("Battle");
             yield return new WaitForSeconds(0);
-            StartCoroutine(ProduceLevel(level));
+            ProduceLevel(level);
         }
 
-        public IEnumerator ProduceLevel(int level)
+        public void ProduceLevel(int level)
         {
             LevelObject = new GameObject("Level");
             CurrentLevelDefinition = Build(level);
@@ -87,8 +87,8 @@ namespace Assets.Script
             AdjustPlayer();
             LevelObject.transform.position = new Vector3(-_tileSize.x * CurrentLevelDefinition.Width / 2, -_tileSize.y * CurrentLevelDefinition.Height / 2);
 
-            var currentLevel = _currentLevel;
-            yield return new WaitForSeconds(CurrentLevelDefinition.TimeLimit);
+            if(!Camera.audio.isPlaying)
+                Camera.audio.Play();
         }
 
         void SpawnPontans()
