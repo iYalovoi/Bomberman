@@ -1,4 +1,6 @@
-﻿namespace Assets.Script
+﻿using UnityEngine.SocialPlatforms.Impl;
+
+namespace Assets.Script
 {
     public class BombermanModel
     {
@@ -9,6 +11,8 @@
         public bool Invincible;
         public bool RemoteControl;
         public float Speed = Constants.BasePlayerSpeed;
+        public int Lifes = 2;
+        public int Score;
 
         public void Godlike()
         {

@@ -29,7 +29,7 @@ namespace Assets.Script
 
         void Opened()
         {
-            _messenger.Signal(Signals.DoorOpened);            
+            _messenger.Signal(Signals.DoorOpened);
         }
 
         void OnTriggerEnter2D(Collider2D col)

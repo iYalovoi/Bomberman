@@ -20,14 +20,16 @@ namespace Assets.Script
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Soft"), LayerMask.NameToLayer("Player"), false);
         }
 
-        private void OnInjected(BombermanModel model)
+        private void OnInjected(BombermanModel model, Messenger messenger)
         {
+            _messenger = messenger;
             _model = model;
-            //if(Application.isEditor)
+            //if (Application.isEditor)
             //    _model.Godlike();
         }
 
         private BombermanModel _model;
+        private Messenger _messenger;
 
         public GameObject Bomb;
         public GameObject Level;
@@ -48,7 +50,7 @@ namespace Assets.Script
         public bool RemoteControl { get { return _model.RemoteControl; } set { _model.RemoteControl = value; } }
         public float Speed { get { return _model.Speed; } set { _model.Speed = value; } }
 
-        private bool _restrained;
+        private bool _restrained;        
         public bool Restrained
         {
             get { return Bombing || Dead || _restrained; }
@@ -159,13 +161,15 @@ namespace Assets.Script
             {
                 Dead = true;                
                 _animator.SetTrigger("Die");
-                DeathSound.Play();
-                _model.Reset();
+                DeathSound.Play();                
             }
         }
 
         public void Destroy()
         {
+            _model.Reset();
+            _model.Lifes--;
+            _messenger.Signal(_model.Lifes >= 0 ? Signals.RestartLevel : Signals.GameOver);
             Destroy(gameObject);
         }
 

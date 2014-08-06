@@ -30,7 +30,7 @@ namespace Assets.Script
             Physics2D.IgnoreCollision(Bomberman, Solid, true);
             _explosionSound = gameObject.GetComponent<AudioSource>();
             if (Level != null && !RemoteControl)
-                StartCoroutine(Explode(3));
+                StartCoroutine(Explode(2));
         }
 
         private IEnumerator Explode(float seconds)
