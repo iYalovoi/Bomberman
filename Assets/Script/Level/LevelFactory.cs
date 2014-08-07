@@ -22,7 +22,6 @@ namespace Assets.Script
 
         public GameObject LevelObject;
         public LevelDefinition CurrentLevelDefinition;
-        private int _currentLevel;
 
         private GameObject _currentPlayer;
         private Vector2 _tileSize;
@@ -30,6 +29,7 @@ namespace Assets.Script
         private EnemyFactory _enemyFactory;
 
         private Messenger _messenger;
+        private LevelModel _model;
 
         void Awake()
         {
@@ -44,22 +44,13 @@ namespace Assets.Script
             _enemyFactory = FindObjectOfType<EnemyFactory>();
             CameraFollow = Camera.GetComponent<CameraFollow>();
             _tileSize = HardBlock.renderer.bounds.size;
-            ProduceLevel(++_currentLevel);
         }
 
-        private void OnInjected(Messenger messenger)
+        private void OnInjected(Messenger messenger, LevelModel model)
         {
-            _messenger = messenger;
-            _messenger.Subscribe(Signals.DoorOpened, () => StartCoroutine(LoadLevel(++_currentLevel)));
-            _messenger.Subscribe(Signals.RestartLevel, () => StartCoroutine(LoadLevel(_currentLevel)));
+            _model = model;
+            _messenger = messenger;                       
             _messenger.Subscribe(Signals.SpawnPontans, SpawnPontans);
-        }
-
-        private IEnumerator LoadLevel(int level)
-        {
-            Application.LoadLevel("Battle");
-            yield return new WaitForSeconds(0);
-            ProduceLevel(level);
         }
 
         public void ProduceLevel(int level)
@@ -324,10 +315,5 @@ namespace Assets.Script
             return null;
         }
 
-        void Update()
-        {
-            if (Input.GetButtonDown("Respawn"))
-                AdjustPlayer();
-        }
     }
 }

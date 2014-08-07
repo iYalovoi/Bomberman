@@ -6,5 +6,6 @@
         public static string RestartLevel = "RestartLevel";
         public static string GameOver = "GameOver";
         public static string SpawnPontans = "SpawnPontans";
+        public static string LoadNextLevel = "LoadNextLevel";
     }
 }

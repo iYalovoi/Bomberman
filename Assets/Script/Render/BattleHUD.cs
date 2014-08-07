@@ -29,14 +29,15 @@ namespace Assets.Script
 
             //DI Unity way; Shitty way; Igor.
             _levelFactory = FindObjectOfType<LevelFactory>();
-            _textStyle = new GUIStyle { fontSize = 40 };
-            _timeLeft = _levelFactory.CurrentLevelDefinition.TimeLimit;
+            _textStyle = new GUIStyle { fontSize = 40 };            
 
             StartCoroutine(CountDown());
         }
 
         IEnumerator CountDown()
-        {
+        {            
+            yield return new WaitForSeconds(0);
+            _timeLeft = _levelFactory.CurrentLevelDefinition.TimeLimit;
             while (_timeLeft > 0)
             {
                 _timeLeft--;

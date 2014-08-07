@@ -24,8 +24,8 @@ namespace Assets.Script
         {
             _messenger = messenger;
             _model = model;
-            //if (Application.isEditor)
-            //    _model.Godlike();
+            if (Application.isEditor)
+                _model.Godlike();
         }
 
         private BombermanModel _model;
