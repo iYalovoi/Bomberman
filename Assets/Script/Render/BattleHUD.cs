@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.Script
 {
-    public class UI : ContainerBase
+    public class BattleHUD : ContainerBase
     {
         private LevelFactory _levelFactory;
         private GUIStyle _textStyle;

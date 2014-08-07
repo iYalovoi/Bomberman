@@ -1,4 +1,5 @@
-﻿using Assets.Script.Utility;
+﻿using Assets.Script.Level;
+using Assets.Script.Utility;
 using UnityEngine;
 
 namespace Assets.Script
@@ -17,7 +18,11 @@ namespace Assets.Script
             _container = new Container();
 
             _container.Single<BombermanModel, BombermanModel>();
+            _container.Single<LevelModel, LevelModel>();
             _container.Single<Messenger, Messenger>();
+            _container.Single<SceneDispatcher, SceneDispatcher>();
+
+            _container.Get<SceneDispatcher>();
         }
     }
 }
