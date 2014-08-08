@@ -55,6 +55,7 @@ namespace Assets.Script
         {
             GUI.Label(new Rect(20, 20, 100, 40), _timeLeft > 0 ? _timeLeft.ToString(CultureInfo.InvariantCulture) : "Run!", _textStyle);
             GUI.Label(new Rect(140, 20, 100, 40), _model.Lifes.ToString(CultureInfo.InvariantCulture), _textStyle);
+            GUI.Label(new Rect(340, 20, 100, 40), _model.Score.ToString(CultureInfo.InvariantCulture), _textStyle);
         }
     }
 }

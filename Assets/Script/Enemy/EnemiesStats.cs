@@ -34,9 +34,9 @@ namespace Assets.Script.Level
 
 	public class EnemyStats
 	{
-		public EnemyStats(int points, float speed, EnemyIntelligence intelligence, bool isGhost)
+		public EnemyStats(int bounty, float speed, EnemyIntelligence intelligence, bool isGhost)
 		{
-			Points  = points;
+			Bounty  = bounty;
 			Intelligence = intelligence;
 			Speed = speed;
 			IsGhost = isGhost;
@@ -45,7 +45,7 @@ namespace Assets.Script.Level
 		//This has to be some engine independent value
 		public float Speed;
 		public EnemyIntelligence Intelligence;
-		public int Points;
+		public int Bounty;
 		//Can pass through soft blocks
 		public bool IsGhost;
 	}

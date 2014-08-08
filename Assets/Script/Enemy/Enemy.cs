@@ -5,23 +5,35 @@ using Assets.Script.Utility;
 
 namespace Assets.Script
 {
-    public class Enemy : MonoBehaviour, ITarget
+    public class Enemy : ContainerBase, ITarget
     {
         public float MaxSpeed = Constants.SlowSpeed;
 		public bool Dead = false;
+        public int Bounty;
 
         protected Animator Animator;
 
         // Use this for initialization
-        void Start()
+        protected override void Start()
         {
+            base.Start();
             Animator = GetComponent<Animator>();
+        }
+
+        private Messenger _messenger;
+        private void OnInjected(Messenger messenger)
+        {
+            _messenger = messenger;
         }
 
         public void Die()
         {
-			Dead = true;
-			Animator.SetTrigger("Die");
+            if(!Dead)
+            {
+                Dead = true;
+                Animator.SetTrigger("Die");
+                _messenger.Signal(Bounty);
+            }
         }
 
         public void OnHit(GameObject striker)
@@ -34,9 +46,8 @@ namespace Assets.Script
             Destroy(gameObject);
         }
 
-		private Direction _way;
-		
-		private void FixedUpdate()
+		private Direction _way;        
+        private void FixedUpdate()
 		{
 			if(!Dead)
 			{

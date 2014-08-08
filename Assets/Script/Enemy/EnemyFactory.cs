@@ -32,6 +32,7 @@ namespace Assets.Script
 			var enemyStats = _enemiesStats.GetStats(enemyType);
 			var enemyBehaviour = enemyInstance.GetComponent<Enemy>();
 			enemyBehaviour.MaxSpeed = enemyStats.Speed;
+		    enemyBehaviour.Bounty = enemyStats.Bounty;
 
 			if (enemyStats.IsGhost) 
 				enemyInstance.layer = LayerMask.NameToLayer("Ghost");
