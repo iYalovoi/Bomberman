@@ -10,6 +10,7 @@ namespace Assets.Script
     public class Bomberman : ContainerBase, ITarget
     {
         private Animator _animator;
+        private List<Action> _subscriptions = new List<Action>();
 
         // Use this for initialization
         protected override void Start()
@@ -26,6 +27,11 @@ namespace Assets.Script
             _model = model;
             if (Application.isEditor)
                 _model.Godlike();
+
+            _subscriptions.Add(_messenger.Subscribe<int>((o) =>
+            {
+                _model.Score += o;
+            }));
         }
 
         private BombermanModel _model;
@@ -43,14 +49,44 @@ namespace Assets.Script
         public Queue<Bomb> Bombs = new Queue<Bomb>();
 
         //Power ups
-        public int BombCount { get { return _model.BombCount; } set { _model.BombCount = value; } }
-        public int Radius { get { return _model.Radius; } set { _model.Radius = value; } }
-        public bool FlamePass { get { return _model.FlamePass; } set { _model.FlamePass = value; } }
-        public bool Invincible { get { return _model.Invincible; } set { _model.Invincible = value; } }
-        public bool RemoteControl { get { return _model.RemoteControl; } set { _model.RemoteControl = value; } }
-        public float Speed { get { return _model.Speed; } set { _model.Speed = value; } }
+        public int BombCount
+        {
+            get { return _model.BombCount; }
+            set { _model.BombCount = value; }
+        }
 
-        private bool _restrained;        
+        public int Radius
+        {
+            get { return _model.Radius; }
+            set { _model.Radius = value; }
+        }
+
+        public bool FlamePass
+        {
+            get { return _model.FlamePass; }
+            set { _model.FlamePass = value; }
+        }
+
+        public bool Invincible
+        {
+            get { return _model.Invincible; }
+            set { _model.Invincible = value; }
+        }
+
+        public bool RemoteControl
+        {
+            get { return _model.RemoteControl; }
+            set { _model.RemoteControl = value; }
+        }
+
+        public float Speed
+        {
+            get { return _model.Speed; }
+            set { _model.Speed = value; }
+        }
+
+        private bool _restrained;
+
         public bool Restrained
         {
             get { return Bombing || Dead || _restrained; }
@@ -72,7 +108,8 @@ namespace Assets.Script
                     if (collidersInArea.All(o => o.gameObject.tag != "Bomb" && o.gameObject.tag != "Wall"))
                     {
                         Bombing = true;
-                        var bombTile = new Vector2(Mathf.RoundToInt(localPosition.x / tileSize), Mathf.RoundToInt(localPosition.y / tileSize));
+                        var bombTile = new Vector2(Mathf.RoundToInt(localPosition.x / tileSize),
+                            Mathf.RoundToInt(localPosition.y / tileSize));
                         var bomb = Instantiate(Bomb, new Vector3(), new Quaternion()) as GameObject;
                         bomb.name = string.Format("Bomb {0}:{1}", bombTile.x, bombTile.y);
                         bomb.transform.parent = Level.transform;
@@ -84,7 +121,7 @@ namespace Assets.Script
                         bombScript.RemoteControl = RemoteControl;
                         PlaceBombSound.Play();
 
-                        if(RemoteControl)
+                        if (RemoteControl)
                             Bombs.Enqueue(bombScript);
                     }
                 }
@@ -124,8 +161,12 @@ namespace Assets.Script
                     vertical = 0;
                 }
 
-                rigidbody2D.velocity = Mathf.Abs(horizontal) > 0 ? new Vector2(Mathf.Sign(horizontal) * Speed, rigidbody2D.velocity.y) : new Vector2(0, rigidbody2D.velocity.y);
-                rigidbody2D.velocity = Mathf.Abs(vertical) > 0 ? new Vector2(rigidbody2D.velocity.x, Mathf.Sign(vertical) * Speed) : new Vector2(rigidbody2D.velocity.x, 0);
+                rigidbody2D.velocity = Mathf.Abs(horizontal) > 0
+                    ? new Vector2(Mathf.Sign(horizontal) * Speed, rigidbody2D.velocity.y)
+                    : new Vector2(0, rigidbody2D.velocity.y);
+                rigidbody2D.velocity = Mathf.Abs(vertical) > 0
+                    ? new Vector2(rigidbody2D.velocity.x, Mathf.Sign(vertical) * Speed)
+                    : new Vector2(rigidbody2D.velocity.x, 0);
 
                 _animator.SetFloat("Horizontal", 0);
                 _animator.SetFloat("Vertical", 0);
@@ -155,13 +196,18 @@ namespace Assets.Script
             }
         }
 
+        private void OnDestroy()
+        {
+            _subscriptions.ForEach(o => o());
+        }
+
         public void Die()
         {
             if (!Dead && !Invincible)
             {
-                Dead = true;                
+                Dead = true;
                 _animator.SetTrigger("Die");
-                DeathSound.Play();                
+                DeathSound.Play();
             }
         }
 
@@ -217,7 +263,7 @@ namespace Assets.Script
                 default:
                     break;
             }
-        }        
+        }
 
         private IEnumerator InvincibleSpree()
         {

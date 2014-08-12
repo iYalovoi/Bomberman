@@ -30,8 +30,15 @@ namespace Assets.Script
 			animationSkin.enemyType = enemyType;
 
 			var enemyStats = _enemiesStats.GetStats(enemyType);
+
+			if(enemyStats.Intelligence == EnemyIntelligence.Low)
+				enemyInstance.AddComponent<Enemy>();
+			else
+				enemyInstance.AddComponent<AverageEnemy>();
+
 			var enemyBehaviour = enemyInstance.GetComponent<Enemy>();
 			enemyBehaviour.MaxSpeed = enemyStats.Speed;
+		    enemyBehaviour.Bounty = enemyStats.Bounty;
 
 			if (enemyStats.IsGhost) 
 				enemyInstance.layer = LayerMask.NameToLayer("Ghost");

@@ -122,7 +122,7 @@ namespace Assets.Script
             switch (level)
             {
                 case 1:
-                    return new LevelDefinition(Powers.Fire, new EnemyCounts() { { EnemyTypes.Balloon, 6 } });
+				return new LevelDefinition(Powers.Fire, new EnemyCounts() { { EnemyTypes.Onil, 6 } });
                 case 2:
                     return new LevelDefinition(Powers.BombUp, new EnemyCounts() { { EnemyTypes.Balloon, 3 }, { EnemyTypes.Onil, 3 } });
                 case 3:

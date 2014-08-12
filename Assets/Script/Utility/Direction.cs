@@ -28,5 +28,25 @@ namespace Assets.Script.Utility
 		    return result;
 		}
 
+		public static Direction FromVector2(Vector2 vector)
+		{
+			Direction result = Direction.Undefined;
+			if (Mathf.Abs (vector.x) > Mathf.Abs (vector.y)) 
+			{
+				if(vector.x < 0)
+					result = Direction.Left;
+				if(vector.x > 0)
+					result = Direction.Right;
+			}
+			else 
+			{
+				if(vector.y < 0)
+					result = Direction.Down;
+				if(vector.y > 0)
+					result = Direction.Up;
+			}
+			return result;
+		}
+
 	}
 }
