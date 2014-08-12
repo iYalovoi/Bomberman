@@ -91,7 +91,9 @@ namespace Assets.Script
 			return newWay;
 		}
 		
-		private void FixedUpdate()
+		private Direction _way; 
+		
+        private void FixedUpdate()
 		{
 			if(!Dead)
 			{
