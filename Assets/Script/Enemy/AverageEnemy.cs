@@ -68,8 +68,8 @@ namespace Assets.Script
 							Debug.DrawLine(enemyPosition, playerPosition, Color.red, 1, false);
 						}
 					}
-					if (newWay == Direction.Undefined) 
-						newWay = base.FindWay();
+					//if (newWay == Direction.Undefined) 
+					//	newWay = base.FindWay();
 					return newWay;
 				}
 		}
