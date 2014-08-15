@@ -46,13 +46,13 @@ namespace Assets.Script
             switch (Selection)
             {
                 case StartSelection.Game:
-                    _textMeshPro.text = @">>>>>>Game\n\tGredits\n\tExit";
+                    _textMeshPro.text = @">>Game\n Gredits\n Exit";
                     break;
                 case StartSelection.Credits:
-                    _textMeshPro.text = @"\tGame\n>>>>>>Gredits\n\tExit";
+                    _textMeshPro.text = @" Game\n>>Gredits\n Exit";
                     break;
                 case StartSelection.Exit:
-                    _textMeshPro.text = @"\tGame\n\tGredits\n>>>>>>Exit";
+                    _textMeshPro.text = @" Game\n Gredits\n>>Exit";
                     break;
             }
         }
