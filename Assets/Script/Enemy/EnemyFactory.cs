@@ -31,14 +31,18 @@ namespace Assets.Script
 
 			var enemyStats = _enemiesStats.GetStats(enemyType);
 
-			if(enemyStats.Intelligence == EnemyIntelligence.Low)
-				enemyInstance.AddComponent<Enemy>();
-			else
-				enemyInstance.AddComponent<AverageEnemy>();
-
-			var enemyBehaviour = enemyInstance.GetComponent<Enemy>();
-			enemyBehaviour.MaxSpeed = enemyStats.Speed;
-		    enemyBehaviour.Bounty = enemyStats.Bounty;
+			var enemy = enemyInstance.GetComponent<Enemy>();
+			enemy.MaxSpeed = enemyStats.Speed;
+			enemy.Bounty = enemyStats.Bounty;
+			switch (enemyType) 
+			{
+				case EnemyTypes.Onil:
+					enemy.Behaviour = new CompositeBehaviour(new ChasingPlayer(2f), new RandomRoaming());
+					break;
+				case EnemyTypes.Minvo:
+					enemy.Behaviour = new CompositeBehaviour(new DodgingBombs(2f), new RandomRoaming());
+					break;
+			}
 
 			if (enemyStats.IsGhost) 
 				enemyInstance.layer = LayerMask.NameToLayer("Ghost");
