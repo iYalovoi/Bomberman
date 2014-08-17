@@ -26,7 +26,6 @@ namespace Assets.Script
         private void OnInjected(Messenger messenger)
         {
             _messenger = messenger;
-			Debug.Log (messenger);
         }
 
         public void Die()

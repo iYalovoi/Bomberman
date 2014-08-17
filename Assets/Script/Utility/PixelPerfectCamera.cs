@@ -2,6 +2,7 @@
 
 namespace Assets.Script
 {
+    [ExecuteInEditMode]
     public class PixelPerfectCamera : MonoBehaviour
     {
         public float PixelsPerUnit;

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Script.Utility;
 using UnityEngine;
 using Assets.Script.Level;
@@ -30,6 +31,8 @@ namespace Assets.Script
 
         private Messenger _messenger;
         private LevelModel _model;
+        private LevelPosition[,] _map;
+        private bool _doorHit;
 
         void Awake()
         {
@@ -51,19 +54,35 @@ namespace Assets.Script
             _model = model;
             _messenger = messenger;                       
             _messenger.Subscribe(Signals.SpawnPontans, SpawnPontans);
+            _messenger.Subscribe(Signals.DoorHit, DoorHitHandler);
+        }
+
+        private void DoorHitHandler()
+        {
+            if(!_doorHit)
+            {
+                _doorHit = true;
+                var door = GameObject.FindGameObjectWithTag("Door");
+                foreach (var monster in CurrentLevelDefinition.EnemyCounts.Keys)
+                {
+                    for(var i = 0; i < CurrentLevelDefinition.EnemyCounts[monster]; i++)
+                        Place(_enemyFactory.Produce(monster), (int)(door.transform.localPosition.x / _tileSize.x), (int)(door.transform.localPosition.y / _tileSize.y));
+                }
+            }
         }
 
         public void ProduceLevel(int level)
         {
+            _doorHit = false;
             LevelObject = new GameObject("Level");
             CurrentLevelDefinition = Build(level);
-            var map = CurrentLevelDefinition.GenerateMap();
+            _map = CurrentLevelDefinition.GenerateMap();
             var blockMap = new Dictionary<BlockTypes, GameObject>() { { BlockTypes.Soft, Soft }, { BlockTypes.Hard, HardBlock }, { BlockTypes.Wall, Wall } };
             for (var i = 0; i < CurrentLevelDefinition.Width; i++)
             {
                 for (var j = 0; j < CurrentLevelDefinition.Height; j++)
                 {
-                    var levelPosition = map[i, j];
+                    var levelPosition = _map[i, j];
                     if (levelPosition.BlockType != BlockTypes.None)
                         Create(blockMap[levelPosition.BlockType], i, j);
                     if (levelPosition.Enemy.HasValue)

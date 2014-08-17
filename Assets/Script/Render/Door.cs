@@ -44,6 +44,7 @@ namespace Assets.Script
 
         public void OnHit(GameObject striker)
         {
+            _messenger.Signal(Signals.DoorHit);
         }
     }
 }
