@@ -58,10 +58,6 @@ Material:
         second: 0
       data:
         first:
-          name: _FaceShininess
-        second: 0
-      data:
-        first:
           name: _UnderlayOffsetX
         second: .675000012
       data:
@@ -220,6 +216,10 @@ Material:
         first:
           name: _GlowInner
         second: .0500000007
+      data:
+        first:
+          name: _FaceShininess
+        second: 0
       data:
         first:
           name: _OutlineShininess

@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_text: Level 0
-  m_fontAsset: {fileID: 11400000, guid: 1644604adebebed459b59bc06bc892d4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1c8f7fde44a3cf64abff9c426dad7f32, type: 2}
   m_fontColor:
     serializedVersion: 2
     rgba: 4294967295
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_sortingLayerID: 0
   m_sortingOrder: 0
   m_fontAssetArray:
-  - {fileID: 11400000, guid: 1644604adebebed459b59bc06bc892d4, type: 2}
+  - {fileID: 11400000, guid: 1c8f7fde44a3cf64abff9c426dad7f32, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -311,7 +311,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 1644604adebebed459b59bc06bc892d4, type: 2}
+  - {fileID: 2100000, guid: 1c8f7fde44a3cf64abff9c426dad7f32, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
