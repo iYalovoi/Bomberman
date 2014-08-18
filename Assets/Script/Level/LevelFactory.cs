@@ -36,7 +36,6 @@ namespace Assets.Script
 
         void Awake()
         {
-            ImmortalBook.Add(this);
         }
 
         protected override void Start()

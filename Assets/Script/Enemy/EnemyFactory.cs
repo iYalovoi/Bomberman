@@ -17,7 +17,6 @@ namespace Assets.Script
 
 		void Awake()
 		{
-		    ImmortalBook.Add(this);
 			_enemiesStats = new EnemiesStats();
 		}
 

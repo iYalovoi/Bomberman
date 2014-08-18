@@ -34,7 +34,7 @@ namespace Assets.Script
         void Update()
         {
             if (Input.GetKeyDown("return"))
-                _messenger.Signal(Signals.LoadNextLevel);
+                _messenger.Signal(Signals.DoorOpened);
             if (Input.GetKeyDown("up"))
                 Selection = Selection > 0 ? Selection - 1 : Selection;
             if (Input.GetKeyDown("down"))

@@ -22,6 +22,8 @@ namespace Assets.Script
             _container.Single<Messenger, Messenger>();
             _container.Single<SceneDispatcher, SceneDispatcher>();
 
+            _container.Register<IDispatcher, UnityDispatcher>(FindObjectOfType<UnityDispatcher>());
+
             _container.Get<SceneDispatcher>();
         }
     }

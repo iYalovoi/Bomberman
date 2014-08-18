@@ -2,6 +2,6 @@
 {
     public class LevelModel
     {
-        public int CurrentLevel = 1;
+        public int CurrentLevel = 0;
     }
 }

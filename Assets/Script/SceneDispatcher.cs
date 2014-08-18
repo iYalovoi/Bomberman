@@ -9,39 +9,39 @@ namespace Assets.Script
     {
         private readonly Messenger _messenger;
         private LevelModel _model;
-        private LevelFactory _levelFactory;
+        private readonly IDispatcher _dispatcher;
 
-        public SceneDispatcher(Messenger messenger, LevelModel model)
+        public SceneDispatcher(Messenger messenger, LevelModel model, IDispatcher dispatcher)
         {
             _model = model;
+            _dispatcher = dispatcher;
 
             _messenger = messenger;
             _messenger.Subscribe(Signals.GameOver, GameOverHandler);
-            _messenger.Subscribe(Signals.DoorOpened, DoorOpenedHandler);
+            _messenger.Subscribe(Signals.DoorOpened, LoadLevelSplash);
             _messenger.Subscribe(Signals.LoadNextLevel, LoadNextLevelHandler);
             _messenger.Subscribe(Signals.RestartLevel, RestartLevelHandler);
-
-            _levelFactory = Object.FindObjectOfType<LevelFactory>();
         }
 
         private void RestartLevelHandler()
         {
-            _levelFactory.StartCoroutine(LoadNextLevelCoroutine(_model.CurrentLevel));
+            _dispatcher.Dispatch(() => LoadNextLevelCoroutine(_model.CurrentLevel));
         }
 
         private void LoadNextLevelHandler()
         {
-            _levelFactory.StartCoroutine(LoadNextLevelCoroutine(_model.CurrentLevel));
+            _dispatcher.Dispatch(() => LoadNextLevelCoroutine(_model.CurrentLevel));
         }
 
         private IEnumerator LoadNextLevelCoroutine(int level)
         {
             Application.LoadLevel("Battle");
             yield return new WaitForSeconds(0);
-            _levelFactory.ProduceLevel(level);
+            var levelFactory = Object.FindObjectOfType<LevelFactory>();
+            levelFactory.ProduceLevel(level);
         }
 
-        private void DoorOpenedHandler()
+        private void LoadLevelSplash()
         {
             _model.CurrentLevel++;
             Application.LoadLevel("LevelSplash");
