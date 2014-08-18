@@ -21,11 +21,17 @@ namespace Assets.Script
             _messenger.Subscribe(Signals.DoorOpened, LoadLevelSplash);
             _messenger.Subscribe(Signals.LoadNextLevel, LoadNextLevelHandler);
             _messenger.Subscribe(Signals.RestartLevel, RestartLevelHandler);
+            _messenger.Subscribe(Signals.RestartGame, RestartGameHandler);
+        }
+
+        private void RestartGameHandler()
+        {
+            Application.LoadLevel("Start");
         }
 
         private void RestartLevelHandler()
         {
-            _dispatcher.Dispatch(() => LoadNextLevelCoroutine(_model.CurrentLevel));
+            Application.LoadLevel("LevelSplash");
         }
 
         private void LoadNextLevelHandler()

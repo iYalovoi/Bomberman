@@ -9,5 +9,6 @@
         public static string LoadNextLevel = "LoadNextLevel";
         public static string EnemyKilled = "EnemyKilled ";
         public static string DoorHit = "DoorHit";
+        public static string RestartGame = "RestartGame";
     }
 }
