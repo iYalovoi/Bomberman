@@ -8,7 +8,9 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: ARIAL SDF Material
   m_Shader: {fileID: 4800000, guid: dca26082f9cb439469295791d9f76fe5, type: 3}
-  m_ShaderKeywords: []
+  m_ShaderKeywords:
+  - UNDERLAY_ON
+  - BEVEL_ON
   m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
@@ -31,14 +33,14 @@ Material:
         first:
           name: _FaceTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 40d7f27f614cc1043a1f7e19074f461c, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _OutlineTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 7bbfb8818476e4641ba3e75f5225eb69, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -52,27 +54,23 @@ Material:
       data:
         first:
           name: _FaceDilate
-        second: .186000004
-      data:
-        first:
-          name: _FaceShininess
-        second: 0
+        second: .207000002
       data:
         first:
           name: _UnderlayOffsetX
-        second: .51700002
+        second: .593999982
       data:
         first:
           name: _UnderlayOffsetY
-        second: -.783999979
+        second: -1
       data:
         first:
           name: _UnderlayDilate
-        second: 0
+        second: 1
       data:
         first:
           name: _UnderlaySoftness
-        second: .0839999989
+        second: 1
       data:
         first:
           name: _WeightNormal
@@ -84,7 +82,7 @@ Material:
       data:
         first:
           name: _OutlineWidth
-        second: .26699999
+        second: .326000005
       data:
         first:
           name: _OutlineSoftness
@@ -116,7 +114,7 @@ Material:
       data:
         first:
           name: _Bevel
-        second: .5
+        second: .349999994
       data:
         first:
           name: _GlowOffset
@@ -132,7 +130,7 @@ Material:
       data:
         first:
           name: _LightAngle
-        second: 3.14159989
+        second: 3.44400001
       data:
         first:
           name: _MaskSoftnessX
@@ -152,7 +150,7 @@ Material:
       data:
         first:
           name: _ShaderFlags
-        second: 0
+        second: 1
       data:
         first:
           name: _ScaleRatioA
@@ -160,27 +158,27 @@ Material:
       data:
         first:
           name: _ScaleRatioB
-        second: .678333342
+        second: .660833359
       data:
         first:
           name: _ScaleRatioC
-        second: .678333342
+        second: .220277786
       data:
         first:
           name: _BevelOffset
-        second: 0
+        second: -.0529999994
       data:
         first:
           name: _BevelWidth
-        second: 0
+        second: -.101999998
       data:
         first:
           name: _BevelClamp
-        second: 0
+        second: .32100001
       data:
         first:
           name: _BevelRoundness
-        second: 0
+        second: .138999999
       data:
         first:
           name: _SpecularPower
@@ -188,15 +186,15 @@ Material:
       data:
         first:
           name: _Reflectivity
-        second: 10
+        second: 5.88199997
       data:
         first:
           name: _Diffuse
-        second: .5
+        second: .340000004
       data:
         first:
           name: _Ambient
-        second: .5
+        second: 0
       data:
         first:
           name: _BumpOutline
@@ -208,7 +206,7 @@ Material:
       data:
         first:
           name: _EnvTiltX
-        second: 0
+        second: .0480000004
       data:
         first:
           name: _EnvTiltY
@@ -217,6 +215,10 @@ Material:
         first:
           name: _GlowInner
         second: .0500000007
+      data:
+        first:
+          name: _FaceShininess
+        second: 0
       data:
         first:
           name: _OutlineShininess
@@ -233,7 +235,7 @@ Material:
       data:
         first:
           name: _OutlineColor
-        second: {r: 0, g: 0, b: 0, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _GlowColor
@@ -245,7 +247,7 @@ Material:
       data:
         first:
           name: _UnderlayColor
-        second: {r: 0, g: 0, b: 0, a: .701960802}
+        second: {r: 0, g: 0, b: 0, a: .517647088}
       data:
         first:
           name: _SpecularColor

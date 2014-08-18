@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Assets.Script.Level;
 using Assets.Script.Utility;
+using TMPro;
 using UnityEngine;
 
 namespace Assets.Script
@@ -10,12 +11,11 @@ namespace Assets.Script
         private GUIStyle _textStyle;
         private LevelModel _model;
         private Messenger _messenger;
+        private TextMeshPro _textMeshPro;
 
         protected override void Start()
         {
-            base.Start();
-            _textStyle = new GUIStyle { fontSize = 96 };
-
+            base.Start();            
             StartCoroutine(WaitAndLoadNewLevel());
         }
 
@@ -29,15 +29,13 @@ namespace Assets.Script
         {
             _model = model;
             _messenger = messenger;
+
+            _textMeshPro = GetComponent<TextMeshPro>();
+            _textMeshPro.text = string.Format("Level {0}", _model.CurrentLevel);
         }
 
         void Update()
         {
-        }
-
-        void OnGUI()
-        {
-            GUI.Label(new Rect(Screen.height / 4, Screen.height / 4, Screen.width / 2, Screen.height / 2), string.Format("Level {0}", _model.CurrentLevel), _textStyle);
         }
     }
 }
