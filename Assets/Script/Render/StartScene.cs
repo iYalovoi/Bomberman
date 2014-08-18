@@ -34,7 +34,20 @@ namespace Assets.Script
         void Update()
         {
             if (Input.GetKeyDown("return"))
-                _messenger.Signal(Signals.DoorOpened);
+            {
+                switch (Selection)
+                {
+                    case StartSelection.Game:
+                        _messenger.Signal(Signals.DoorOpened);
+                        break;
+                    case StartSelection.Credits:
+                        _messenger.Signal(Signals.Credits);
+                        break;
+                    case StartSelection.Exit:
+                        Application.Quit();
+                        break;
+                }
+            }
             if (Input.GetKeyDown("up"))
                 Selection = Selection > 0 ? Selection - 1 : Selection;
             if (Input.GetKeyDown("down"))

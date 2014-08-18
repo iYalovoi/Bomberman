@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Script.Utility;
 using UnityEngine;
 using Assets.Script.Level;
 using EnemyCounts = System.Collections.Generic.Dictionary<Assets.Script.Level.EnemyTypes, uint>;
+using Random = UnityEngine.Random;
 
 namespace Assets.Script
 {
@@ -33,6 +35,7 @@ namespace Assets.Script
         private LevelModel _model;
         private LevelPosition[,] _map;
         private bool _doorHit;
+        private readonly List<Action> _subscribtions = new List<Action>();
 
         void Awake()
         {
@@ -51,9 +54,9 @@ namespace Assets.Script
         private void OnInjected(Messenger messenger, LevelModel model)
         {
             _model = model;
-            _messenger = messenger;                       
-            _messenger.Subscribe(Signals.SpawnPontans, SpawnPontans);
-            _messenger.Subscribe(Signals.DoorHit, DoorHitHandler);
+            _messenger = messenger;
+            _subscribtions.Add(_messenger.Subscribe(Signals.SpawnPontans, SpawnPontans));
+            _subscribtions.Add(_messenger.Subscribe(Signals.DoorHit, DoorHitHandler));
         }
 
         private void DoorHitHandler()
@@ -331,6 +334,11 @@ namespace Assets.Script
 							{EnemyTypes.Ovape, 2}, {EnemyTypes.Pass, 5},{EnemyTypes.Pontan, 2}});
             }
             return null;
+        }
+
+        private void OnDestroy()
+        {
+            _subscribtions.ForEach(o => o());
         }
 
     }

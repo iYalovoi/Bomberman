@@ -263,8 +263,6 @@ GameObject:
   - 114: {fileID: 441913881}
   - 81: {fileID: 441913880}
   - 82: {fileID: 441913879}
-  - 114: {fileID: 441913878}
-  - 114: {fileID: 441913877}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -272,36 +270,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &441913877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 441913876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5625a85c41803974a9aa2ab5e6f30b3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PixelsPerUnit: 100
---- !u!114 &441913878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 441913876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc76aa533be6b7b408fe3370570b3aeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  XMargin: 4
-  YMargin: 4
-  XSmooth: .300000012
-  YSmooth: .300000012
-  MaxXAndY: {x: 0, y: 0}
-  MinXAndY: {x: 0, y: 0}
-  TrackingObject: {fileID: 0}
 --- !u!82 &441913879
 AudioSource:
   m_ObjectHideFlags: 0

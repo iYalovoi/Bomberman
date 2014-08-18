@@ -10,5 +10,6 @@
         public static string EnemyKilled = "EnemyKilled ";
         public static string DoorHit = "DoorHit";
         public static string RestartGame = "RestartGame";
+        public static string Credits = "Credits";
     }
 }
