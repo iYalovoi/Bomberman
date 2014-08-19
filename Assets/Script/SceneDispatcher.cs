@@ -22,6 +22,12 @@ namespace Assets.Script
             _messenger.Subscribe(Signals.LoadNextLevel, LoadNextLevelHandler);
             _messenger.Subscribe(Signals.RestartLevel, RestartLevelHandler);
             _messenger.Subscribe(Signals.RestartGame, RestartGameHandler);
+            _messenger.Subscribe(Signals.Credits, CreditsHandler);
+        }
+
+        private void CreditsHandler()
+        {
+            Application.LoadLevel("Credits");
         }
 
         private void RestartGameHandler()
@@ -49,8 +55,12 @@ namespace Assets.Script
 
         private void LoadLevelSplash()
         {
-            _model.CurrentLevel++;
-            Application.LoadLevel("LevelSplash");
+            if(_model.CurrentLevel < _model.LevelCap)
+            {
+                _model.CurrentLevel++;
+                Application.LoadLevel("LevelSplash");
+            }
+            else Application.LoadLevel("Fin");
         }
 
         private void GameOverHandler()

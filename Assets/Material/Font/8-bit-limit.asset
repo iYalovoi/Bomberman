@@ -257,7 +257,7 @@ Material:
       data:
         first:
           name: _SpecularColor
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: .925490201, g: .776470602, b: .427450985, a: 1}
       data:
         first:
           name: _ReflectColor
