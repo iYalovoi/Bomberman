@@ -13,6 +13,8 @@ namespace Assets.Script
         public float Speed = Constants.BasePlayerSpeed;
         public int Lifes = 2;
         public int Score;
+        public bool WallPass;
+        public bool BombPass;
 
         public void Godlike()
         {
@@ -22,6 +24,8 @@ namespace Assets.Script
             Invincible = true;
             RemoteControl = true;
             Speed = 5f;
+            WallPass = true;
+            BombPass = true;
         }
 
         public void Reset()

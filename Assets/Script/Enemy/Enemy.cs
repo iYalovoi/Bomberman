@@ -50,7 +50,6 @@ namespace Assets.Script
 
 		private Direction _way;
 
-
         private void FixedUpdate()
 		{
 			if(!Dead)

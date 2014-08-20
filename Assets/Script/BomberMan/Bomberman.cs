@@ -10,15 +10,15 @@ namespace Assets.Script
     public class Bomberman : ContainerBase, ITarget
     {
         private Animator _animator;
-        private List<Action> _subscriptions = new List<Action>();
+        private readonly List<Action> _subscriptions = new List<Action>();
 
         // Use this for initialization
         protected override void Start()
         {
             base.Start();
             _animator = GetComponent<Animator>();
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Bomb"), LayerMask.NameToLayer("Player"), false);
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Soft"), LayerMask.NameToLayer("Player"), false);
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Bomb"), LayerMask.NameToLayer("Player"), BombPass);
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Soft"), LayerMask.NameToLayer("Player"), WallPass);
         }
 
         private void OnInjected(BombermanModel model, Messenger messenger)
@@ -54,39 +54,43 @@ namespace Assets.Script
             get { return _model.BombCount; }
             set { _model.BombCount = value; }
         }
-
         public int Radius
         {
             get { return _model.Radius; }
             set { _model.Radius = value; }
         }
-
         public bool FlamePass
         {
             get { return _model.FlamePass; }
             set { _model.FlamePass = value; }
         }
-
         public bool Invincible
         {
             get { return _model.Invincible; }
             set { _model.Invincible = value; }
         }
-
         public bool RemoteControl
         {
             get { return _model.RemoteControl; }
             set { _model.RemoteControl = value; }
         }
-
         public float Speed
         {
             get { return _model.Speed; }
             set { _model.Speed = value; }
         }
+        public bool WallPass
+        {
+            get { return _model.WallPass; }
+            set { _model.WallPass = value; }
+        }
+        public bool BombPass
+        {
+            get { return _model.BombPass; }
+            set { _model.BombPass = value; }
+        }
 
         private bool _restrained;
-
         public bool Restrained
         {
             get { return Bombing || Dead || _restrained; }
@@ -242,6 +246,7 @@ namespace Assets.Script
                     ++Radius;
                     break;
                 case Powers.BombPass:
+                    BombPass = true;
                     Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Bomb"), LayerMask.NameToLayer("Player"), true);
                     break;
                 case Powers.FlamePass:
@@ -252,6 +257,7 @@ namespace Assets.Script
                     StartCoroutine(InvincibleSpree());
                     break;
                 case Powers.WallPass:
+                    WallPass = true;
                     Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Soft"), LayerMask.NameToLayer("Player"), true);
                     break;
                 case Powers.Speed:

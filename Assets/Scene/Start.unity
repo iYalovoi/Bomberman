@@ -168,9 +168,9 @@ MonoBehaviour:
   m_wordWrappingRatios: .400000006
   m_horizontalMapping: 0
   m_verticalMapping: 0
-  isAffectingWordWrapping: 1
+  isAffectingWordWrapping: 0
   isInputParsingRequired: 0
-  havePropertiesChanged: 1
+  havePropertiesChanged: 0
   hasFontAssetChanged: 0
   m_isRichText: 1
   m_inputSource: 0
@@ -291,9 +291,9 @@ MonoBehaviour:
   m_wordWrappingRatios: .400000006
   m_horizontalMapping: 0
   m_verticalMapping: 0
-  isAffectingWordWrapping: 1
+  isAffectingWordWrapping: 0
   isInputParsingRequired: 0
-  havePropertiesChanged: 1
+  havePropertiesChanged: 0
   hasFontAssetChanged: 0
   m_isRichText: 1
   m_inputSource: 0
