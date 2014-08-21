@@ -127,6 +127,8 @@ namespace Assets.Script
 
                         if (RemoteControl)
                             Bombs.Enqueue(bombScript);
+
+                        GA.API.Design.NewEvent("Bombed");
                     }
                 }
                 Bombs = new Queue<Bomb>(Bombs.Where(o => o != null));
@@ -212,6 +214,7 @@ namespace Assets.Script
                 Dead = true;
                 _animator.SetTrigger("Die");
                 DeathSound.Play();
+                GA.API.Design.NewEvent("Dead"); 
             }
         }
 
@@ -237,6 +240,7 @@ namespace Assets.Script
 
         public void AcceptPower(Powers power)
         {
+            GA.API.Design.NewEvent("PowerUp", (float) power); 
             switch (power)
             {
                 case Powers.BombUp:

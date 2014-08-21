@@ -11,13 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0c0342116464e26abb476a494c827a, type: 3}
   m_Name: GA_Settings
   m_EditorClassIdentifier: 
-  TotalMessagesSubmitted: 0
+  TotalMessagesSubmitted: 326
   TotalMessagesFailed: 0
-  DesignMessagesSubmitted: 0
+  DesignMessagesSubmitted: 311
   DesignMessagesFailed: 0
   QualityMessagesSubmitted: 0
   QualityMessagesFailed: 0
-  ErrorMessagesSubmitted: 0
+  ErrorMessagesSubmitted: 15
   ErrorMessagesFailed: 0
   BusinessMessagesSubmitted: 0
   BusinessMessagesFailed: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   HeatmapGridSize: {x: 1, y: 1, z: 1}
   CustomUserID: 0
   SubmitInterval: 10
-  InternetConnectivity: 0
+  InternetConnectivity: 1
   Start_AlwaysShowAds: 1
   Start_TimePlayed: 0
   Start_Sessions: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
   CB_foldout: 1
   CB_appID: 
   CB_appSig: 
-  CurrentInspectorState: 1
+  CurrentInspectorState: 2
   ClosedHints: 
   DisplayHints: 0
   DisplayHintsScrollState: {x: 0, y: 0}

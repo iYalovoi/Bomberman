@@ -33,6 +33,7 @@ namespace Assets.Script
 			var enemy = enemyInstance.GetComponent<Enemy>();
 			enemy.MaxSpeed = enemyStats.Speed;
 			enemy.Bounty = enemyStats.Bounty;
+		    enemy.Type = enemyType;
 			switch (enemyType) 
 			{
 				case EnemyTypes.Onil:

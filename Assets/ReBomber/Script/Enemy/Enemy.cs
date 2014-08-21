@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Script.Level;
 using UnityEngine;
 using Assets.Script.Utility;
 
@@ -11,6 +12,7 @@ namespace Assets.Script
 		public bool Dead = false;
         public int Bounty;
 		public IEnemyBehaviour Behaviour = new RandomRoaming();
+        public EnemyTypes Type;
 
         protected Animator Animator;
 
@@ -35,6 +37,7 @@ namespace Assets.Script
                 Dead = true;
                 Animator.SetTrigger("Die");
                 _messenger.Signal(Bounty);
+                GA.API.Design.NewEvent("Monster", (float) Type);
             }
         }
 
@@ -48,7 +51,7 @@ namespace Assets.Script
             Destroy(gameObject);
         }
 
-		private Direction _way;
+		private Direction _way;        
 
         private void FixedUpdate()
 		{
@@ -68,8 +71,7 @@ namespace Assets.Script
 				//Physics is a bitch : Igor
 				rigidbody2D.velocity = MaxSpeed * _way.ToVector2();
 			}
-			else 
-				rigidbody2D.velocity = new Vector2();
+			else rigidbody2D.velocity = new Vector2();
 		}
 
     }
