@@ -6,14 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scene/Start.unity
+    path: Assets/ReBomber/Scene/Start.unity
   - enabled: 1
-    path: Assets/Scene/GameOver.unity
+    path: Assets/ReBomber/Scene/GameOver.unity
   - enabled: 1
-    path: Assets/Scene/LevelSplash.unity
+    path: Assets/ReBomber/Scene/LevelSplash.unity
   - enabled: 1
-    path: Assets/Scene/Battle.unity
+    path: Assets/ReBomber/Scene/Battle.unity
   - enabled: 1
-    path: Assets/Scene/Fin.unity
+    path: Assets/ReBomber/Scene/Fin.unity
   - enabled: 1
-    path: Assets/Scene/Credits.unity
+    path: Assets/ReBomber/Scene/Credits.unity
