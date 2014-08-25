@@ -114,7 +114,7 @@ MonoBehaviour:
   SubmitFpsCritical: 1
   FpsCriticalThreshold: 20
   FpsCirticalSubmitInterval: 1
-  GuiEnabled: 1
+  GuiEnabled: 0
   GuiAllowScreenshot: 0
   ErrorFoldOut: 1
 --- !u!114 &313687043

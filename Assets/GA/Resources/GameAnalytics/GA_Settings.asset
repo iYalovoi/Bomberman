@@ -11,13 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0c0342116464e26abb476a494c827a, type: 3}
   m_Name: GA_Settings
   m_EditorClassIdentifier: 
-  TotalMessagesSubmitted: 326
+  TotalMessagesSubmitted: 332
   TotalMessagesFailed: 0
-  DesignMessagesSubmitted: 311
+  DesignMessagesSubmitted: 312
   DesignMessagesFailed: 0
   QualityMessagesSubmitted: 0
   QualityMessagesFailed: 0
-  ErrorMessagesSubmitted: 15
+  ErrorMessagesSubmitted: 20
   ErrorMessagesFailed: 0
   BusinessMessagesSubmitted: 0
   BusinessMessagesFailed: 0
@@ -38,7 +38,7 @@ MonoBehaviour:
   EmailOptIn: 0
   EmailGA: igor@yalovoi.net
   IntroScreen: 0
-  DebugMode: 1
+  DebugMode: 0
   DebugAddEvent: 0
   SendExampleGameDataToMyGame: 0
   RunInEditorPlayMode: 1
