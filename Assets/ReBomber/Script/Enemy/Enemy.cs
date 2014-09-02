@@ -8,7 +8,7 @@ namespace Assets.Script
 {
     public class Enemy : ContainerBase, ITarget
     {
-        public float MaxSpeed = Constants.SlowSpeed;
+        public float MaxSpeed = Constants.LowSpeed;
 		public bool Dead = false;
         public int Bounty;
 		public IEnemyBehaviour Behaviour = new RandomRoaming();

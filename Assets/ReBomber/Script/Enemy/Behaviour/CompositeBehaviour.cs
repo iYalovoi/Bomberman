@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Assets.Script.Utility;
 using UnityEngine;
 
@@ -8,15 +9,21 @@ namespace Assets.Script
 	{
 		public CompositeBehaviour(params IEnemyBehaviour[] behaviours)
 		{
-			_behaviours = behaviours;
+			_behaviours = new List<IEnemyBehaviour>(behaviours);
 		}
 
-		private IEnemyBehaviour[] _behaviours;
+		public void Append(IEnemyBehaviour behaviour)
+		{
+			_behaviours.Add(behaviour);
+		}
+
+
+		private List<IEnemyBehaviour> _behaviours;
 
 		public Direction FindWay(GameObject gameObject)
 		{
 			Direction result = Direction.Undefined;
-			for (var i =0; i < (_behaviours.Length) && (result == Direction.Undefined); i++) 
+			for (var i = 0; i < (_behaviours.Count) && (result == Direction.Undefined); i++) 
 			{
 				result = _behaviours[i].FindWay(gameObject);
 			}

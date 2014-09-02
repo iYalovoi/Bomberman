@@ -34,15 +34,14 @@ namespace Assets.Script
 			enemy.MaxSpeed = enemyStats.Speed;
 			enemy.Bounty = enemyStats.Bounty;
 		    enemy.Type = enemyType;
-			switch (enemyType) 
-			{
-				case EnemyTypes.Onil:
-					enemy.Behaviour = new CompositeBehaviour(new ChasingPlayer(2f), new RandomRoaming());
-					break;
-				case EnemyTypes.Minvo:
-					enemy.Behaviour = new CompositeBehaviour(new DodgingBombs(2f), new RandomRoaming());
-					break;
-			}
+
+			var behaviour = new CompositeBehaviour();
+			if (enemyStats.PlayerVisionRange > 0.0f) 
+				behaviour.Append(new ChasingPlayer(enemyStats.PlayerVisionRange));
+			if (enemyStats.BombVisionRange > 0.0f) 
+				behaviour.Append(new DodgingBombs(enemyStats.BombVisionRange));
+			behaviour.Append(new RandomRoaming(enemyStats.Uncertainty));
+			enemy.Behaviour = behaviour;
 
 			if (enemyStats.IsGhost) 
 				enemyInstance.layer = LayerMask.NameToLayer("Ghost");

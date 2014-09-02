@@ -7,8 +7,11 @@ namespace Assets.Script
 {
 		public class RandomRoaming:IEnemyBehaviour
 		{
-				public RandomRoaming ()
+				float turnProbability;
+
+				public RandomRoaming(float turnProbability = 0.1f)
 				{
+					this.turnProbability = turnProbability;
 				}
 
 				protected float GetTileSize(GameObject gameObject)
@@ -24,6 +27,9 @@ namespace Assets.Script
 					return new Vector2 (tileSize * Mathf.Round (position.x / tileSize), tileSize * Mathf.Round (position.y / tileSize));
 				}
 
+				/*
+				 * Should bounce of the bombs and walls into opposite direction and also randomly change direction
+				 */
 				public Direction FindWay(GameObject gameObject)
 				{
 					var tileSize = GetTileSize(gameObject);
@@ -34,8 +40,8 @@ namespace Assets.Script
 					//current position is close to the bottom left corner of the tile?
 					if ((Mathf.Abs(localPosition.x - currentTilePosition.x) < eps) && (Mathf.Abs(localPosition.y - currentTilePosition.y) < eps) )
 					{
-						//Change direction with 10% probability
-						if(Random.value > 0.9)
+						//Change direction with probability
+						if(Random.value > (1f - turnProbability))
 						{
 							var randomWay = (Direction)Mathf.Pow(2, Random.Range(0, 4));
 							//Do we really need to do these checks?
