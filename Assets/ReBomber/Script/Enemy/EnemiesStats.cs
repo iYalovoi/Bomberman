@@ -43,7 +43,6 @@ namespace Assets.Script.Level
 			Bounty  = bounty;
 			Speed = speed;
 			IsGhost = isGhost;
-			VisionRange = visionRange;
 		}
 		
 		//This has to be some engine independent value
