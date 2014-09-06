@@ -61,10 +61,6 @@ namespace Assets.Script
 				//Only if we change direction
 				if(newWay != Direction.Undefined && newWay != _way)
 				{
-					if(_way == Direction.Left)
-						Animator.SetFloat("Direction", 1);
-					if(_way == Direction.Right)
-						Animator.SetFloat("Direction", -1);
 					_way = newWay;
 				}
 				//Velocity needs to be updated each frame, Who changes it? : Aleksey
