@@ -1,29 +1,24 @@
 fileFormatVersion: 2
-guid: 5b60f22a9707efe4e9dc058f27f6310f
+guid: 5d4202abe33ad49019f7f75a10ac86df
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Bomb_0
-    21300002: Bomb_1
-    21300004: Bomb_2
-    21300006: Bomb_3
-    21300008: Bomb_4
-    21300010: Bomb_5
-    21300012: Bomb_6
-    21300014: Bomb_7
-    21300016: Bomb_8
-    21300018: Bomb_9
-    21300020: Bomb_10
-    21300022: Bomb_11
-    21300024: Bomb_12
-    21300026: Bomb_13
-    21300028: Bomb_14
-    21300030: Bomb_15
-    21300032: Bomb_16
-    21300034: Bomb_17
-    21300036: Bomb_18
-    21300038: Bomb_19
-    21300040: Bomb_20
-    21300042: Bomb_21
+    21300000: Blocks_0
+    21300002: Blocks_1
+    21300004: Blocks_2
+    21300006: Blocks_3
+    21300008: Blocks_4
+    21300010: Blocks_5
+    21300012: Blocks_6
+    21300014: Blocks_7
+    21300016: Blocks_8
+    21300018: Blocks_9
+    21300020: Blocks_10
+    21300022: Blocks_11
+    21300024: Blocks_12
+    21300026: Blocks_13
+    21300028: Blocks_14
+    21300030: Blocks_15
+    21300032: Blocks_16
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -62,74 +57,10 @@ TextureImporter:
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
-  buildTargetSettings:
-  - buildTarget: iPhone
-    maxTextureSize: 1024
-    textureFormat: -2
-    compressionQuality: 50
+  buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Bomb_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 200
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_1
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 200
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_2
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 200
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_3
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 200
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_4
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 200
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_5
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 200
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_6
+    - name: Blocks_0
       rect:
         serializedVersion: 2
         x: 0
@@ -139,7 +70,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_7
+    - name: Blocks_1
       rect:
         serializedVersion: 2
         x: 40
@@ -149,7 +80,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_8
+    - name: Blocks_2
       rect:
         serializedVersion: 2
         x: 80
@@ -159,7 +90,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_9
+    - name: Blocks_3
       rect:
         serializedVersion: 2
         x: 120
@@ -169,27 +100,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_10
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 160
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_11
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 160
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_12
+    - name: Blocks_4
       rect:
         serializedVersion: 2
         x: 0
@@ -199,7 +110,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_13
+    - name: Blocks_5
       rect:
         serializedVersion: 2
         x: 40
@@ -209,7 +120,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_14
+    - name: Blocks_6
       rect:
         serializedVersion: 2
         x: 80
@@ -219,37 +130,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_15
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 120
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_16
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 120
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_17
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 120
-        width: 40
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_18
+    - name: Blocks_7
       rect:
         serializedVersion: 2
         x: 0
@@ -259,7 +140,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_19
+    - name: Blocks_8
       rect:
         serializedVersion: 2
         x: 40
@@ -269,7 +150,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_20
+    - name: Blocks_9
       rect:
         serializedVersion: 2
         x: 80
@@ -279,11 +160,71 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_21
+    - name: Blocks_10
       rect:
         serializedVersion: 2
         x: 120
         y: 80
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blocks_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blocks_12
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blocks_13
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blocks_14
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blocks_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blocks_16
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 0
         width: 40
         height: 40
       alignment: 0

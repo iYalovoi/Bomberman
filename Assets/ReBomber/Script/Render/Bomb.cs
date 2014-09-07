@@ -59,13 +59,15 @@ namespace Assets.Script
                 var bombTile = new Vector2(localPosition.x / tileSize, localPosition.y / tileSize);
 
                 var position = transform.position;
+				animator.SetTrigger("Explode");
+
+				yield return null;                    
 
                 BlastInDirection(position, tileSize, bombTile, Direction.Left, Radius);
                 BlastInDirection(position, tileSize, bombTile, Direction.Up, Radius);
                 BlastInDirection(position, tileSize, bombTile, Direction.Right, Radius);
                 BlastInDirection(position, tileSize, bombTile, Direction.Down, Radius);
                 
-                animator.SetTrigger("Explode");
                 _explosionSound.Play();
             }
         }
@@ -105,6 +107,7 @@ namespace Assets.Script
                 var yTile = bombTileY + (isVertical ? (1 + i) * (!isUp ? -1 : 1) : 0);
                 var blast = Instantiate((i < (newRadius -1)) ? Blast : BlastEnd, new Vector3(), new Quaternion(0, 0, 0, 0)) as GameObject;
                 blast.transform.parent = Level.transform;
+				blast.transform.Rotate(0,0,180);
                 blast.transform.localPosition = new Vector3(xTile * tileSize, yTile * tileSize);
                 if (isVertical)
                     blast.transform.Rotate(0, 0, !isUp ? -90 : 90);
