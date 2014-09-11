@@ -35,7 +35,7 @@ namespace Assets.Script
 					var tileSize = GetTileSize(gameObject);
 					var localPosition = gameObject.transform.localPosition;
 					var currentTilePosition = GetTilePosition(gameObject, localPosition);
-					const float eps = 0.1f;
+					const float eps = 0.05f;
 					var newWay = Direction.Undefined;			
 					//current position is close to the bottom left corner of the tile?
 					if ((Mathf.Abs(localPosition.x - currentTilePosition.x) < eps) && (Mathf.Abs(localPosition.y - currentTilePosition.y) < eps) )

@@ -249,6 +249,7 @@ Animator:
   m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -260,7 +261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b60b20d956ed9d041a0921347637b8a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
   Bomb: {fileID: 100000, guid: 863f49200aae84c4ca3298789cee1436, type: 2}
   Level: {fileID: 0}
   Bombing: 0
