@@ -1,29 +1,25 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ReBomber/Script/Level/LevelDefinition.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ReBomber/Script/Enemy/Enemy.cs">
     <Files>
-      <File FileName="../Ace.Server/Ace.Render/Assets/Ace.Render/Script/VisualRender.cs" Line="39" Column="39" />
-      <File FileName="Assets/ReBomber/Script/Enemy/Enemy.cs" Line="31" Column="31" />
-      <File FileName="Assets/ReBomber/Script/Enemy/Behaviour/IEnemyBehaviour.cs" Line="18" Column="18" />
-      <File FileName="Assets/ReBomber/Script/Enemy/Behaviour/CompositeBehaviour.cs" Line="20" Column="20" />
-      <File FileName="Assets/ReBomber/Script/Enemy/Behaviour/RandomRoaming.cs" Line="28" Column="28" />
-      <File FileName="Assets/ReBomber/Script/Level/LevelFactory.cs" Line="8" Column="8" />
-      <File FileName="Assets/ReBomber/Script/Level/LevelDefinition.cs" Line="7" Column="7" />
+      <File FileName="Assets/ReBomber/Script/Enemy/Pattern/IEnemyPattern.cs" Line="21" Column="21" />
+      <File FileName="Assets/ReBomber/Script/Enemy/Enemy.cs" Line="44" Column="44" />
+      <File FileName="Assets/ReBomber/Script/Enemy/Pattern/CompositePattern.cs" Line="9" Column="9" />
+      <File FileName="Assets/ReBomber/Script/Enemy/EnemyFactory.cs" Line="79" Column="79" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True">
+        <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="ReBomber" expanded="True">
               <Node name="Script" expanded="True">
                 <Node name="Enemy" expanded="True">
-                  <Node name="Behaviour" expanded="True" />
+                  <Node name="Pattern" expanded="True" />
+                  <Node name="Enemy.cs" selected="True" />
                 </Node>
-                <Node name="Level" expanded="True" />
               </Node>
             </Node>
           </Node>
-          <Node name="Assembly-CSharp-Editor" expanded="True" />
         </State>
       </Pad>
     </Pads>

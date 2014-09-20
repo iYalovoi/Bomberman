@@ -22,5 +22,18 @@ namespace Assets.Script.Utility
             Debug.DrawLine(launch, hit, Color.green, 1, false);
             return hits;
         }
+
+        public static float GetTileSize(GameObject gameObject)
+        {
+            return gameObject.renderer.bounds.size.x;
+        }
+
+        public static Vector2 GetTilePosition(GameObject gameObject, Vector3 position)
+        {
+            //Kind of weird way to determine tile size? : Aleksey
+            //Yes, Indeed : Igor
+            var tileSize = GetTileSize(gameObject);
+            return new Vector2(tileSize * Mathf.Round(position.x / tileSize), tileSize * Mathf.Round(position.y / tileSize));
+        }
     }
 }
