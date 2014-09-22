@@ -8,10 +8,14 @@ namespace Assets.Script
     public class BattleHUD : ContainerBase
     {
         private LevelFactory _levelFactory;
-        private GUIStyle _textStyle;
+        private GUIStyle _textStyleRed;
+        private GUIStyle _textStyleGreen;
         private int _timeLeft;
         private BombermanModel _model;
         private Messenger _messenger;
+
+        public Font UIFont;
+        public Texture _frame;
 
         void Awake()
         {
@@ -29,7 +33,15 @@ namespace Assets.Script
 
             //DI Unity way; Shitty way; Igor.
             _levelFactory = FindObjectOfType<LevelFactory>();
-            _textStyle = new GUIStyle { fontSize = 40 };            
+            _textStyleRed = new GUIStyle { fontSize = 20 };
+            _textStyleRed.normal.textColor = Color.red;
+            _textStyleRed.font = UIFont;
+            _textStyleRed.alignment = TextAnchor.MiddleCenter;
+
+            _textStyleGreen = new GUIStyle { fontSize = 20 };
+            _textStyleGreen.normal.textColor = Color.green;
+            _textStyleGreen.font = UIFont;
+            _textStyleGreen.alignment = TextAnchor.MiddleCenter;
 
             StartCoroutine(CountDown());
         }
@@ -42,7 +54,7 @@ namespace Assets.Script
             {
                 _timeLeft--;
                 yield return new WaitForSeconds(1);
-                if(_timeLeft == 0)
+                if (_timeLeft == 0)
                     _messenger.Signal(Signals.SpawnPontans);
             }
         }
@@ -53,9 +65,10 @@ namespace Assets.Script
 
         void OnGUI()
         {
-            GUI.Label(new Rect(20, 20, 100, 40), _timeLeft > 0 ? _timeLeft.ToString(CultureInfo.InvariantCulture) : "Run!", _textStyle);
-            GUI.Label(new Rect(140, 20, 100, 40), _model.Lifes.ToString(CultureInfo.InvariantCulture), _textStyle);
-            GUI.Label(new Rect(340, 20, 100, 40), _model.Score.ToString(CultureInfo.InvariantCulture), _textStyle);
+            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), _frame);
+            GUI.Label(new Rect(187, 43, 100, 20), _timeLeft > 0 ? _timeLeft.ToString(CultureInfo.InvariantCulture) : "Run!", _textStyleRed);
+            GUI.Label(new Rect(52, 43, 100, 20), _model.Lifes.ToString(CultureInfo.InvariantCulture), _textStyleGreen);
+            GUI.Label(new Rect(858, 43, 87, 20), _model.Score.ToString(CultureInfo.InvariantCulture), _textStyleGreen);
         }
     }
 }

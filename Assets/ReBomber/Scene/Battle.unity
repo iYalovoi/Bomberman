@@ -153,6 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ee2c046c65fe84f97e233a011d3299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIFont: {fileID: 12800000, guid: fa4b7ff31005d465cb28bb864760ec58, type: 3}
+  _frame: {fileID: 2800000, guid: 3c3de3c3b54d94f499f69809580b7516, type: 3}
 --- !u!1 &951497790
 GameObject:
   m_ObjectHideFlags: 0
