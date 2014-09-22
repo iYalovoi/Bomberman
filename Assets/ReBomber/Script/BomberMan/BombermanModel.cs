@@ -37,5 +37,11 @@ namespace Assets.Script
             RemoteControl = false;
             Speed = Constants.BasePlayerSpeed;
         }
+
+        public void Reload()
+        {
+            Lifes = 2;
+            Score = 0;
+        }
     }
 }

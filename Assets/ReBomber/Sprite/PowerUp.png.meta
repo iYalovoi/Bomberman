@@ -1,6 +1,15 @@
 fileFormatVersion: 2
 guid: a06c1373d9c422140bac1b1cd507a9cc
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: PowerUp_0
+    21300002: PowerUp_1
+    21300004: PowerUp_2
+    21300006: PowerUp_3
+    21300008: PowerUp_4
+    21300010: PowerUp_5
+    21300012: PowerUp_6
+    21300014: PowerUp_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

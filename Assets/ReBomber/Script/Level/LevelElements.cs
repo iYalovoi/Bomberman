@@ -1,13 +1,14 @@
 using System;
-namespace Assets.Script.Level
+
+namespace Assets.Script
 {
-		public enum LevelElements
-		{
-			Empty,
-			HardBlock, 
-			SoftBlock, 
-			Player,
-			Enemy
-		}
+    public enum LevelElements
+    {
+        Empty,
+        HardBlock,
+        SoftBlock,
+        Player,
+        Enemy
+    }
 }
 

@@ -1,13 +1,13 @@
 using System;
 
-namespace Assets.Script.Level
+namespace Assets.Script
 {
-		public enum BlockTypes
-		{
-			None,
-			Soft,
-			Hard,
-			Wall
-		}
+    public enum BlockTypes
+    {
+        None,
+        Soft,
+        Hard,
+        Wall
+    }
 }
 

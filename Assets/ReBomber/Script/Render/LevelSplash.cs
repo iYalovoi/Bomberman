@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Assets.Script.Level;
 using Assets.Script.Utility;
 using TMPro;
 using UnityEngine;
@@ -22,7 +21,7 @@ namespace Assets.Script
         private IEnumerator WaitAndLoadNewLevel()
         {
             yield return new WaitForSeconds(3);
-            _messenger.Signal(Signals.LoadNextLevel);            
+            _messenger.Signal(Signals.LoadNextLevel);
         }
 
         private void OnInjected(Messenger messenger, LevelModel model)

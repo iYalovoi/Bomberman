@@ -1,5 +1,4 @@
-﻿using Assets.Script.Level;
-using Assets.Script.Utility;
+﻿using Assets.Script.Utility;
 using UnityEngine;
 
 namespace Assets.Script

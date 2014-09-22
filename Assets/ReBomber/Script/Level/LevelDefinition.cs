@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using EnemyCounts = System.Collections.Generic.Dictionary<Assets.Script.Level.EnemyTypes, uint>;
+using EnemyCounts = System.Collections.Generic.Dictionary<Assets.Script.EnemyTypes, uint>;
 
-namespace Assets.Script.Level
+namespace Assets.Script
 {
 	
     //ToDo - Add validation of data(ie softblock count < map size etc): Alexey

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Assets.Script.Level;
 using UnityEngine;
 using Assets.Script.Utility;
 
@@ -55,13 +54,14 @@ namespace Assets.Script
 
         private void LoadLevelSplash()
         {
-            if(_model.CurrentLevel < _model.LevelCap)
+            if (_model.CurrentLevel < _model.LevelCap)
             {
                 _model.CurrentLevel++;
                 GA.API.Design.NewEvent("Level", _model.CurrentLevel);
                 Application.LoadLevel("LevelSplash");
             }
-            else Application.LoadLevel("Fin");
+            else
+                Application.LoadLevel("Fin");
         }
 
         private void GameOverHandler()

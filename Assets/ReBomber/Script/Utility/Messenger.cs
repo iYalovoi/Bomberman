@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Assets.Script.Utility
+namespace Assets.Script
 {
     public class Messenger
     {
@@ -12,12 +12,13 @@ namespace Assets.Script.Utility
             if (_signals.ContainsKey(signal))
                 _signals[signal].ForEach(o => o());
         }
-         
+
         public Action Subscribe(string signal, Action action)
         {
             if (_signals.ContainsKey(signal))
                 _signals[signal].Add(action);
-            else _signals.Add(signal, new List<Action> { action });
+            else
+                _signals.Add(signal, new List<Action> { action });
             return () => _signals[signal].Remove(action);
         }
 
@@ -32,10 +33,11 @@ namespace Assets.Script.Utility
 
         public Action Subscribe<T>(Action<T> action)
         {
-            var type = typeof (T);
+            var type = typeof(T);
             if (_map.ContainsKey(type))
                 _map[type].Add(action);
-            else _map.Add(type, new List<MulticastDelegate> { action });
+            else
+                _map.Add(type, new List<MulticastDelegate> { action });
             return () => _map[type].Remove(action);
         }
     }

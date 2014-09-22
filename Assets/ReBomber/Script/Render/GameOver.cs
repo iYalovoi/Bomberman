@@ -15,9 +15,11 @@ namespace Assets.Script
             _textMeshPro = GetComponent<TextMeshPro>();
         }
 
-        private void OnInjected(Messenger messenger)
+        private void OnInjected(Messenger messenger, LevelModel level, BombermanModel bomberman)
         {
             _messenger = messenger;
+            level.Reset();
+            bomberman.Reload();
         }
 
         void Update()
@@ -28,7 +30,7 @@ namespace Assets.Script
 
         void OnGUI()
         {
-           //GUI.Label(new Rect(Screen.height / 4, Screen.height / 4, Screen.width / 2, Screen.height / 2), "Game Over", _textStyle);
+            //GUI.Label(new Rect(Screen.height / 4, Screen.height / 4, Screen.width / 2, Screen.height / 2), "Game Over", _textStyle);
         }
     }
 }
