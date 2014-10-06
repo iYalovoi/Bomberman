@@ -7,7 +7,7 @@ namespace Assets.Script
         None,
         Soft,
         Hard,
-        Wall
+        Wall,
     }
 }
 

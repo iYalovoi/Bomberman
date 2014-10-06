@@ -12,6 +12,7 @@ namespace Assets.Script
     public class LevelFactory : ContainerBase
     {
         public GameObject Wall;
+        public GameObject Floor;
         public GameObject HardBlock;
         public GameObject Player;
         public GameObject Soft;
@@ -84,6 +85,7 @@ namespace Assets.Script
                 for (var j = 0; j < CurrentLevelDefinition.Height; j++)
                 {
                     var levelPosition = _map[i, j];
+                    Create(Floor, i, j);
                     if (levelPosition.BlockType != BlockTypes.None)
                         Create(blockMap[levelPosition.BlockType], i, j);
                     if (levelPosition.Enemy.HasValue)

@@ -511,6 +511,7 @@ MonoBehaviour:
   HardBlock: {fileID: 100000, guid: 650e97d33694c2342b983818efabd9be, type: 2}
   Player: {fileID: 100000, guid: c26247ec44d0f2c458b8106783ecb789, type: 2}
   Soft: {fileID: 100000, guid: f080ac64135aab7419a7218a50562b69, type: 2}
+  Floor: {fileID: 100000, guid: d2687eadc723f41d08ce3a8de737e8c1, type: 2}
   Enemy: {fileID: 100000, guid: 22bf218317b4d0f4c95c4e7c1e5684a0, type: 2}
   Door: {fileID: 100000, guid: 2953ae9e173983f43a0aefdb015c6f1b, type: 2}
   PowerUp: {fileID: 100000, guid: 6952ce29d18411d43a7207ad47534df0, type: 2}
