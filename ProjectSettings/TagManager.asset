@@ -55,6 +55,10 @@ TagManager:
     userID: 2
     uniqueID: 1535931219
     locked: 0
+  - name: Objects
+    userID: 3
+    uniqueID: 2287104359
+    locked: 0
   - name: Effects
     userID: 6
     uniqueID: 1098112721
