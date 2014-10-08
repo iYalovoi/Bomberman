@@ -9,7 +9,6 @@ public class Floor : MonoBehaviour
     {
         var spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length - 1)];
-        Debug.Log("Start");
     }
 	
     // Update is called once per frame

@@ -51,7 +51,7 @@ namespace Assets.Script
         IEnumerator CountDown()
         {            
             yield return new WaitForSeconds(0);
-            _timeLeft = _levelFactory.CurrentLevelDefinition.TimeLimit;
+            _timeLeft = _levelFactory.levDef.TimeLimit;
             while (_timeLeft > 0)
             {
                 _timeLeft--;

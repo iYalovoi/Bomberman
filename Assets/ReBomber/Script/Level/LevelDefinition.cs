@@ -18,6 +18,7 @@ namespace Assets.Script
 
         public int Height = 13;
         public int Width = 31;
+        public int Outline = 4;
 		
         public int TimeLimit = 200;
 		

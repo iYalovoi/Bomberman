@@ -24,7 +24,7 @@ namespace Assets.Script
         public CameraFollow CameraFollow;
 
         public GameObject LevelObject;
-        public LevelDefinition CurrentLevelDefinition;
+        public LevelDefinition levDef;
 
         private GameObject _currentPlayer;
         private Vector2 _tileSize;
@@ -65,9 +65,9 @@ namespace Assets.Script
             {
                 _doorHit = true;
                 var door = GameObject.FindGameObjectWithTag("Door");
-                foreach (var monster in CurrentLevelDefinition.EnemyCounts.Keys)
+                foreach (var monster in levDef.EnemyCounts.Keys)
                 {
-                    for (var i = 0; i < CurrentLevelDefinition.EnemyCounts[monster]; i++)
+                    for (var i = 0; i < levDef.EnemyCounts[monster]; i++)
                         Place(_enemyFactory.Produce(monster), (int)(door.transform.localPosition.x / _tileSize.x), (int)(door.transform.localPosition.y / _tileSize.y));
                 }
             }
@@ -77,12 +77,12 @@ namespace Assets.Script
         {
             _doorHit = false;
             LevelObject = new GameObject("Level");
-            CurrentLevelDefinition = Build(level);
-            _map = CurrentLevelDefinition.GenerateMap();
+            levDef = Build(level);
+            _map = levDef.GenerateMap();
             var blockMap = new Dictionary<BlockTypes, GameObject>() { { BlockTypes.Soft, Soft }, { BlockTypes.Hard, HardBlock }, { BlockTypes.Wall, Wall } };
-            for (var i = 0; i < CurrentLevelDefinition.Width; i++)
+            for (var i = 0; i < levDef.Width; i++)
             {
-                for (var j = 0; j < CurrentLevelDefinition.Height; j++)
+                for (var j = 0; j < levDef.Height; j++)
                 {
                     var levelPosition = _map[i, j];
                     Create(Floor, i, j);
@@ -96,9 +96,20 @@ namespace Assets.Script
                         Place(_powerUpFactory.Produce(levelPosition.PowerUp.Value), i, j);
                 }
             }
+            for (var i = 0; i < (levDef.Width + 2 * levDef.Outline); i++)
+            {
+                for (var j = 0; j < (levDef.Height + 2 * levDef.Outline); j++)
+                {
+                    if (!(i >= levDef.Outline && i < (levDef.Width + levDef.Outline)
+                        && (j >= levDef.Outline && j < (levDef.Height + levDef.Outline))))
+                    {
+                        Create(Floor, i - levDef.Outline, j - levDef.Outline);
+                    }
+                }
+            }
 
             AdjustPlayer();
-            LevelObject.transform.position = new Vector3(-_tileSize.x * CurrentLevelDefinition.Width / 2, -_tileSize.y * CurrentLevelDefinition.Height / 2);
+            LevelObject.transform.position = new Vector3(-_tileSize.x * levDef.Width / 2, -_tileSize.y * levDef.Height / 2);
 
             if (!Camera.audio.isPlaying)
                 Camera.audio.Play();
@@ -108,7 +119,7 @@ namespace Assets.Script
         {
             //Spawn 20 pontans when time hits 0:00
             for (var i = 0; i < 20; i++)
-                Place(_enemyFactory.Produce(EnemyTypes.Pontan), Random.Range(1, CurrentLevelDefinition.Width - 1), Random.Range(1, CurrentLevelDefinition.Height - 1));
+                Place(_enemyFactory.Produce(EnemyTypes.Pontan), Random.Range(1, levDef.Width - 1), Random.Range(1, levDef.Height - 1));
         }
 
         private GameObject Create(GameObject prototype, int x, int y)
