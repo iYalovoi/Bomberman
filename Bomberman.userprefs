@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ReBomber/Script/Level/LevelFactory.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ReBomber/Script/Level/LevelDefinition.cs">
     <Files>
       <File FileName="Assets/ReBomber/Script/SceneDispatcher.cs" Line="1" Column="1" />
       <File FileName="Assets/ReBomber/Script/Level/LevelModel.cs" Line="1" Column="1" />
@@ -8,9 +8,8 @@
       <File FileName="Assets/ReBomber/Script/Render/BattleHUD.cs" Line="1" Column="1" />
       <File FileName="Assets/ReBomber/Script/BomberMan/BombermanModel.cs" Line="1" Column="1" />
       <File FileName="Assets/ReBomber/Script/Render/GameOver.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Level/LevelFactory.cs" Line="26" Column="26" />
-      <File FileName="Assets/ReBomber/Script/Level/LevelElements.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Level/LevelDefinition.cs" Line="1" Column="1" />
+      <File FileName="Assets/ReBomber/Script/Level/LevelFactory.cs" Line="1" Column="1" />
+      <File FileName="Assets/ReBomber/Script/Level/LevelDefinition.cs" Line="10" Column="10" />
       <File FileName="Assets/ReBomber/Script/Level/BlockTypes.cs" Line="1" Column="1" />
       <File FileName="Assets/ReBomber/Script/BomberMan/Bomberman.cs" Line="1" Column="1" />
       <File FileName="Assets/ReBomber/Script/Enemy/EnemiesStats.cs" Line="1" Column="1" />
