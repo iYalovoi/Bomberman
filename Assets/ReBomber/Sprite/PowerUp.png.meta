@@ -2,14 +2,22 @@ fileFormatVersion: 2
 guid: a06c1373d9c422140bac1b1cd507a9cc
 TextureImporter:
   fileIDToRecycleName:
-    21300000: PowerUp_0
-    21300002: PowerUp_1
-    21300004: PowerUp_2
-    21300006: PowerUp_3
-    21300008: PowerUp_4
-    21300010: PowerUp_5
-    21300012: PowerUp_6
-    21300014: PowerUp_7
+    21300000: Fire
+    21300002: BombUp
+    21300004: Speed
+    21300006: Remote
+    21300008: BombPass
+    21300010: WallPass
+    21300012: FlamePass
+    21300014: Immortal
+    21300016: FireOff
+    21300018: BombUpOff
+    21300020: SpeedOff
+    21300022: RemoteOff
+    21300024: BombPassOff
+    21300026: WallPassOff
+    21300028: FlamePassOff
+    21300030: ImmortalOff
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -51,7 +59,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: PowerUp_0
+    - name: Fire
       rect:
         serializedVersion: 2
         x: 0
@@ -59,9 +67,9 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: PowerUp_1
+    - name: BombUp
       rect:
         serializedVersion: 2
         x: 40
@@ -69,9 +77,9 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: PowerUp_2
+    - name: Speed
       rect:
         serializedVersion: 2
         x: 80
@@ -79,9 +87,9 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: PowerUp_3
+    - name: Remote
       rect:
         serializedVersion: 2
         x: 120
@@ -89,9 +97,9 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: PowerUp_4
+    - name: BombPass
       rect:
         serializedVersion: 2
         x: 0
@@ -99,9 +107,9 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: PowerUp_5
+    - name: WallPass
       rect:
         serializedVersion: 2
         x: 40
@@ -109,9 +117,9 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: PowerUp_6
+    - name: FlamePass
       rect:
         serializedVersion: 2
         x: 80
@@ -119,9 +127,9 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: PowerUp_7
+    - name: Immortal
       rect:
         serializedVersion: 2
         x: 120
@@ -129,7 +137,87 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FireOff
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BombUpOff
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SpeedOff
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: RemoteOff
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 40
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BombPassOff
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: WallPassOff
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: FlamePassOff
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ImmortalOff
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

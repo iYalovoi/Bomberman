@@ -285,7 +285,7 @@ namespace Assets.Script
                             { EnemyTypes.Ovape, 2 }, { EnemyTypes.Pass, 1 }, { EnemyTypes.Pontan, 0 }
                         });
                 case 26:
-                    return new LevelDefinition(Powers.Mystery, new EnemyCounts()
+                    return new LevelDefinition(Powers.Immortal, new EnemyCounts()
                         {{ EnemyTypes.Balloon, 1 },
                             { EnemyTypes.Onil, 1 }, { EnemyTypes.Dahl, 1 }, { EnemyTypes.Doria, 1 }, { EnemyTypes.Minvo, 2 },
                             { EnemyTypes.Ovape, 1 }, { EnemyTypes.Pass, 1 }, { EnemyTypes.Pontan, 0 }
@@ -333,7 +333,7 @@ namespace Assets.Script
                             { EnemyTypes.Ovape, 1 }, { EnemyTypes.Pass, 2 }, { EnemyTypes.Pontan, 0 }
                         });
                 case 34:
-                    return new LevelDefinition(Powers.Mystery, new EnemyCounts()
+                    return new LevelDefinition(Powers.Immortal, new EnemyCounts()
                         {{ EnemyTypes.Balloon, 0 },
                             { EnemyTypes.Onil, 0 }, { EnemyTypes.Dahl, 2 }, { EnemyTypes.Doria, 3 }, { EnemyTypes.Minvo, 3 },
                             { EnemyTypes.Ovape, 0 }, { EnemyTypes.Pass, 2 }, { EnemyTypes.Pontan, 0 }
@@ -369,7 +369,7 @@ namespace Assets.Script
                             { EnemyTypes.Ovape, 2 }, { EnemyTypes.Pass, 4 }, { EnemyTypes.Pontan, 0 }
                         });
                 case 40:
-                    return new LevelDefinition(Powers.Mystery, new EnemyCounts()
+                    return new LevelDefinition(Powers.Immortal, new EnemyCounts()
                         {{ EnemyTypes.Balloon, 0 },
                             { EnemyTypes.Onil, 0 }, { EnemyTypes.Dahl, 1 }, { EnemyTypes.Doria, 2 }, { EnemyTypes.Minvo, 3 },
                             { EnemyTypes.Ovape, 0 }, { EnemyTypes.Pass, 4 }, { EnemyTypes.Pontan, 0 }
@@ -399,7 +399,7 @@ namespace Assets.Script
                             { EnemyTypes.Ovape, 1 }, { EnemyTypes.Pass, 6 }, { EnemyTypes.Pontan, 0 }
                         });
                 case 45:
-                    return new LevelDefinition(Powers.Mystery, new EnemyCounts()
+                    return new LevelDefinition(Powers.Immortal, new EnemyCounts()
                         {{ EnemyTypes.Balloon, 0 },
                             { EnemyTypes.Onil, 0 }, { EnemyTypes.Dahl, 0 }, { EnemyTypes.Doria, 0 }, { EnemyTypes.Minvo, 2 },
                             { EnemyTypes.Ovape, 2 }, { EnemyTypes.Pass, 6 }, { EnemyTypes.Pontan, 0 }
@@ -429,7 +429,7 @@ namespace Assets.Script
                             { EnemyTypes.Ovape, 2 }, { EnemyTypes.Pass, 6 }, { EnemyTypes.Pontan, 1 }
                         });
                 case 50:
-                    return new LevelDefinition(Powers.Mystery, new EnemyCounts()
+                    return new LevelDefinition(Powers.Immortal, new EnemyCounts()
                         {{ EnemyTypes.Balloon, 0 },
                             { EnemyTypes.Onil, 0 }, { EnemyTypes.Dahl, 0 }, { EnemyTypes.Doria, 0 }, { EnemyTypes.Minvo, 1 },
                             { EnemyTypes.Ovape, 2 }, { EnemyTypes.Pass, 5 }, { EnemyTypes.Pontan, 2 }

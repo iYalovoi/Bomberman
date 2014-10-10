@@ -13,7 +13,7 @@ namespace Assets.Script
         Fire = 1 << 0,
         BombPass = 1 << 1,
         FlamePass = 1 << 2,
-        Mystery = 1 << 3,
+        Immortal = 1 << 3,
         RemoteControl = 1 << 4,
         Speed = 1 << 5,
         WallPass = 1 << 6,

@@ -76,8 +76,13 @@ namespace Assets.Script
                 softBlocks.Add(levelPosition);
             }
             //Powerup
-            if (PowerUp.HasValue)
-                PopRandom(softBlocks).PowerUp = PowerUp;
+            for (var i = 0; i < 30; i++)
+            {
+                var rnd = Random.Range(0, 8);
+                var power = (Powers)(rnd == 0 ? 0 : 1 << (rnd - 1));
+                if (PowerUp.HasValue)
+                    PopRandom(softBlocks).PowerUp = power;
+            }
             //Door
             PopRandom(softBlocks).Door = true;
             //Enemies
