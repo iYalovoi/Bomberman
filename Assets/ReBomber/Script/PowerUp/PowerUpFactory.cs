@@ -6,7 +6,8 @@ namespace Assets.Script
     public interface IPowerUpFactory
     {
         GameObject Produce(Powers power);
-        GameObject Produce();
+
+        Powers Produce();
     }
 
     public class PowerUpFactory : MonoBehaviour, IPowerUpFactory
@@ -28,14 +29,14 @@ namespace Assets.Script
         {
             _map = new Dictionary<Powers, Sprite>
             {
-                {Powers.BombUp, BombUp},
-                {Powers.Fire, Fire},
-                {Powers.BombPass, BombPass},
-                {Powers.FlamePass, FlamePass},
-                {Powers.Mystery, Mystery},
-                {Powers.RemoteControl, RemoteControl},
-                {Powers.Speed, Speed},
-                {Powers.WallPass, WallPass},
+                { Powers.BombUp, BombUp },
+                { Powers.Fire, Fire },
+                { Powers.BombPass, BombPass },
+                { Powers.FlamePass, FlamePass },
+                { Powers.Immortal, Mystery },
+                { Powers.RemoteControl, RemoteControl },
+                { Powers.Speed, Speed },
+                { Powers.WallPass, WallPass },
             };
         }
 
@@ -48,11 +49,10 @@ namespace Assets.Script
             return retObj;
         }
 
-        public GameObject Produce()
+        public Powers Produce()
         {
-            var rnd = Random.Range(0, 8);            
-            var power = (Powers)(rnd == 0 ? 0 : 1 << (rnd - 1));
-            return Produce(power);
+            var rnd = Random.Range(0, 8);
+            return (Powers)(rnd == 0 ? 0 : 1 << (rnd - 1));
         }
     }
 }

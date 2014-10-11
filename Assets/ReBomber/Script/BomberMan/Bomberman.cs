@@ -29,9 +29,9 @@ namespace Assets.Script
 //                _model.Godlike();
 
             _subscriptions.Add(_messenger.Subscribe<int>((o) =>
-            {
-                _model.Score += o;
-            }));
+                    {
+                        _model.Score += o;
+                    }));
         }
 
         private BombermanModel _model;
@@ -54,36 +54,43 @@ namespace Assets.Script
             get { return _model.BombCount; }
             set { _model.BombCount = value; }
         }
+
         public int Radius
         {
             get { return _model.Radius; }
             set { _model.Radius = value; }
         }
+
         public bool FlamePass
         {
             get { return _model.FlamePass; }
             set { _model.FlamePass = value; }
         }
+
         public bool Invincible
         {
             get { return _model.Invincible; }
             set { _model.Invincible = value; }
         }
+
         public bool RemoteControl
         {
             get { return _model.RemoteControl; }
             set { _model.RemoteControl = value; }
         }
+
         public float Speed
         {
             get { return _model.Speed; }
             set { _model.Speed = value; }
         }
+
         public bool WallPass
         {
             get { return _model.WallPass; }
             set { _model.WallPass = value; }
         }
+
         public bool BombPass
         {
             get { return _model.BombPass; }
@@ -91,6 +98,7 @@ namespace Assets.Script
         }
 
         private bool _restrained;
+
         public bool Restrained
         {
             get { return Bombing || Dead || _restrained; }
@@ -113,7 +121,7 @@ namespace Assets.Script
                     {
                         Bombing = true;
                         var bombTile = new Vector2(Mathf.RoundToInt(localPosition.x / tileSize),
-                            Mathf.RoundToInt(localPosition.y / tileSize));
+                                           Mathf.RoundToInt(localPosition.y / tileSize));
                         var bomb = Instantiate(Bomb, new Vector3(), new Quaternion()) as GameObject;
                         bomb.name = string.Format("Bomb {0}:{1}", bombTile.x, bombTile.y);
                         bomb.transform.parent = Level.transform;
@@ -198,7 +206,8 @@ namespace Assets.Script
                     if (!FootStepsSound.isPlaying)
                         FootStepsSound.Play();
                 }
-                else if (FootStepsSound.isPlaying) FootStepsSound.Pause();
+                else if (FootStepsSound.isPlaying)
+                    FootStepsSound.Pause();
             }
         }
 
@@ -220,7 +229,7 @@ namespace Assets.Script
 
         public void Destroy()
         {
-            _model.Reset();
+            _model.LosePower();
             _model.Lifes--;
             _messenger.Signal(_model.Lifes >= 0 ? Signals.RestartLevel : Signals.GameOver);
             Destroy(gameObject);
@@ -240,7 +249,7 @@ namespace Assets.Script
 
         public void AcceptPower(Powers power)
         {
-            GA.API.Design.NewEvent("PowerUp", (float) power); 
+            GA.API.Design.NewEvent("PowerUp", (float)power); 
             switch (power)
             {
                 case Powers.BombUp:
@@ -256,7 +265,7 @@ namespace Assets.Script
                 case Powers.FlamePass:
                     FlamePass = true;
                     break;
-                case Powers.Mystery:
+                case Powers.Immortal:
                     Invincible = true;
                     StartCoroutine(InvincibleSpree());
                     break;
@@ -273,12 +282,14 @@ namespace Assets.Script
                 default:
                     break;
             }
+            _messenger.Signal<Powers>(power);
         }
 
         private IEnumerator InvincibleSpree()
         {
             yield return new WaitForSeconds(30);
             Invincible = false;
+            _messenger.Signal<Powers>(Powers.Immortal);
         }
 
     }

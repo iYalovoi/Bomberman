@@ -17,6 +17,23 @@ namespace Assets.Script
 
         public Font UIFont;
         public Texture _frame;
+        public Sprite Fire;
+        public Sprite BombUp;
+        public Sprite BombPass;
+        public Sprite FlamePass;
+        public Sprite Mystery;
+        public Sprite RemoteControl;
+        public Sprite Speed;
+        public Sprite WallPass;
+        public Sprite FireOff;
+        public Sprite BombUpOff;
+        public Sprite BombPassOff;
+        public Sprite FlamePassOff;
+        public Sprite MysteryOff;
+        public Sprite RemoteControlOff;
+        public Sprite SpeedOff;
+        public Sprite WallPassOff;
+
 
         void Awake()
         {
@@ -63,17 +80,23 @@ namespace Assets.Script
 
         void Update()
         {
+            if (Input.GetButtonDown("Pause"))
+            {
+                Time.timeScale = Time.timeScale == 1 ? 0 : 1;
+            }
         }
 
         void OnGUI()
         {
-            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), _frame);
+//            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), _frame);
             var relativeUnitX = Screen.width / 1280f;
             var relativeUnitY = Screen.height / 720f;
+
             GUI.Label(new Rect(relativeUnitX * 53, relativeUnitY * 44, relativeUnitX * 100, relativeUnitY * 23), _model.Lifes.ToString(CultureInfo.InvariantCulture), _textStyleGreen);
             GUI.Label(new Rect(relativeUnitX * 187, relativeUnitY * 44, relativeUnitX * 100, relativeUnitY * 23), _timeLeft > 0 ? _timeLeft.ToString(CultureInfo.InvariantCulture) : "Run!", _textStyleRed);
             GUI.Label(new Rect(relativeUnitX * 322, relativeUnitY * 44, relativeUnitX * 100, relativeUnitY * 23), _level.CurrentLevel.ToString(CultureInfo.InvariantCulture), _textStyleGreen);
             GUI.Label(new Rect(relativeUnitX * 858, relativeUnitY * 44, relativeUnitX * 87, relativeUnitY * 23), _model.Score.ToString(CultureInfo.InvariantCulture), _textStyleGreen);
+
         }
     }
 }

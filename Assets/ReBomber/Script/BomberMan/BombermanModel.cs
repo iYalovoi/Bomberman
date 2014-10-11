@@ -28,6 +28,18 @@ namespace Assets.Script
             BombPass = true;
         }
 
+        public void LosePower()
+        {
+            if (FlamePass)
+                FlamePass = false;
+            else if (RemoteControl)
+                RemoteControl = false;
+            else if (WallPass)
+                WallPass = false;
+            if (BombPass)
+                BombPass = false;
+        }
+
         public void Reset()
         {
             BombCount = 1;
@@ -35,6 +47,8 @@ namespace Assets.Script
             FlamePass = false;
             Invincible = false;
             RemoteControl = false;
+            WallPass = false;
+            BombPass = false;
             Speed = Constants.BasePlayerSpeed;
         }
 
