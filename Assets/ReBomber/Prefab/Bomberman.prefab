@@ -69,7 +69,7 @@ AudioSource:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 94dbd4febab734210a43c84263f5e116, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 99dc71369a7eb454cb65636d87642a1b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -127,7 +127,7 @@ AudioSource:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 8f53ad2d958c048e5a8e403a20d21df0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fe5ba44b3b4d59f46b03d5208f12849f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -185,7 +185,7 @@ AudioSource:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: ad03aba1a1583422b87a3966c8f741d3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 32852e181697ffe4a9b69d8c5daf4deb, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -267,8 +267,8 @@ MonoBehaviour:
   Dead: 0
   Direction: 0
   FootStepsSound: {fileID: 8200000}
-  DeathSound: {fileID: 8200002}
-  PlaceBombSound: {fileID: 8200004}
+  DeathSound: {fileID: 8200004}
+  PlaceBombSound: {fileID: 8200002}
   Solid: {fileID: 5800000}
 --- !u!212 &21200000
 SpriteRenderer:
