@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Assets.Script.Utility;
+using System.Collections;
 
 namespace Assets.Script
 {
@@ -12,6 +13,7 @@ namespace Assets.Script
         public int Bounty;
         public IEnemyPattern Behaviour = new RandomRoaming();
         public EnemyTypes Type;
+        public AudioSource DeathSound;
 
         protected Animator Animator;
 
@@ -35,9 +37,16 @@ namespace Assets.Script
             {
                 Dead = true;
                 Animator.SetTrigger("Die");
+                StartCoroutine(PlayDeathSound(0.1f));
                 _messenger.Signal(Bounty);
                 GA.API.Design.NewEvent("Monster", (float)Type);
             }
+        }
+
+        IEnumerator PlayDeathSound(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            DeathSound.Play();
         }
 
         public void OnHit(GameObject striker)
