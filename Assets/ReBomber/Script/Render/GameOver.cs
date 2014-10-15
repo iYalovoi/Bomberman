@@ -20,6 +20,7 @@ namespace Assets.Script
             _messenger = messenger;
             level.Reset();
             bomberman.Reload();
+            bomberman.Reset();
         }
 
         void Update()

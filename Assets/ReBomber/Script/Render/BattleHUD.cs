@@ -17,22 +17,6 @@ namespace Assets.Script
 
         public Font UIFont;
         public Texture _frame;
-        public Sprite Fire;
-        public Sprite BombUp;
-        public Sprite BombPass;
-        public Sprite FlamePass;
-        public Sprite Mystery;
-        public Sprite RemoteControl;
-        public Sprite Speed;
-        public Sprite WallPass;
-        public Sprite FireOff;
-        public Sprite BombUpOff;
-        public Sprite BombPassOff;
-        public Sprite FlamePassOff;
-        public Sprite MysteryOff;
-        public Sprite RemoteControlOff;
-        public Sprite SpeedOff;
-        public Sprite WallPassOff;
 
 
         void Awake()

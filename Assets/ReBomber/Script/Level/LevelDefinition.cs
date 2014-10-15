@@ -18,7 +18,7 @@ namespace Assets.Script
 
         public int Height = 13;
         public int Width = 31;
-        public int Outline = 4;
+        public int Outline = 6;
 		
         public int TimeLimit = 200;
 		
@@ -76,13 +76,15 @@ namespace Assets.Script
                 softBlocks.Add(levelPosition);
             }
             //Powerup
-            for (var i = 0; i < 30; i++)
-            {
-                var rnd = Random.Range(0, 8);
-                var power = (Powers)(rnd == 0 ? 0 : 1 << (rnd - 1));
-                if (PowerUp.HasValue)
-                    PopRandom(softBlocks).PowerUp = power;
-            }
+            if (PowerUp.HasValue)
+                PopRandom(softBlocks).PowerUp = PowerUp.Value;
+//            for (var i = 0; i < 30; i++)
+//            {
+//                var rnd = Random.Range(0, 8);
+//                var power = (Powers)(rnd == 0 ? 0 : 1 << (rnd - 1));
+//                if (PowerUp.HasValue)
+//                    PopRandom(softBlocks).PowerUp = power;
+//            }
             //Door
             PopRandom(softBlocks).Door = true;
             //Enemies

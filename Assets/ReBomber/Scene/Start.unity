@@ -247,9 +247,9 @@ MonoBehaviour:
   m_wordWrappingRatios: .400000006
   m_horizontalMapping: 0
   m_verticalMapping: 0
-  isAffectingWordWrapping: 1
+  isAffectingWordWrapping: 0
   isInputParsingRequired: 0
-  havePropertiesChanged: 1
+  havePropertiesChanged: 0
   hasFontAssetChanged: 0
   m_isRichText: 1
   m_inputSource: 0
@@ -370,9 +370,9 @@ MonoBehaviour:
   m_wordWrappingRatios: .400000006
   m_horizontalMapping: 0
   m_verticalMapping: 0
-  isAffectingWordWrapping: 1
+  isAffectingWordWrapping: 0
   isInputParsingRequired: 0
-  havePropertiesChanged: 1
+  havePropertiesChanged: 0
   hasFontAssetChanged: 0
   m_isRichText: 1
   m_inputSource: 0
@@ -460,8 +460,6 @@ GameObject:
   - 20: {fileID: 441913885}
   - 92: {fileID: 441913884}
   - 124: {fileID: 441913883}
-  - 114: {fileID: 441913882}
-  - 114: {fileID: 441913881}
   - 81: {fileID: 441913880}
   - 82: {fileID: 441913879}
   m_Layer: 0
@@ -536,28 +534,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 441913876}
   m_Enabled: 1
---- !u!114 &441913881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 441913876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bb95be67f767a345a6930e3af55c797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &441913882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 441913876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f8cbbcd70ea4ce4b9c5c31c1882b1cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!124 &441913883
 Behaviour:
   m_ObjectHideFlags: 0

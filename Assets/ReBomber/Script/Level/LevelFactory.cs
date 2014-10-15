@@ -102,9 +102,7 @@ namespace Assets.Script
                 {
                     if (!(i >= levDef.Outline && i < (levDef.Width + levDef.Outline)
                         && (j >= levDef.Outline && j < (levDef.Height + levDef.Outline))))
-                    {
                         Create(Floor, i - levDef.Outline, j - levDef.Outline);
-                    }
                 }
             }
 
