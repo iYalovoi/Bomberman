@@ -8,6 +8,8 @@ namespace AssemblyCSharp
     public class OptionsDisplay: ContainerBase
     {
         Messenger _messenger;
+        LevelModel _level;
+        BombermanModel _bomberman;
         private readonly List<Action> _subscriptions = new List<Action>();
 
         public GameObject Panel;
@@ -17,11 +19,12 @@ namespace AssemblyCSharp
             base.Start();
         }
 
-        private void OnInjected(Messenger messenger)
+        private void OnInjected(Messenger messenger, LevelModel level, BombermanModel bomberman)
         {
             _messenger = messenger;
+            _level = level;
+            _bomberman = bomberman;
         }
-
 
         private void OnDestroy()
         {
@@ -35,6 +38,10 @@ namespace AssemblyCSharp
 
         public void Restart()
         {
+            _level.Reset();
+            _bomberman.Reload();
+            _bomberman.Reset();
+            _messenger.Signal(Signals.LoadNextLevel);
         }
 
         public void Quit()
