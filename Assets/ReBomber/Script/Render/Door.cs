@@ -9,6 +9,7 @@ namespace Assets.Script
         private Animator _animator;
         private LevelFactory _levelUpFactory;
         private Messenger _messenger;
+        public AudioSource OpenSound;
 
         protected override void Start()
         {
@@ -39,7 +40,8 @@ namespace Assets.Script
                 _animator.SetTrigger("Open");
                 var bomberman = col.gameObject.GetComponent<Bomberman>();
                 bomberman.Restrained = true;
-            }                
+                OpenSound.Play();
+            }
         }
 
         public void OnHit(GameObject striker)

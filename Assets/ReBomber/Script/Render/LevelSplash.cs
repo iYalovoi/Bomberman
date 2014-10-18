@@ -14,7 +14,7 @@ namespace Assets.Script
 
         protected override void Start()
         {
-            base.Start();            
+            base.Start();
             StartCoroutine(WaitAndLoadNewLevel());
         }
 

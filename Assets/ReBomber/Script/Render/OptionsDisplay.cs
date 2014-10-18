@@ -41,7 +41,7 @@ namespace AssemblyCSharp
             _level.Reset();
             _bomberman.Reload();
             _bomberman.Reset();
-            _messenger.Signal(Signals.LoadNextLevel);
+            _messenger.Signal(Signals.DoorOpened);
         }
 
         public void Quit()
