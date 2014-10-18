@@ -35,5 +35,13 @@ namespace Assets.Script.Utility
             var tileSize = GetTileSize(gameObject);
             return new Vector2(tileSize * Mathf.Round(position.x / tileSize), tileSize * Mathf.Round(position.y / tileSize));
         }
+
+		public static Vector2 GetTileIndex(GameObject gameObject, Vector3 position)
+		{
+			//Kind of weird way to determine tile size? : Aleksey
+			//Yes, Indeed : Igor
+			var tileSize = GetTileSize(gameObject);
+			return new Vector2(Mathf.Round(position.x / tileSize), Mathf.Round(position.y / tileSize));
+		}
     }
 }

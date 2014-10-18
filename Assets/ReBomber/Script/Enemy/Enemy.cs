@@ -67,26 +67,26 @@ namespace Assets.Script
             {
                 var newWay = Behaviour.FindWay(gameObject);
                 //Only if we change direction
-                if (newWay != default(Vector2) && newWay != _way)
-                    _way = newWay;
+                //if (newWay != default(Vector2) && newWay != _way)
+                _way = newWay;
                 //Velocity needs to be updated each frame, Who changes it? : Aleksey
                 //Physics is a bitch : Igor
                 //Adjust direction to keep monster on axis of movement
-                if (_way.y == 0)
+                if (_way.y == 0.0f)
                 {
                     var offset = transform.localPosition.y - MapDiscovery.GetTilePosition(gameObject, transform.localPosition).y;
-                    if (Mathf.Abs(offset) > 0.05)
-                        _way.y = offset > 0 ? 1 : -1;
+                    if (Mathf.Abs(offset) > 0.02f)
+                        _way.y = offset > 0f ? 1f : -1f;
                     else
-                        _way.y = 0;
+                        _way.y = 0f;
                 }
-                if (_way.x == 0)
+                if (_way.x == 0f)
                 {
                     var offset = transform.localPosition.x - MapDiscovery.GetTilePosition(gameObject, transform.localPosition).x;
-                    if (Mathf.Abs(offset) > 0.05)
-                        _way.x = offset > 0 ? 1 : -1;
+                    if (Mathf.Abs(offset) > 0.02f)
+                        _way.x = offset > 0f ? 1f : -1f;
                     else
-                        _way.x = 0;
+                        _way.x = 0f;
                 }
                 rigidbody2D.velocity = MaxSpeed * _way;
                 //We need to align monster to it's path
