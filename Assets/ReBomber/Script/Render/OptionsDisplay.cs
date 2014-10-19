@@ -38,6 +38,7 @@ namespace AssemblyCSharp
 
         public void Restart()
         {
+            ToogleMenu();
             _level.Reset();
             _bomberman.Reload();
             _bomberman.Reset();

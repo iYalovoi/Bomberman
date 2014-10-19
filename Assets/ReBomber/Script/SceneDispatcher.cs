@@ -41,7 +41,6 @@ namespace Assets.Script
 
         private void LoadNextLevelHandler()
         {
-            Debug.Log("_messenger.Signal(Signals.LoadNextLevel);");
             _dispatcher.Dispatch(() => LoadNextLevelCoroutine(_model.CurrentLevel));
         }
 
