@@ -18,15 +18,31 @@ namespace Assets.Script
         }
 
         private List<IEnemyPattern> _behaviours;
+		private IEnemyPattern lastPattern;
+
+		public void Reset()
+		{
+			_behaviours.ForEach(x=>x.Reset());
+		}
 
         public Vector2 FindWay(GameObject gameObject)
         {
             var result = default(Vector2);
-            for (var i = 0; i < (_behaviours.Count) && (result == default(Vector2)); i++)
+			IEnemyPattern pattern = null;
+            for (var i = 0; (i < _behaviours.Count) && (pattern == null); i++)
             {
-                result = result + _behaviours[i].FindWay(gameObject);
-                result.Normalize();
+                result = _behaviours[i].FindWay(gameObject);
+				if(result != default(Vector2))
+				{
+					pattern = _behaviours[i];
+				}
             }
+			if (pattern != lastPattern) 
+			{
+				if(lastPattern != null)
+					lastPattern.Reset();
+				lastPattern = pattern;
+			}
             return result;
         }
     }

@@ -18,6 +18,11 @@ namespace Assets.Script
 
 		private Vector2? target;
 
+		public void Reset()
+		{
+			target = null;
+		}
+
 		private bool CanReach(GameObject gameObject, Vector2 tilePosition)
 		{
 			var layerMask = LayerMask.GetMask("Wall", "Bomb");
@@ -141,41 +146,13 @@ namespace Assets.Script
 			} 
 			else 
 			{
-				target = ChooseRandomTarget(gameObject);
+				target = FollowPath(gameObject);
 				newWay = target.Value - position;
 			}
 			Debug.DrawRay(position, target.Value - position, Color.green);
-			if (newWay != Vector2.zero)
-				newWay.Normalize ();
+		    newWay.Normalize ();
 			return newWay;
 		}
-
-		/*
-		* Should bounce of the bombs and walls into opposite direction and also randomly change direction
-		public Vector2 FindWay(GameObject gameObject)
-		{
-			var localPosition = gameObject.transform.localPosition;
-			var currentTilePosition = MapDiscovery.GetTilePosition(gameObject, localPosition);
-            const float eps = 0.05f;
-            var newWay = default(Vector2);
-            //current position is close to the bottom left corner of the tile?
-            if ((Mathf.Abs(localPosition.x - currentTilePosition.x) < eps) && (Mathf.Abs(localPosition.y - currentTilePosition.y) < eps))
-            {
-                //Change direction with probability
-                if (Random.value > (1f - turnProbability))
-                {
-                    var randomWay = (Direction)Mathf.Pow(2, Random.Range(0, 4));
-                    //Do we really need to do these checks?
-                    //var block = MapDiscovery.BlastInDirection(transform.position, tileSize, randomWay, 1);
-                    //do we check against bomb here as well?
-                    //If the way is blocked we might sit here for a while until proper direction is randomed?
-                    //if (block.Select(o => o.transform.gameObject).All(o => (o.tag != "Wall")))
-                    newWay = randomWay.ToVector2();   
-                }                 
-            }
-            return newWay;
-        }
-        */
 
     }
 }

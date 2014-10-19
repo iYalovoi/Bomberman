@@ -13,6 +13,10 @@ namespace Assets.Script
             _visionRange = visionRange;
         }
 
+		public void Reset()
+		{
+		}
+
         private float _visionRange;
 
         public Vector2 FindWay(GameObject gameObject)

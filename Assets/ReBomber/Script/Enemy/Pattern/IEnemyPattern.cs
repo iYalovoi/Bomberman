@@ -7,6 +7,7 @@ namespace Assets.Script
     public interface IEnemyPattern
     {
         Vector2 FindWay(GameObject gameObject);
+		void Reset();
     }
 }
 
