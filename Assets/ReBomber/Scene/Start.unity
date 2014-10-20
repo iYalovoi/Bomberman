@@ -247,9 +247,9 @@ MonoBehaviour:
   m_wordWrappingRatios: .400000006
   m_horizontalMapping: 0
   m_verticalMapping: 0
-  isAffectingWordWrapping: 1
+  isAffectingWordWrapping: 0
   isInputParsingRequired: 0
-  havePropertiesChanged: 1
+  havePropertiesChanged: 0
   hasFontAssetChanged: 0
   m_isRichText: 1
   m_inputSource: 0
@@ -370,9 +370,9 @@ MonoBehaviour:
   m_wordWrappingRatios: .400000006
   m_horizontalMapping: 0
   m_verticalMapping: 0
-  isAffectingWordWrapping: 1
+  isAffectingWordWrapping: 0
   isInputParsingRequired: 0
-  havePropertiesChanged: 1
+  havePropertiesChanged: 0
   hasFontAssetChanged: 0
   m_isRichText: 1
   m_inputSource: 0
@@ -477,7 +477,7 @@ AudioSource:
   m_GameObject: {fileID: 441913876}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 6303541d311c15448907ce5dde8304c2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6edb5de71c9eea24eae13415f6c819cd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: .5
   m_Pitch: 1
