@@ -23,10 +23,10 @@ namespace Assets.Script
             _statsDictionary[EnemyTypes.Balloon] = new EnemyStats{ Bounty = 100, Speed = Constants.LowSpeed };
             _statsDictionary[EnemyTypes.Onil] = new EnemyStats{ Bounty = 200, Speed = Constants.AverageSpeed, Uncertainty = 0.2f, PlayerVisionRange = 1.0f };
             _statsDictionary[EnemyTypes.Dahl] = new EnemyStats{ Bounty = 400, Speed = Constants.AboveAverageSpeed, Uncertainty = 0.2f, PlayerVisionRange = 1.5f };
-            _statsDictionary[EnemyTypes.Minvo] = new EnemyStats{ Bounty = 800, Speed = Constants.HighSpeed, Uncertainty = 0.2f, PlayerVisionRange = 2.0f, BombVisionRange = 1.5f };
+            _statsDictionary[EnemyTypes.Minvo] = new EnemyStats{ Bounty = 800, Speed = Constants.HighSpeed, Uncertainty = 0.2f, PlayerVisionRange = 2.0f };
             _statsDictionary[EnemyTypes.Doria] = new EnemyStats{ Bounty = 1000, Speed = Constants.LowestSpeed, IsGhost = true };
             _statsDictionary[EnemyTypes.Ovape] = new EnemyStats{ Bounty = 2000, Speed = Constants.AverageSpeed, PlayerVisionRange = 1f, Uncertainty = 0.2f, IsGhost = true };
-            _statsDictionary[EnemyTypes.Pass] = new EnemyStats{ Bounty = 4000, Speed = Constants.HighSpeed, Uncertainty = 0.2f, PlayerVisionRange = 2.0f, BombVisionRange = 1.5f };
+            _statsDictionary[EnemyTypes.Pass] = new EnemyStats{ Bounty = 4000, Speed = Constants.HighSpeed, Uncertainty = 0.2f, PlayerVisionRange = 2.0f };
             _statsDictionary[EnemyTypes.Pontan] = new EnemyStats{ Bounty = 8000, Speed = Constants.HighestSpeed, PlayerVisionRange = 4f, Uncertainty = 0.2f, IsGhost = true };
         }
 
