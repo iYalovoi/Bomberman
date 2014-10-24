@@ -76,7 +76,7 @@ namespace Assets.Script
                 {
                     var offset = transform.localPosition.y - MapDiscovery.GetTilePosition(gameObject, transform.localPosition).y;
                     if (Mathf.Abs(offset) > 0.02f)
-                        _way.y = offset > 0f ? 1f : -1f;
+                        _way.y = offset > 0f ? 0.5f : -0.5f;
                     else
                         _way.y = 0f;
                 }
@@ -84,7 +84,7 @@ namespace Assets.Script
                 {
                     var offset = transform.localPosition.x - MapDiscovery.GetTilePosition(gameObject, transform.localPosition).x;
                     if (Mathf.Abs(offset) > 0.02f)
-                        _way.x = offset > 0f ? 1f : -1f;
+                        _way.x = offset > 0f ? 0.5f : -0.5f;
                     else
                         _way.x = 0f;
                 }

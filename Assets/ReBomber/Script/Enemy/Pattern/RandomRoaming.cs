@@ -23,16 +23,6 @@ namespace Assets.Script
 			target = null;
 		}
 
-		private bool CanReach(GameObject gameObject, Vector2 tilePosition)
-		{
-			var layerMask = LayerMask.GetMask("Wall", "Bomb");
-			if (gameObject.layer != LayerMask.NameToLayer("Ghost"))
-			{
-				layerMask |= LayerMask.GetMask("Soft");
-			}
-			var hit = Physics2D.Linecast(gameObject.transform.position, tilePosition, layerMask);
-			return hit.collider == null;
-		}
 
 		private Vector2 ChooseRandomTarget(GameObject gameObject)
 		{
@@ -44,7 +34,7 @@ namespace Assets.Script
 				tileIndex + Vector2.right, tileIndex + Vector2.up};
 			var tilePositions = tiles.Select(x=>gameObject.transform.parent.TransformPoint(tileSize * x));
 			//Filter out unreachable positions
-			var validTargets = tilePositions.Where(x=>CanReach(gameObject, x)).ToArray();
+			var validTargets = tilePositions.Where(x=>MapDiscovery.CanReach(gameObject, x)).ToArray();
 			if (validTargets.Length != 0) 
 			{
 				//Choose random way to follow
@@ -81,14 +71,14 @@ namespace Assets.Script
 					oppositeTile = tileIndex - Mathf.Sign(velocity.y) * Vector2.up;
 				}
 				var targetTilePosition = gameObject.transform.parent.TransformPoint(tileSize * targetTile);
-				if(CanReach(gameObject, targetTilePosition))
+				if(MapDiscovery.CanReach(gameObject, targetTilePosition))
 				{
 					result = targetTilePosition;
 				}
 				else
 				{
 					var oppositeTilePosition = gameObject.transform.parent.TransformPoint(tileSize * oppositeTile);
-					if(CanReach(gameObject, oppositeTilePosition))
+					if(MapDiscovery.CanReach(gameObject, oppositeTilePosition))
 					{
 						result = oppositeTilePosition;
 					}
@@ -111,7 +101,7 @@ namespace Assets.Script
 			if (target != null) 
 			{
 				//Check if we arrived close to target
-				const float eps = 0.02f;
+				const float eps = 0.021f;
 				if(Vector2.Distance(target.Value, position) < eps)
 				{
 					//Arrived to the tile
@@ -131,7 +121,7 @@ namespace Assets.Script
 				else
 				{
 					//Check if target is still reachable, ie user could have placed bomb
-					if(CanReach(gameObject, target.Value))
+					if(MapDiscovery.CanReach(gameObject, target.Value))
 					{
 						//Continue move towards current target
 						newWay = target.Value - position;
@@ -150,7 +140,12 @@ namespace Assets.Script
 				newWay = target.Value - position;
 			}
 			Debug.DrawRay(position, target.Value - position, Color.green);
-		    newWay.Normalize ();
+
+			//TODO - instead of this check there should be proper movement to center for the stuck tile
+			if(newWay.magnitude < 0.005f)
+				newWay = Vector2.zero; 
+			else
+		    	newWay.Normalize ();
 			return newWay;
 		}
 

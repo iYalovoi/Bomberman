@@ -43,5 +43,22 @@ namespace Assets.Script.Utility
 			var tileSize = GetTileSize(gameObject);
 			return new Vector2(Mathf.Round(position.x / tileSize), Mathf.Round(position.y / tileSize));
 		}
+
+		public static Vector2 GetTileCenter(GameObject gameObject, Vector2 tileIndex)
+		{
+			var tileSize = GetTileSize(gameObject);
+			return gameObject.transform.parent.TransformPoint(tileSize * tileIndex);
+		}
+
+		public static bool CanReach(GameObject gameObject, Vector2 tilePosition)
+		{
+			var layerMask = LayerMask.GetMask("Wall", "Bomb");
+			if (gameObject.layer != LayerMask.NameToLayer("Ghost"))
+			{
+				layerMask |= LayerMask.GetMask("Soft");
+			}
+			var hit = Physics2D.Linecast(gameObject.transform.position, tilePosition, layerMask);
+			return hit.collider == null;
+		}
     }
 }

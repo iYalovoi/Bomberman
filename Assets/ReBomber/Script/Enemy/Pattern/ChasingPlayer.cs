@@ -19,33 +19,16 @@ namespace Assets.Script
 		{
 		}
 
-		private bool IsValidDirection(GameObject enemy, Vector2 direction)
-		{
-			bool result = false;
-			const float eps = 0.02f;
-			var enemyPosition = enemy.transform.position;
-			var layerMask = LayerMask.GetMask("Enemy", "Ghost", "Hit", "Player");
-			if (enemy.layer == LayerMask.NameToLayer("Ghost"))
-			{
-				layerMask |= LayerMask.GetMask("Soft");
-			}
-			layerMask = ~layerMask;
-			var hitInfo = Physics2D.CircleCast(enemyPosition, 0.198f, direction.normalized, 0.01f, layerMask);
-			result = hitInfo.collider == null;
-			return result;
-		}
-
         public Vector2 FindWay(GameObject gameObject)
         {
             var newWay = default(Vector2);
             //Set vision range to 2 tile between enemy and player centers
             var visionRange = MapDiscovery.GetTileSize(gameObject) * (1 + _visionRange);
-            var enemyPosition = gameObject.transform.position;
+            Vector2 enemyPosition = gameObject.transform.position;
             var player = GameObject.FindWithTag("Player");
             var playerPosition = player.gameObject.transform.position;
 			if (player.GetComponent<Bomberman> ().Dead)
 				return newWay;
-            //assume circle collider
             //Check if close enough
             if (Vector2.Distance(enemyPosition, playerPosition) < visionRange)
             {
@@ -61,35 +44,47 @@ namespace Assets.Script
                 var hit = Physics2D.Linecast(enemyPosition, playerPosition, layerMask);
                 if (hit.collider && hit.collider.tag == "Player")
                 {
-                    //Enemy spoted player
-                    Debug.DrawLine(enemyPosition, playerPosition, Color.green, 1, false);
                     //Move towards player
                     //Two possibilities - vertical or horizontal
                     //Prioritize longest one
-                    var direction1 = new Vector2(playerPosition.x - enemyPosition.x, 0);
-                    var direction2 = new Vector2(0, playerPosition.y - enemyPosition.y);
-					if(Mathf.Abs(direction1.x) < Mathf.Abs(direction2.y))
+					var tileIndex = MapDiscovery.GetTileIndex(gameObject, gameObject.transform.localPosition);
+					var tilePosition = MapDiscovery.GetTileCenter(gameObject, tileIndex);
+					var direction1 = new Vector2(playerPosition.x - enemyPosition.x, 0).normalized;
+                    var direction2 = new Vector2(0, playerPosition.y - enemyPosition.y).normalized;
+					var target1 = tilePosition;
+					var target2 = tilePosition;
+					const float eps = 0.02f;
+					if(direction1.x * (enemyPosition.x - tilePosition.x) > -eps)
 					{
-						var tmp = direction1;
-						direction1 = direction2;
-						direction2 = tmp;
+						target1 = MapDiscovery.GetTileCenter(gameObject, tileIndex + direction1.x * Vector2.right);
 					}
-                    //Check if we can move in direction 1
-					if(IsValidDirection(gameObject, direction1))
+					if(direction2.y * (enemyPosition.y - tilePosition.y) > -eps)
 					{
-						newWay = direction1;
+						target2 = MapDiscovery.GetTileCenter(gameObject, tileIndex + direction2.y * Vector2.up);
+					}
+					//Make sure targets valid
+					if(Mathf.Abs(enemyPosition.y - target1.y) > eps)
+						target1 = tilePosition;
+					if(Mathf.Abs(enemyPosition.x - target2.x) > eps)
+						target2 = tilePosition;
+					//Priority closest to player
+					if(Vector2.Distance(target1, playerPosition) > Vector2.Distance(target2, playerPosition))
+					{
+						var tmp = target1;
+						target1 = target2;
+						target2 = tmp;
+					}
+					if(MapDiscovery.CanReach(gameObject, target1))
+					{
+						newWay = target1 - enemyPosition;
 					}
 					else
 					{
-						//Is it possible that both directions are invalid?
-						newWay = direction2;
+						if(MapDiscovery.CanReach(gameObject, target2))
+							newWay = target2 - enemyPosition;
 					}
+					Debug.DrawRay(enemyPosition, newWay, Color.blue);
 					newWay.Normalize();
-					Debug.DrawRay(enemyPosition, newWay, Color.blue, 1, false);
-                }
-                else
-                {
-                    Debug.DrawLine(enemyPosition, playerPosition, Color.red, 1, false);
                 }
             }
             return newWay;
