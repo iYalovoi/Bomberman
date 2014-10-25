@@ -61,7 +61,7 @@ namespace Assets.Script
                 Application.LoadLevel("LevelSplash");
             }
             else
-                Application.LoadLevel("Fin");
+                Application.LoadLevel("Victory");
         }
 
         private void GameOverHandler()

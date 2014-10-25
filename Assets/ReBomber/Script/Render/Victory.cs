@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Script
 {
-    public class GameOver : ContainerBase
+    public class Victory : ContainerBase
     {
         private TextMeshPro _textMeshPro;
         private Messenger _messenger;
@@ -17,7 +17,7 @@ namespace Assets.Script
 
         private void OnInjected(Messenger messenger, LevelModel level, BombermanModel bomberman)
         {
-            GetComponent<TextMeshPro>().text = string.Format("Score {0}!", bomberman.Score);
+            GetComponent<TextMeshPro>().text = string.Format("Score: {0}!", bomberman.Score);
 
             _messenger = messenger;
             level.Reset();
