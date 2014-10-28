@@ -58,7 +58,7 @@ namespace AssemblyCSharp
 
         void Update()
         {
-            if (Input.GetButtonDown("Options"))
+            if (Input.GetButtonDown("Options") || Input.GetButtonDown("Joystick Options"))
                 ToogleMenu();
         }
     }

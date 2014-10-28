@@ -33,7 +33,7 @@ namespace Assets.Script
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown("return"))
+            if (Input.GetKeyDown("return") || Input.GetButtonDown("Joystick Start"))
             {
                 switch (Selection)
                 {
@@ -48,9 +48,9 @@ namespace Assets.Script
                         break;
                 }
             }
-            if (Input.GetKeyDown("up"))
+            if (Input.GetKeyDown("up") || Input.GetAxis("Joystick Vertical") > 0)
                 Selection = Selection > 0 ? Selection - 1 : Selection;
-            if (Input.GetKeyDown("down"))
+            if (Input.GetKeyDown("down") || Input.GetAxis("Joystick Vertical") < 0)
                 Selection = Selection < StartSelection.Exit ? Selection + 1 : Selection;
         }
 

@@ -50,7 +50,7 @@ namespace Assets.Script
             {
                 IsExploded = true;
                 while (!IsSpawned)
-                    yield return null;                    
+                    yield return null;
 
                 var animator = GetComponent<Animator>();
 
@@ -59,9 +59,9 @@ namespace Assets.Script
                 var bombTile = new Vector2(localPosition.x / tileSize, localPosition.y / tileSize);
 
                 var position = transform.position;
-				animator.SetTrigger("Explode");
+                animator.SetTrigger("Explode");
 
-				yield return null;                    
+                yield return null;                    
 
                 BlastInDirection(position, tileSize, bombTile, Direction.Left, Radius);
                 BlastInDirection(position, tileSize, bombTile, Direction.Up, Radius);
@@ -96,7 +96,7 @@ namespace Assets.Script
                 var delta = wall.transform.position - position;
                 newRadius = Mathf.Abs(Mathf.RoundToInt((isVertical ? delta.y : delta.x) / tileSize)) - 1;
                 var soft = wall.GetComponent<Soft>();
-                if(soft != null)
+                if (soft != null)
                     soft.Explode();
             }
             var bombTileX = Mathf.RoundToInt(bombTile.x);
@@ -105,13 +105,13 @@ namespace Assets.Script
             {
                 var xTile = bombTileX + (!isVertical ? (1 + i) * (isLeft ? -1 : 1) : 0);
                 var yTile = bombTileY + (isVertical ? (1 + i) * (!isUp ? -1 : 1) : 0);
-                var blast = Instantiate((i < (newRadius -1)) ? Blast : BlastEnd, new Vector3(), new Quaternion(0, 0, 0, 0)) as GameObject;
+                var blast = Instantiate((i < (newRadius - 1)) ? Blast : BlastEnd, new Vector3(), new Quaternion(0, 0, 0, 0)) as GameObject;
                 blast.transform.parent = Level.transform;
-				blast.transform.Rotate(0,0,180);
+                blast.transform.Rotate(0, 0, 180);
                 blast.transform.localPosition = new Vector3(xTile * tileSize, yTile * tileSize);
                 if (isVertical)
                     blast.transform.Rotate(0, 0, !isUp ? -90 : 90);
-                if(!isLeft)
+                if (!isLeft)
                     blast.transform.Rotate(0, 0, 180);
             }
             var beforeTheWall = objects.TakeWhile(o => o.tag != "Wall").ToList();

@@ -27,7 +27,7 @@ namespace Assets.Script
 
         void Update()
         {
-            if (Input.GetKeyDown("return"))
+            if (Input.GetKeyDown("return") || Input.GetButtonDown("Joystick Start"))
                 _messenger.Signal(Signals.RestartGame);
         }
 

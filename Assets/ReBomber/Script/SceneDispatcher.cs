@@ -56,8 +56,8 @@ namespace Assets.Script
         {
             if (_model.CurrentLevel < _model.LevelCap)
             {
-//                _model.CurrentLevel++;
-                _model.CurrentLevel = Random.Range(0, _model.LevelCap);
+                _model.CurrentLevel++;
+//                _model.CurrentLevel = Random.Range(0, _model.LevelCap);
                 GA.API.Design.NewEvent("Level", _model.CurrentLevel);
                 Application.LoadLevel("LevelSplash");
             }

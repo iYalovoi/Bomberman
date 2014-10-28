@@ -26,7 +26,7 @@ namespace Assets.Script
             _messenger = messenger;
             _model = model;
 //            if (Application.isEditor)
-            _model.Godlike();
+//            _model.Godlike();
 
             _subscriptions.Add(_messenger.Subscribe<int>((o) =>
                     {
@@ -110,7 +110,7 @@ namespace Assets.Script
         {
             if (Level != null && !Dead)
             {
-                if (Input.GetButtonDown("Bomb") && FindObjectsOfType<Bomb>().Count() < BombCount)
+                if ((Input.GetButtonDown("Bomb") || Input.GetButtonDown("Joystick Bomb")) && FindObjectsOfType<Bomb>().Count() < BombCount)
                 {
                     //Getting proper bomb location
                     var tileSize = Bomb.renderer.bounds.size.x;
@@ -140,7 +140,7 @@ namespace Assets.Script
                     }
                 }
                 Bombs = new Queue<Bomb>(Bombs.Where(o => o != null));
-                if (Input.GetButtonDown("Fire") && RemoteControl && Bombs.Any())
+                if ((Input.GetButtonDown("Fire") || (Input.GetButtonDown("Joystick Fire"))) && RemoteControl && Bombs.Any())
                 {
                     var bomb = Bombs.Dequeue();
                     StartCoroutine(bomb.ExplodeZero());
@@ -158,8 +158,8 @@ namespace Assets.Script
         {
             if (Level != null)
             {
-                var vertical = Input.GetAxis("Vertical");
-                var horizontal = Input.GetAxis("Horizontal");
+                var vertical = Input.GetAxis("Vertical") + Input.GetAxis("Joystick Vertical");
+                var horizontal = Input.GetAxis("Horizontal") + Input.GetAxis("Joystick Horizontal");
 
                 if (Math.Abs(vertical) > 0.1)
                     Direction = vertical > 0 ? Direction.Up : Direction.Down;
