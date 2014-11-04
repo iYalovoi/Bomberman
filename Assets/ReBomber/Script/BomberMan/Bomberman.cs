@@ -26,7 +26,7 @@ namespace Assets.Script
             _messenger = messenger;
             _model = model;
 //            if (Application.isEditor)
-            _model.Godlike();
+//            _model.Godlike();
 
             _subscriptions.Add(_messenger.Subscribe<int>((o) =>
                     {
