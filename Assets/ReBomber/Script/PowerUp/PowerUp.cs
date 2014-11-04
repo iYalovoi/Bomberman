@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using System.Collections;
 
 namespace Assets.Script
 {
@@ -56,8 +57,10 @@ namespace Assets.Script
             }
         }
 
-        void Consumed()
+        IEnumerator Consumed()
         {
+            while (PickUp.isPlaying)
+                yield return new WaitForSeconds(0);
             Destroy(gameObject);
         }
 
