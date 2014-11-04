@@ -26,6 +26,7 @@ namespace Assets.Script
         public bool IsConsumed;
         private Animator _animator;
         public Sprite Sprite;
+        public AudioSource PickUp;
 
         // Use this for initialization
         void Start()
@@ -50,6 +51,7 @@ namespace Assets.Script
                     player.AcceptPower(Power);
                     _animator.SetTrigger("Consume");
                     IsConsumed = true;
+                    PickUp.Play();
                 }
             }
         }

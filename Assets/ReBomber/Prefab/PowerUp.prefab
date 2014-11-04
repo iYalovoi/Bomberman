@@ -51,8 +51,8 @@ AudioSource:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: ec7ccde44d4bc3949bab00fcc516c635, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 84ecb588b6e90714089d65a8f465108f, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -130,6 +130,7 @@ MonoBehaviour:
   Power: 0
   IsConsumed: 0
   Sprite: {fileID: 0}
+  PickUp: {fileID: 8200000}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

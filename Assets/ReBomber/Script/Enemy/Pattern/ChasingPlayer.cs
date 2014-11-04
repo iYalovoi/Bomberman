@@ -15,9 +15,9 @@ namespace Assets.Script
 
         private float _visionRange;
 
-		public void Reset()
-		{
-		}
+        public void Reset()
+        {
+        }
 
         public Vector2 FindWay(GameObject gameObject)
         {
@@ -27,8 +27,8 @@ namespace Assets.Script
             Vector2 enemyPosition = gameObject.transform.position;
             var player = GameObject.FindWithTag("Player");
             var playerPosition = player.gameObject.transform.position;
-			if (player.GetComponent<Bomberman> ().Dead)
-				return newWay;
+            if (player.GetComponent<Bomberman>().Dead)
+                return newWay;
             //Check if close enough
             if (Vector2.Distance(enemyPosition, playerPosition) < visionRange)
             {
@@ -44,47 +44,51 @@ namespace Assets.Script
                 var hit = Physics2D.Linecast(enemyPosition, playerPosition, layerMask);
                 if (hit.collider && hit.collider.tag == "Player")
                 {
-                    //Move towards player
-                    //Two possibilities - vertical or horizontal
-                    //Prioritize longest one
-					var tileIndex = MapDiscovery.GetTileIndex(gameObject, gameObject.transform.localPosition);
-					var tilePosition = MapDiscovery.GetTileCenter(gameObject, tileIndex);
-					var direction1 = new Vector2(playerPosition.x - enemyPosition.x, 0).normalized;
-                    var direction2 = new Vector2(0, playerPosition.y - enemyPosition.y).normalized;
-					var target1 = tilePosition;
-					var target2 = tilePosition;
-					const float eps = 0.02f;
-					if(direction1.x * (enemyPosition.x - tilePosition.x) > -eps)
-					{
-						target1 = MapDiscovery.GetTileCenter(gameObject, tileIndex + direction1.x * Vector2.right);
-					}
-					if(direction2.y * (enemyPosition.y - tilePosition.y) > -eps)
-					{
-						target2 = MapDiscovery.GetTileCenter(gameObject, tileIndex + direction2.y * Vector2.up);
-					}
-					//Make sure targets valid
-					if(Mathf.Abs(enemyPosition.y - target1.y) > eps)
-						target1 = tilePosition;
-					if(Mathf.Abs(enemyPosition.x - target2.x) > eps)
-						target2 = tilePosition;
-					//Priority closest to player
-					if(Vector2.Distance(target1, playerPosition) > Vector2.Distance(target2, playerPosition))
-					{
-						var tmp = target1;
-						target1 = target2;
-						target2 = tmp;
-					}
-					if(MapDiscovery.CanReach(gameObject, target1))
-					{
-						newWay = target1 - enemyPosition;
-					}
-					else
-					{
-						if(MapDiscovery.CanReach(gameObject, target2))
-							newWay = target2 - enemyPosition;
-					}
-					Debug.DrawRay(enemyPosition, newWay, Color.blue);
-					newWay.Normalize();
+                    var collidersInArea = Physics2D.OverlapPointAll(hit.transform.position);
+                    if (collidersInArea.All(o => o.gameObject.tag != "Bomb" && o.gameObject.tag != "Wall"))
+                    {
+                        //Move towards player
+                        //Two possibilities - vertical or horizontal
+                        //Prioritize longest one
+                        var tileIndex = MapDiscovery.GetTileIndex(gameObject, gameObject.transform.localPosition);
+                        var tilePosition = MapDiscovery.GetTileCenter(gameObject, tileIndex);
+                        var direction1 = new Vector2(playerPosition.x - enemyPosition.x, 0).normalized;
+                        var direction2 = new Vector2(0, playerPosition.y - enemyPosition.y).normalized;
+                        var target1 = tilePosition;
+                        var target2 = tilePosition;
+                        const float eps = 0.02f;
+                        if (direction1.x * (enemyPosition.x - tilePosition.x) > -eps)
+                        {
+                            target1 = MapDiscovery.GetTileCenter(gameObject, tileIndex + direction1.x * Vector2.right);
+                        }
+                        if (direction2.y * (enemyPosition.y - tilePosition.y) > -eps)
+                        {
+                            target2 = MapDiscovery.GetTileCenter(gameObject, tileIndex + direction2.y * Vector2.up);
+                        }
+                        //Make sure targets valid
+                        if (Mathf.Abs(enemyPosition.y - target1.y) > eps)
+                            target1 = tilePosition;
+                        if (Mathf.Abs(enemyPosition.x - target2.x) > eps)
+                            target2 = tilePosition;
+                        //Priority closest to player
+                        if (Vector2.Distance(target1, playerPosition) > Vector2.Distance(target2, playerPosition))
+                        {
+                            var tmp = target1;
+                            target1 = target2;
+                            target2 = tmp;
+                        }
+                        if (MapDiscovery.CanReach(gameObject, target1))
+                        {
+                            newWay = target1 - enemyPosition;
+                        }
+                        else
+                        {
+                            if (MapDiscovery.CanReach(gameObject, target2))
+                                newWay = target2 - enemyPosition;
+                        }
+                        Debug.DrawRay(enemyPosition, newWay, Color.blue);
+                        newWay.Normalize();
+                    }
                 }
             }
             return newWay;
