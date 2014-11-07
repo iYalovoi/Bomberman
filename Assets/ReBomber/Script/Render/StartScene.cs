@@ -21,6 +21,7 @@ namespace Assets.Script
         // Use this for initialization
         protected override void Start()
         {
+            Screen.SetResolution(1280, 720, false);
             base.Start();
             _textMeshPro = GetComponent<TextMeshPro>();
         }

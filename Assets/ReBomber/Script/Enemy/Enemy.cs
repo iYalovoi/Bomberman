@@ -39,6 +39,9 @@ namespace Assets.Script
                 Animator.SetTrigger("Die");
                 StartCoroutine(PlayDeathSound(0.1f));
                 _messenger.Signal(Bounty);
+                Destroy(gameObject.GetComponent<Collider2D>());
+                foreach (Transform child in gameObject.transform)
+                    Destroy(child.gameObject);
                 GA.API.Design.NewEvent("Monster", (float)Type);
             }
         }
