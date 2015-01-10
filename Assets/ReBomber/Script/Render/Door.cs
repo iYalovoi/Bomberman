@@ -20,7 +20,7 @@ namespace Assets.Script
             _animator = GetComponent<Animator>();
         }
 
-        private void OnInjected(Messenger messenger)
+        private void OnInjected(Messenger messenger, LevelModel model)
         {
             _messenger = messenger;
         }

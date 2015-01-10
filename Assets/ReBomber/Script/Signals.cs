@@ -11,5 +11,6 @@
         public static string DoorHit = "DoorHit";
         public static string RestartGame = "RestartGame";
         public static string Credits = "Credits";
+        public static string SoftBlockDestroyed = "SoftBlockDestroyed";
     }
 }

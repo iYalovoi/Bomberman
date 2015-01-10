@@ -26,11 +26,21 @@ namespace Assets.Script
             _messenger = messenger;
             _model = model;
 //            if (Application.isEditor)
-            _model.Godlike();
+//            _model.Godlike();
 
             _subscriptions.Add(_messenger.Subscribe<int>((o) =>
                     {
                         _model.Score += o;
+                    }));
+
+            _subscriptions.Add(_messenger.Subscribe(Signals.SoftBlockDestroyed, () =>
+                    {
+                        _model.Score += 10;
+                    }));
+
+            _subscriptions.Add(_messenger.Subscribe(Signals.DoorOpened, () =>
+                    {
+
                     }));
         }
 

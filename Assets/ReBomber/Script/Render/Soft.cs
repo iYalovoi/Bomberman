@@ -2,12 +2,14 @@
 
 namespace Assets.Script
 {
-    public class Soft : MonoBehaviour, ITarget
+    public class Soft : ContainerBase, ITarget
     {
         private Animator _animator;
 
-        void Start()
+
+        protected override void Start()
         {
+            base.Start();
             _animator = GetComponent<Animator>();
         }
 
@@ -15,9 +17,17 @@ namespace Assets.Script
         {
         }
 
+        private Messenger _messenger;
+
+        private void OnInjected(Messenger messenger)
+        {
+            _messenger = messenger;
+        }
+
         public void Explode()
         {
             _animator.SetTrigger("Explode");
+            _messenger.Signal(Signals.SoftBlockDestroyed);
         }
 
         public void Destroy()
