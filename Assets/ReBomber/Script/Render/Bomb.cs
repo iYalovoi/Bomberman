@@ -44,6 +44,26 @@ namespace Assets.Script
             IsSpawned = true;
         }
 
+        public void ExplodeMiddle()
+        {
+            var position = transform.position;
+            var tileSize = renderer.bounds.size.x;
+
+            var directions = new [] { Direction.Left, Direction.Right, Direction.Down, Direction.Up };
+
+            foreach (var dir in directions)
+            {
+                var isVertical = Direction.Vertical.IsFlagSet(dir);
+
+                var hits = MapDiscovery.BlastInDirection(position, tileSize, new Vector2(tileSize * 0.4f, tileSize * 0.9f), dir, Radius);
+                var objects = hits.Select(o => o.transform.gameObject).ToList();
+
+                var beforeTheWall = objects.TakeWhile(o => o.tag != "Wall").ToList();
+                if (beforeTheWall.Any())
+                    beforeTheWall.Select(o => o.GetInterface<ITarget>()).ToList().ForEach(o => o.OnHit(gameObject));
+            }
+        }
+
         public IEnumerator ExplodeZero()
         {
             if (!IsExploded)
@@ -61,7 +81,7 @@ namespace Assets.Script
                 var position = transform.position;
                 animator.SetTrigger("Explode");
 
-                yield return null;                    
+                yield return null;
 
                 BlastInDirection(position, tileSize, bombTile, Direction.Left, Radius);
                 BlastInDirection(position, tileSize, bombTile, Direction.Up, Radius);
@@ -85,7 +105,7 @@ namespace Assets.Script
             var isVertical = Direction.Vertical.IsFlagSet(direction);
             var isLeft = direction == Direction.Left;
             var isUp = direction == Direction.Up;
-            var hits = MapDiscovery.BlastInDirection(position, tileSize, direction, radius);
+            var hits = MapDiscovery.LineInDirection(position, tileSize, direction, radius);
 
             var newRadius = Radius;
 

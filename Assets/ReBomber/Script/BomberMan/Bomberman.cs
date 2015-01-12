@@ -26,7 +26,7 @@ namespace Assets.Script
             _messenger = messenger;
             _model = model;
 //            if (Application.isEditor)
-//            _model.Godlike();
+//                _model.Godlike();
 
             _subscriptions.Add(_messenger.Subscribe<int>((o) =>
                     {
@@ -55,6 +55,7 @@ namespace Assets.Script
         public AudioSource FootStepsSound;
         public AudioSource DeathSound;
         public AudioSource PlaceBombSound;
+        public AudioSource DenyBombSound;
         public CircleCollider2D Solid;
         public Queue<Bomb> Bombs = new Queue<Bomb>();
 
@@ -120,14 +121,14 @@ namespace Assets.Script
         {
             if (Level != null && !Dead)
             {
-                if ((Input.GetButtonDown("Bomb") || Input.GetButtonDown("Joystick Bomb")) && FindObjectsOfType<Bomb>().Count() < BombCount)
+                if ((Input.GetButtonDown("Bomb") || Input.GetButtonDown("Joystick Bomb")))
                 {
                     //Getting proper bomb location
                     var tileSize = Bomb.renderer.bounds.size.x;
                     var localPosition = gameObject.transform.localPosition;
 
                     var collidersInArea = Physics2D.OverlapPointAll(gameObject.transform.position);
-                    if (collidersInArea.All(o => o.gameObject.tag != "Bomb" && o.gameObject.tag != "Wall"))
+                    if (collidersInArea.All(o => o.gameObject.tag != "Bomb" && o.gameObject.tag != "Wall") && FindObjectsOfType<Bomb>().Count() < BombCount)
                     {
                         Bombing = true;
                         var bombTile = new Vector2(Mathf.RoundToInt(localPosition.x / tileSize),
@@ -148,6 +149,8 @@ namespace Assets.Script
 
                         GA.API.Design.NewEvent("Bombed");
                     }
+                    else
+                        DenyBombSound.Play();
                 }
                 Bombs = new Queue<Bomb>(Bombs.Where(o => o != null));
                 if ((Input.GetButtonDown("Fire") || (Input.GetButtonDown("Joystick Fire"))) && RemoteControl && Bombs.Any())
