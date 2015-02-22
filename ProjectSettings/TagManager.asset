@@ -4,7 +4,7 @@
 TagManager:
   tags:
   - Bomb
-  - Player
+  - ReBomber
   - Wall
   - Enemy
   - Door
@@ -18,14 +18,14 @@ TagManager:
   Builtin Layer 5: UI
   Builtin Layer 6: 
   Builtin Layer 7: 
-  User Layer 8: Player
+  User Layer 8: NGUI
   User Layer 9: Wall
   User Layer 10: Enemy
   User Layer 11: Bomb
   User Layer 12: Hit
   User Layer 13: Soft
   User Layer 14: Ghost
-  User Layer 15: 
+  User Layer 15: ReBomber
   User Layer 16: 
   User Layer 17: 
   User Layer 18: 

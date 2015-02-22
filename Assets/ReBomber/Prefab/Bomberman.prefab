@@ -17,9 +17,9 @@ GameObject:
   - 82: {fileID: 8200002}
   - 82: {fileID: 8200004}
   - 82: {fileID: 8295134}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: Bomberman
-  m_TagString: Player
+  m_TagString: ReBomber
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -37,7 +37,7 @@ namespace Assets.Script
         void OnTriggerEnter2D(Collider2D col)
         {
             var collidersInArea = Physics2D.OverlapPointAll(gameObject.transform.position).ToList();
-            if (col.gameObject.tag == "Player" && GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && collidersInArea.All(o => o.gameObject.tag != "Wall"))
+            if (col.gameObject.tag == "ReBomber" && GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && collidersInArea.All(o => o.gameObject.tag != "Wall"))
             {
                 _animator.SetTrigger("Open");
                 var bomberman = col.gameObject.GetComponent<Bomberman>();

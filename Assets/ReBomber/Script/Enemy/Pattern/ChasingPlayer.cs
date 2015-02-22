@@ -25,7 +25,7 @@ namespace Assets.Script
             //Set vision range to 2 tile between enemy and player centers
             var visionRange = MapDiscovery.GetTileSize(gameObject) * (1 + _visionRange);
             Vector2 enemyPosition = gameObject.transform.position;
-            var player = GameObject.FindWithTag("Player");
+            var player = GameObject.FindWithTag("ReBomber");
             var playerPosition = player.gameObject.transform.position;
             if (player.GetComponent<Bomberman>().Dead)
                 return newWay;
@@ -42,7 +42,7 @@ namespace Assets.Script
                 }
                 layerMask = ~layerMask;
                 var hit = Physics2D.Linecast(enemyPosition, playerPosition, layerMask);
-                if (hit.collider && hit.collider.tag == "Player")
+                if (hit.collider && hit.collider.tag == "ReBomber")
                 {
                     var collidersInArea = Physics2D.OverlapPointAll(hit.transform.position);
                     if (collidersInArea.All(o => o.gameObject.tag != "Bomb" && o.gameObject.tag != "Wall"))

@@ -17,8 +17,8 @@ namespace Assets.Script
         {
             base.Start();
             _animator = GetComponent<Animator>();
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Bomb"), LayerMask.NameToLayer("Player"), BombPass);
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Soft"), LayerMask.NameToLayer("Player"), WallPass);
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Bomb"), LayerMask.NameToLayer("ReBomber"), BombPass);
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Soft"), LayerMask.NameToLayer("ReBomber"), WallPass);
         }
 
         private void OnInjected(BombermanModel model, Messenger messenger)
@@ -273,7 +273,7 @@ namespace Assets.Script
                     break;
                 case Powers.BombPass:
                     BombPass = true;
-                    Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Bomb"), LayerMask.NameToLayer("Player"), true);
+                    Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Bomb"), LayerMask.NameToLayer("ReBomber"), true);
                     break;
                 case Powers.FlamePass:
                     FlamePass = true;
@@ -284,7 +284,7 @@ namespace Assets.Script
                     break;
                 case Powers.WallPass:
                     WallPass = true;
-                    Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Soft"), LayerMask.NameToLayer("Player"), true);
+                    Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Soft"), LayerMask.NameToLayer("ReBomber"), true);
                     break;
                 case Powers.Speed:
                     Speed = Constants.BasePlayerSpeed + Constants.SpeedPowerUp;

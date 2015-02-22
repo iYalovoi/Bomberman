@@ -71,6 +71,5 @@ Library/
 *.ipch
 *.sln
 *.csproj
-NGUI
 Bomberman.userprefs
 Universal Sound FX*

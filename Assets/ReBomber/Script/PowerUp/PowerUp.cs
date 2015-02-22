@@ -43,7 +43,7 @@ namespace Assets.Script
 
         void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.gameObject.tag == "Player" && !IsConsumed)
+            if (col.gameObject.tag == "ReBomber" && !IsConsumed)
             {
                 var collidersInArea = Physics2D.OverlapPointAll(gameObject.transform.position);
                 if (collidersInArea.All(o => o.gameObject.tag != "Wall"))

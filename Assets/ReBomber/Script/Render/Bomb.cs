@@ -21,7 +21,7 @@ namespace Assets.Script
 
         void OnTriggerExit2D(Collider2D col)
         {
-            if (col.gameObject.tag == "Player")
+            if (col.gameObject.tag == "ReBomber")
                 Physics2D.IgnoreCollision(Bomberman, Solid, false);
         }
 
