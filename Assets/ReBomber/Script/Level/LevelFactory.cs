@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +55,7 @@ namespace Assets.Script
         {
             _model = model;
             _messenger = messenger;
-            _subscribtions.Add(_messenger.Subscribe(Signals.SpawnPontans, SpawnPontans));
+            _subscribtions.Add(_messenger.Subscribe(Signals.CountdownOver, SpawnPontans));
             _subscribtions.Add(_messenger.Subscribe(Signals.DoorHit, DoorHitHandler));
         }
 

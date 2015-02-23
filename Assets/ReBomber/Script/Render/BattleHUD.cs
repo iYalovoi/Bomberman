@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Globalization;
 using Assets.Script.Utility;
 using UnityEngine;
@@ -51,6 +51,7 @@ namespace Assets.Script
 
         IEnumerator CountDown()
         {            
+			_messenger.Signal(Signals.CountdownStart);
             yield return new WaitForSeconds(0);
             _timeLeft = _levelFactory.levDef.TimeLimit;
             while (_timeLeft > 0)
@@ -58,7 +59,7 @@ namespace Assets.Script
                 _timeLeft--;
                 yield return new WaitForSeconds(1);
                 if (_timeLeft == 0)
-                    _messenger.Signal(Signals.SpawnPontans);
+                    _messenger.Signal(Signals.CountdownOver);
             }
         }
 
