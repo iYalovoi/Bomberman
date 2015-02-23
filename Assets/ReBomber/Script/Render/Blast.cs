@@ -21,5 +21,16 @@ namespace Assets.Script
         {
 
         }
+
+		void OnTriggerEnter2D(Collider2D col)
+		{
+			Debug.Log (col.gameObject);
+			var components = col.gameObject.GetComponents<MonoBehaviour> ();
+			foreach (var component in components) 
+			{
+				if(component is ITarget)
+					(component as ITarget).OnHit(gameObject);
+			}
+		}
     }
 }

@@ -14,7 +14,46 @@ AnimationClip:
   m_CompressedRotationCurves: []
   m_PositionCurves: []
   m_ScaleCurves: []
-  m_FloatCurves: []
+  m_FloatCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: .400000006
+        inSlope: -1.19999993
+        outSlope: -1.19999993
+        tangentMode: 10
+      - time: .0833333358
+        value: .300000012
+        inSlope: -.960000038
+        outSlope: -.960000038
+        tangentMode: 10
+      - time: .166666672
+        value: .239999995
+        inSlope: -.780000091
+        outSlope: -.780000091
+        tangentMode: 10
+      - time: .25
+        value: .170000002
+        inSlope: -.839999914
+        outSlope: -.839999914
+        tangentMode: 10
+      - time: .333333343
+        value: .100000001
+        inSlope: -.714000046
+        outSlope: -.714000046
+        tangentMode: 10
+      - time: .416666657
+        value: .050999999
+        inSlope: -.588000178
+        outSlope: -.588000178
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Size.y
+    path: 
+    classID: 61
+    script: {fileID: 0}
   m_PPtrCurves:
   - curve:
     - time: 0
@@ -40,6 +79,12 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
+    - path: 0
+      attribute: 2368279999
+      script: {fileID: 0}
+      classID: 61
+      customType: 0
+      isPPtrCurve: 0
     - path: 0
       attribute: 0
       script: {fileID: 0}
@@ -70,7 +115,46 @@ AnimationClip:
     m_KeepOriginalPositionXZ: 0
     m_HeightFromFeet: 0
     m_Mirror: 0
-  m_EditorCurves: []
+  m_EditorCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: .400000006
+        inSlope: -1.19999993
+        outSlope: -1.19999993
+        tangentMode: 10
+      - time: .0833333358
+        value: .300000012
+        inSlope: -.960000038
+        outSlope: -.960000038
+        tangentMode: 10
+      - time: .166666672
+        value: .239999995
+        inSlope: -.780000091
+        outSlope: -.780000091
+        tangentMode: 10
+      - time: .25
+        value: .170000002
+        inSlope: -.839999914
+        outSlope: -.839999914
+        tangentMode: 10
+      - time: .333333343
+        value: .100000001
+        inSlope: -.714000046
+        outSlope: -.714000046
+        tangentMode: 10
+      - time: .416666657
+        value: .050999999
+        inSlope: -.588000178
+        outSlope: -.588000178
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    attribute: m_Size.y
+    path: 
+    classID: 61
+    script: {fileID: 0}
   m_EulerEditorCurves: []
   m_Events:
   - time: .5

@@ -48,7 +48,7 @@ namespace Assets.Script
         {
             var position = transform.position;
             var tileSize = renderer.bounds.size.x;
-
+			/*
             var directions = new [] { Direction.Left, Direction.Right, Direction.Down, Direction.Up };
 
             foreach (var dir in directions)
@@ -61,7 +61,7 @@ namespace Assets.Script
                 var beforeTheWall = objects.TakeWhile(o => o.tag != "Wall").ToList();
                 if (beforeTheWall.Any())
                     beforeTheWall.Select(o => o.GetInterface<ITarget>()).ToList().ForEach(o => o.OnHit(gameObject));
-            }
+            }*/
         }
 
         public IEnumerator ExplodeZero()
@@ -108,7 +108,6 @@ namespace Assets.Script
             var hits = MapDiscovery.LineInDirection(position, tileSize, direction, radius);
 
             var newRadius = Radius;
-
             var objects = hits.Select(o => o.transform.gameObject).ToList();
             var wall = objects.FirstOrDefault(o => o.tag == "Wall");
             if (wall != null)
@@ -134,9 +133,10 @@ namespace Assets.Script
                 if (!isLeft)
                     blast.transform.Rotate(0, 0, 180);
             }
+			/*
             var beforeTheWall = objects.TakeWhile(o => o.tag != "Wall").ToList();
             if (beforeTheWall.Any())
-                beforeTheWall.Select(o => o.GetInterface<ITarget>()).ToList().ForEach(o => o.OnHit(gameObject));
+                beforeTheWall.Select(o => o.GetInterface<ITarget>()).ToList().ForEach(o => o.OnHit(gameObject));*/
         }
 
         public void Destroy()

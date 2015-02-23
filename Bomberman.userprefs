@@ -1,48 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ReBomber/Script/BomberMan/Bomberman.cs">
     <Files>
-      <File FileName="Assets/ReBomber/Script/SceneDispatcher.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Render/BattleHUD.cs" Line="63" Column="63" />
-      <File FileName="Assets/ReBomber/Script/BomberMan/Bomberman.cs" Line="17" Column="17" />
-      <File FileName="Assets/ReBomber/Script/PowerUp/PowerUp.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Level/LevelFactory.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Render/PowerUpsDisplay.cs" Line="10" Column="10" />
-      <File FileName="Assets/ReBomber/Script/Utility/Messenger.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/BomberMan/BombermanModel.cs" Line="24" Column="24" />
-      <File FileName="Assets/ReBomber/Script/Level/LevelDefinition.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/PowerUp/PowerUpFactory.cs" Line="1" Column="1" />
-      <File FileName="Assets/Editor/uGUITools.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Enemy/EnemiesStats.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Enemy/Enemy.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Render/OptionsDisplay.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Render/GameOver.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Render/StartScene.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Render/Fin.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Level/LevelModel.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Render/BattleBoot.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Render/Door.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Render/LevelSplash.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Signals.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Utility/UnityDispatcher.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Render/Victory.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Utility/MapDiscovery.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Enemy/Pattern/ChasingPlayer.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Render/Blast.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Render/Bomb.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Render/Credits.cs" Line="1" Column="1" />
-      <File FileName="../Ace.Server/Ace.Render/Assets/CameraPath3/readme.txt" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Enemy/EnemyFactory.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Enemy/EnemyTypes.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Enemy/Pattern/CompositePattern.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Enemy/Pattern/DodgingBombs.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Enemy/Pattern/IEnemyPattern.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Enemy/Pattern/RandomRoaming.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Utility/Container.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Utility/ContainerBase.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/ContainerLauncher.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Render/Soft.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Utility/Direction.cs" Line="1" Column="1" />
+      <File FileName="Assets/ReBomber/Script/BomberMan/Bomberman.cs" Line="29" Column="15" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -53,6 +13,10 @@
                 <Node name="BomberMan" expanded="True">
                   <Node name="Bomberman.cs" selected="True" />
                 </Node>
+                <Node name="Enemy" expanded="True" />
+                <Node name="Level" expanded="True" />
+                <Node name="PowerUp" expanded="True" />
+                <Node name="Render" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -61,7 +25,9 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/aleksey/Dev/Random/Bomberman/Assets/ReBomber/Script/Render/Blast.cs" line="33" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
