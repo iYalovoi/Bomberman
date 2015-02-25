@@ -14,6 +14,7 @@ namespace Assets.Script
         public IEnemyPattern Behaviour = new RandomRoaming();
         public EnemyTypes Type;
         public AudioSource DeathSound;
+		public bool Invulnerable = false;
 
         protected Animator Animator;
 
@@ -54,7 +55,8 @@ namespace Assets.Script
 
         public void OnHit(GameObject striker)
         {
-            Die();
+			if(!Invulnerable)
+            	Die();
         }
 
         public void Destroy()
