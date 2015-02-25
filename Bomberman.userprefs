@@ -1,22 +1,20 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ReBomber/Script/BomberMan/Bomberman.cs">
-    <Files>
-      <File FileName="Assets/ReBomber/Script/BomberMan/Bomberman.cs" Line="29" Column="15" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="ReBomber" expanded="True">
               <Node name="Script" expanded="True">
-                <Node name="BomberMan" expanded="True">
-                  <Node name="Bomberman.cs" selected="True" />
-                </Node>
+                <Node name="BomberMan" expanded="True" />
                 <Node name="Enemy" expanded="True" />
                 <Node name="Level" expanded="True" />
                 <Node name="PowerUp" expanded="True" />
-                <Node name="Render" expanded="True" />
+                <Node name="Render" expanded="True">
+                  <Node name="Bomb.cs" selected="True" />
+                </Node>
+                <Node name="Utility" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -25,9 +23,7 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/aleksey/Dev/Random/Bomberman/Assets/ReBomber/Script/Render/Blast.cs" line="33" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
