@@ -10,7 +10,6 @@ namespace Assets.Script
         private LevelFactory _levelFactory;
         private GUIStyle _textStyleRed;
         private GUIStyle _textStyleGreen;
-        private int _timeLeft;
         GameModel _gameModel;
         private BombermanModel _model;
         private Messenger _messenger;
@@ -54,12 +53,12 @@ namespace Assets.Script
         {            
             _messenger.Signal(Signals.CountdownStart);
             yield return new WaitForSeconds(0);
-            _timeLeft = _levelFactory.levDef.TimeLimit;
-            while (_timeLeft > 0)
+            _gameModel.Time = _levelFactory.levDef.TimeLimit;
+            while (_gameModel.Time > 0)
             {
-                _timeLeft--;
+                _gameModel.Time--;
                 yield return new WaitForSeconds(1);
-                if (_timeLeft == 0)
+                if (_gameModel.Time == 0)
                     _messenger.Signal(Signals.CountdownOver);
             }
         }
@@ -79,7 +78,7 @@ namespace Assets.Script
             var relativeUnitY = Screen.height / 720f;
 
             GUI.Label(new Rect(relativeUnitX * 53, relativeUnitY * 44, relativeUnitX * 100, relativeUnitY * 23), _model.Lifes.ToString(CultureInfo.InvariantCulture), _textStyleGreen);
-            GUI.Label(new Rect(relativeUnitX * 187, relativeUnitY * 44, relativeUnitX * 100, relativeUnitY * 23), _timeLeft > 0 ? _timeLeft.ToString(CultureInfo.InvariantCulture) : "Run!", _textStyleRed);
+            GUI.Label(new Rect(relativeUnitX * 187, relativeUnitY * 44, relativeUnitX * 100, relativeUnitY * 23), _gameModel.Time > 0 ? _gameModel.Time.ToString(CultureInfo.InvariantCulture) : "Run!", _textStyleRed);
             GUI.Label(new Rect(relativeUnitX * 322, relativeUnitY * 44, relativeUnitX * 100, relativeUnitY * 23), _gameModel.CurrentLevel.ToString(CultureInfo.InvariantCulture), _textStyleGreen);
             GUI.Label(new Rect(relativeUnitX * 858, relativeUnitY * 44, relativeUnitX * 87, relativeUnitY * 23), _model.Score.ToString(CultureInfo.InvariantCulture), _textStyleGreen);
 

@@ -5,6 +5,7 @@
         public int CurrentLevel = 0;
         public int LevelCap = 50;
         public bool IsEasy;
+        public int Time;
 
         public void Reset()
         {

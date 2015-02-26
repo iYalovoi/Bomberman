@@ -21,7 +21,7 @@ namespace Assets.Script
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Soft"), LayerMask.NameToLayer("ReBomber"), WallPass);
         }
 
-        private void OnInjected(BombermanModel model, Messenger messenger)
+        private void OnInjected(BombermanModel model, GameModel _gameModel, Messenger messenger)
         {
             _messenger = messenger;
             _model = model;
@@ -40,7 +40,8 @@ namespace Assets.Script
 
             _subscriptions.Add(_messenger.Subscribe(Signals.DoorOpened, () =>
                     {
-
+                        if (!_gameModel.IsEasy)
+                            _model.Score += _gameModel.CurrentLevel * _gameModel.Time * 5;
                     }));
         }
 
