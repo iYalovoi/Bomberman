@@ -55,15 +55,15 @@ namespace Assets.Script
         {
             _model = model;
             _messenger = messenger;
-            _subscribtions.Add(_messenger.Subscribe(Signals.CountdownOver, SpawnPontans));
+            _subscribtions.Add(_messenger.Subscribe(Signals.CountdownOver, SpawnMoreMeat));
             _subscribtions.Add(_messenger.Subscribe(Signals.DoorHit, DoorHitHandler));
         }
 
-		private IEnumerator RemoveInvulnerability(List<Enemy> enemies)
-		{
-			yield return new WaitForSeconds(3);
-			enemies.ForEach(o=>o.Invulnerable = false);
-		}
+        private IEnumerator RemoveInvulnerability(List<Enemy> enemies)
+        {
+            yield return new WaitForSeconds(3);
+            enemies.ForEach(o => o.Invulnerable = false);
+        }
 
         private void DoorHitHandler()
         {
@@ -71,22 +71,22 @@ namespace Assets.Script
             {
                 _doorHit = true;
                 var door = GameObject.FindGameObjectWithTag("Door");
-				var doorTileX = (int)(door.transform.localPosition.x / _tileSize.x);
-				var doorTileY = (int)(door.transform.localPosition.y / _tileSize.y);
+                var doorTileX = (int)(door.transform.localPosition.x / _tileSize.x);
+                var doorTileY = (int)(door.transform.localPosition.y / _tileSize.y);
 
-				var enemies = new List<Enemy>();
+                var enemies = new List<Enemy>();
                 foreach (var monster in levDef.EnemyCounts.Keys)
                 {
                     for (var i = 0; i < levDef.EnemyCounts[monster]; i++)
-					{
-						var enemyObject = _enemyFactory.Produce(monster);
-						var enemy = enemyObject.GetComponent<Enemy>();
-						enemy.Invulnerable = true;
-						enemies.Add(enemy);
-						Place(enemyObject, doorTileX, doorTileY);
-					}
+                    {
+                        var enemyObject = _enemyFactory.Produce(monster);
+                        var enemy = enemyObject.GetComponent<Enemy>();
+                        enemy.Invulnerable = true;
+                        enemies.Add(enemy);
+                        Place(enemyObject, doorTileX, doorTileY);
+                    }
                 }
-				StartCoroutine(RemoveInvulnerability(enemies));
+                StartCoroutine(RemoveInvulnerability(enemies));
             }
         }
 
@@ -130,11 +130,14 @@ namespace Assets.Script
                 Camera.audio.Play();
         }
 
-        void SpawnPontans()
+        void SpawnMoreMeat()
         {
-            //Spawn 20 pontans when time hits 0:00
-            for (var i = 0; i < 20; i++)
-                Place(_enemyFactory.Produce(EnemyTypes.Pontan), Random.Range(1, levDef.Width - 1), Random.Range(1, levDef.Height - 1));
+            foreach (var type in levDef.EnemyCounts.Keys)
+            {
+                var newType = (type + 2) > EnemyTypes.Pontan ? EnemyTypes.Pontan : type + 2;
+                for (var i = 0; i < levDef.EnemyCounts[type]; i++)
+                    Place(_enemyFactory.Produce(newType), Random.Range(1, levDef.Width - 1), Random.Range(1, levDef.Height - 1));
+            }
         }
 
         private GameObject Create(GameObject prototype, int x, int y)
