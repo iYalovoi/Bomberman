@@ -7,7 +7,8 @@ namespace Assets.Script
 
     public enum StartSelection
     {
-        Game,
+        Easy,
+        Normal,
         Credits,
         Exit
     }
@@ -15,6 +16,7 @@ namespace Assets.Script
     public class StartScene : ContainerBase
     {
         private Messenger _messenger;
+        private GameModel _gameModel;
         public StartSelection Selection;
         private TextMeshPro _textMeshPro;
 
@@ -26,9 +28,10 @@ namespace Assets.Script
             _textMeshPro = GetComponent<TextMeshPro>();
         }
 
-        private void OnInjected(Messenger messenger)
+        private void OnInjected(Messenger messenger, GameModel gameModel)
         {
             _messenger = messenger;
+            _gameModel = gameModel;
         }
 
         // Update is called once per frame
@@ -38,7 +41,11 @@ namespace Assets.Script
             {
                 switch (Selection)
                 {
-                    case StartSelection.Game:
+                    case StartSelection.Easy:
+                        _gameModel.IsEasy = true;
+                        _messenger.Signal(Signals.DoorOpened);
+                        break;
+                    case StartSelection.Normal:
                         _messenger.Signal(Signals.DoorOpened);
                         break;
                     case StartSelection.Credits:
@@ -59,14 +66,17 @@ namespace Assets.Script
         {
             switch (Selection)
             {
-                case StartSelection.Game:
-                    _textMeshPro.text = @">>Game\n Gredits\n Exit";
+                case StartSelection.Easy:
+                    _textMeshPro.text = @">>Easy\n Normal\n Gredits\n Exit";
+                    break;
+                case StartSelection.Normal:
+                    _textMeshPro.text = @" Easy\n>>Normal\n Gredits\n Exit";
                     break;
                 case StartSelection.Credits:
-                    _textMeshPro.text = @" Game\n>>Gredits\n Exit";
+                    _textMeshPro.text = @" Easy\n Normal\n>>Gredits\n Exit";
                     break;
                 case StartSelection.Exit:
-                    _textMeshPro.text = @" Game\n Gredits\n>>Exit";
+                    _textMeshPro.text = @" Easy\n Normal\n Gredits\n>>Exit";
                     break;
             }
         }

@@ -15,7 +15,7 @@ namespace Assets.Script
             _textMeshPro = GetComponent<TextMeshPro>();
         }
 
-        private void OnInjected(Messenger messenger, LevelModel level, BombermanModel bomberman)
+        private void OnInjected(Messenger messenger, GameModel level, BombermanModel bomberman)
         {
             GetComponent<TextMeshPro>().text = string.Format("Score: {0}!", bomberman.Score);
 

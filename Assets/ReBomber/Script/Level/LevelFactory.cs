@@ -32,7 +32,7 @@ namespace Assets.Script
         private EnemyFactory _enemyFactory;
 
         private Messenger _messenger;
-        private LevelModel _model;
+        private GameModel _model;
         private LevelPosition[,] _map;
         private bool _doorHit;
         private readonly List<Action> _subscribtions = new List<Action>();
@@ -51,7 +51,7 @@ namespace Assets.Script
             _tileSize = HardBlock.renderer.bounds.size;
         }
 
-        private void OnInjected(Messenger messenger, LevelModel model)
+        private void OnInjected(Messenger messenger, GameModel model)
         {
             _model = model;
             _messenger = messenger;

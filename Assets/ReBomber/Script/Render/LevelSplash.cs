@@ -8,7 +8,7 @@ namespace Assets.Script
     public class LevelSplash : ContainerBase
     {
         private GUIStyle _textStyle;
-        private LevelModel _model;
+        private GameModel _model;
         private Messenger _messenger;
         private TextMeshPro _textMeshPro;
 
@@ -24,7 +24,7 @@ namespace Assets.Script
             _messenger.Signal(Signals.LoadNextLevel);
         }
 
-        private void OnInjected(Messenger messenger, LevelModel model)
+        private void OnInjected(Messenger messenger, GameModel model)
         {
             _model = model;
             _messenger = messenger;

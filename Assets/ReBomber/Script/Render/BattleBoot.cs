@@ -7,7 +7,7 @@ namespace Assets.Script
     public class BattleBoot : ContainerBase
     {
 
-        private void OnInjected(Messenger _messenger, LevelModel model)
+        private void OnInjected(Messenger _messenger, GameModel model)
         {
             if (model.CurrentLevel == 0)
                 _messenger.Signal(Signals.DoorOpened);

@@ -23,7 +23,7 @@ namespace Assets.Script
             _animator = GetComponent<Animator>();
         }
 
-        private void OnInjected(Messenger messenger, LevelModel model)
+        private void OnInjected(Messenger messenger, GameModel model)
         {
             _messenger = messenger;
 			countdownSubscription = _messenger.Subscribe(Signals.CountdownOver, ()=>timeIsOver = true);

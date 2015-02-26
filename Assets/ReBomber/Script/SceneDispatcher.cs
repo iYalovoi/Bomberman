@@ -7,10 +7,10 @@ namespace Assets.Script
     public class SceneDispatcher
     {
         private readonly Messenger _messenger;
-        private readonly LevelModel _model;
+        private readonly GameModel _model;
         private readonly IDispatcher _dispatcher;
 
-        public SceneDispatcher(Messenger messenger, LevelModel model, IDispatcher dispatcher)
+        public SceneDispatcher(Messenger messenger, GameModel model, IDispatcher dispatcher)
         {
             _model = model;
             _dispatcher = dispatcher;
