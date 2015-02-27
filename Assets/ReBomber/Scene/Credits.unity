@@ -207,9 +207,9 @@ MonoBehaviour:
     MauGee
 
 
-    Sound By
+    Audio Production By
 
-    Daft Punk
+    Tatiana Koltunova
 
 
     Testers
@@ -221,10 +221,7 @@ MonoBehaviour:
 
     Title By
 
-    Igor Mordvinov
-
-
-    (C) 7 Bits Studio 2014'
+    Igor Mordvinov'
   m_fontAsset: {fileID: 11400000, guid: 824b7fa1533257f4f8fd941194a28202, type: 2}
   m_fontColor:
     serializedVersion: 2
@@ -250,9 +247,9 @@ MonoBehaviour:
   m_wordWrappingRatios: .400000006
   m_horizontalMapping: 0
   m_verticalMapping: 0
-  isAffectingWordWrapping: 0
+  isAffectingWordWrapping: 1
   isInputParsingRequired: 0
-  havePropertiesChanged: 0
+  havePropertiesChanged: 1
   hasFontAssetChanged: 0
   m_isRichText: 1
   m_inputSource: 0
