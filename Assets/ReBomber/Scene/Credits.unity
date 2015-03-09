@@ -73,6 +73,7 @@ NavMeshSettings:
     minRegionArea: 2
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
+    tileSizeHint: 0
   m_NavMesh: {fileID: 0}
 --- !u!1 &101814601
 GameObject:
@@ -221,7 +222,12 @@ MonoBehaviour:
 
     Title By
 
-    Igor Mordvinov'
+    Igor Mordvinov
+
+
+    Beta Test Champion
+
+    The great and mighty Kaizoku'
   m_fontAsset: {fileID: 11400000, guid: 824b7fa1533257f4f8fd941194a28202, type: 2}
   m_fontColor:
     serializedVersion: 2
@@ -247,9 +253,9 @@ MonoBehaviour:
   m_wordWrappingRatios: .400000006
   m_horizontalMapping: 0
   m_verticalMapping: 0
-  isAffectingWordWrapping: 1
+  isAffectingWordWrapping: 0
   isInputParsingRequired: 0
-  havePropertiesChanged: 1
+  havePropertiesChanged: 0
   hasFontAssetChanged: 0
   m_isRichText: 1
   m_inputSource: 0
