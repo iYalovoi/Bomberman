@@ -13,6 +13,7 @@ namespace AssemblyCSharp
         private readonly List<Action> _subscriptions = new List<Action>();
 
         public GameObject Panel;
+        public AudioSource Music;
 
         protected override void Start()
         {
@@ -33,12 +34,20 @@ namespace AssemblyCSharp
 
         public void Resume()
         {
-            ToogleMenu();
+            ToggleMenu();
+        }
+
+        public void ToggleMusic()
+        {
+            if (Music.isPlaying)
+                Music.Pause();
+            else
+                Music.Play();
         }
 
         public void Restart()
         {
-            ToogleMenu();
+            ToggleMenu();
             _level.Reset();
             _bomberman.Reload();
             _bomberman.Reset();
@@ -50,7 +59,7 @@ namespace AssemblyCSharp
             Application.Quit();
         }
 
-        void ToogleMenu()
+        void ToggleMenu()
         {
             Panel.SetActive(!Panel.activeSelf);
             Time.timeScale = Time.timeScale == 1 ? 0 : 1;
@@ -59,7 +68,7 @@ namespace AssemblyCSharp
         void Update()
         {
             if (Input.GetButtonDown("Options") || Input.GetButtonDown("Joystick Options"))
-                ToogleMenu();
+                ToggleMenu();
         }
     }
 }

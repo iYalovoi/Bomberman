@@ -3,7 +3,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ReBomber/Script/BomberMan/Bomberman.cs">
     <Files>
       <File FileName="Assets/ReBomber/Script/Render/StartScene.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/BomberMan/Bomberman.cs" Line="22" Column="22" />
+      <File FileName="Assets/ReBomber/Script/BomberMan/Bomberman.cs" Line="13" Column="13" />
       <File FileName="Assets/ReBomber/Script/SceneDispatcher.cs" Line="1" Column="1" />
       <File FileName="Assets/ReBomber/Script/Level/GameModel.cs" Line="1" Column="1" />
       <File FileName="Assets/ReBomber/Script/BomberMan/BombermanModel.cs" Line="1" Column="1" />
@@ -18,15 +18,11 @@
       <File FileName="Assets/ReBomber/Script/Enemy/EnemiesStats.cs" Line="1" Column="1" />
       <File FileName="Assets/ReBomber/Script/Render/Blast.cs" Line="1" Column="1" />
       <File FileName="Assets/ReBomber/Script/Level/LevelFactory.cs" Line="1" Column="1" />
-      <File FileName="Assets/ReBomber/Script/Level/LevelDefinition.cs" Line="27" Column="27" />
+      <File FileName="Assets/ReBomber/Script/Level/LevelDefinition.cs" Line="1" Column="1" />
       <File FileName="Assets/ReBomber/Script/Enemy/EnemyFactory.cs" Line="1" Column="1" />
       <File FileName="Assets/ReBomber/Script/Enemy/EnemyTypes.cs" Line="1" Column="1" />
+      <File FileName="Assets/ReBomber/Script/Render/LevelSplash.cs" Line="26" Column="26" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True" selected="True" />
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
